@@ -1,7 +1,7 @@
 # reLivre – Natural Language Movie Recommender
 
 ## Présentation
-Application React/TypeScript qui transforme une description en langage naturel (ex : "想看 90 年代的搞笑愛情片") en recommandations de films, puis affiche les plateformes disponibles (watch providers) selon la région.
+Application React/TypeScript qui transforme une description en langage naturel (ex : "Je recherche des comédies romantiques des années 90.") en recommandations de films, puis affiche les plateformes disponibles (watch providers) selon la région.
 
 ## Fonctionnalités
 - Recommandation par langage naturel (règles/keywords) → TMDb search/discover
