@@ -1,0 +1,2629 @@
+﻿[Build-Popular] Fetching TMDb top_rated seeds: pages=500, minVotes=0
+[TMDb] Fetching top_rated page 1/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 10/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 20/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 30/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 40/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 50/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 60/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 70/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 80/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 90/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 100/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 110/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 120/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 130/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 140/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 150/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 160/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 170/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 180/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 190/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 200/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 210/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 220/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 230/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 240/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 250/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 260/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 270/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 280/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 290/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 300/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 310/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 320/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 330/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 340/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 350/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 360/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 370/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 380/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 390/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 400/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 410/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 420/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 430/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 440/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 450/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 460/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 470/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 480/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 490/500 (minVotes>=0)
+[TMDb] Fetching top_rated page 500/500 (minVotes>=0)
+[Build-Popular] Sampled 3000 seed(s) and saved to C:\Users\Louis\Visual Studio\reLivre\movie-api-test\movie-vectors\build_top_rated_seeds.json
+[Build-Popular] Starting. targetTotal=500 seeds=3000 fresh=false delayMs=120 dynamodb=false fast=true minImdbRating>=7.5
+
+[Build-Popular] (1/3000) Processing: Luther (2003)
+[Build] Skipped: Luther
+
+[Build-Popular] (2/3000) Processing: The Possession (2012)
+[Build] Skipped: The Possession
+
+[Build-Popular] (3/3000) Processing: Poltergeist II: The Other Side (1986)
+[Build] Skipped: Poltergeist II: The Other Side
+
+[Build-Popular] (4/3000) Processing: The Final Conflict (1981)
+[Build] Skipped: The Final Conflict
+
+[Build-Popular] (5/3000) Processing: Trolls (2016)
+[Build] Skipped: Trolls
+
+[Build-Popular] (6/3000) Processing: Still Life (2013)
+[Build] Skipped: Still Life
+
+[Build-Popular] (7/3000) Already have: The White Ribbon (2009)
+
+[Build-Popular] (8/3000) Processing: Birds of Passage (2018)
+[Build] Saved: Birds of Passage
+
+[Build-Popular] (9/3000) Processing: Leap Year (2010)
+[Build] Skipped: Leap Year
+
+[Build-Popular] (10/3000) Processing: Come Away (2020)
+[Build] Skipped: Come Away
+
+[Build-Popular] (11/3000) Processing: The Devil's Double (2011)
+[Build] Skipped: The Devil's Double
+
+[Build-Popular] (12/3000) Processing: Burn After Reading (2008)
+[Build] Skipped: Burn After Reading
+
+[Build-Popular] (13/3000) Processing: Scent of a Woman (1992)
+[Build] Saved: Scent of a Woman
+
+[Build-Popular] (14/3000) Processing: Belle's Magical World (1998)
+[Build] Skipped: Belle's Magical World
+
+[Build-Popular] (15/3000) Processing: A Hologram for the King (2016)
+[Build] Skipped: A Hologram for the King
+
+[Build-Popular] (16/3000) Processing: How the Grinch Stole Christmas (2000)
+[Build] Skipped: How the Grinch Stole Christmas
+
+[Build-Popular] (17/3000) Already have: Gladiator (2000)
+
+[Build-Popular] (18/3000) Processing: No manches, Frida (2016)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: No manches, Frida
+
+[Build-Popular] (19/3000) Processing: Logan Lucky (2017)
+[Build] Skipped: Logan Lucky
+
+[Build-Popular] (20/3000) Processing: Silent Night, Deadly Night (1984)
+[Build] Skipped: Silent Night, Deadly Night
+
+[Build-Popular] (21/3000) Processing: Friday After Next (2002)
+[Build] Skipped: Friday After Next
+
+[Build-Popular] (22/3000) Processing: 47 Meters Down: Uncaged (2019)
+[Build] Skipped: 47 Meters Down: Uncaged
+
+[Build-Popular] (23/3000) Processing: Pom Poko (1994)
+[Build] Skipped: Pom Poko
+
+[Build-Popular] (24/3000) Processing: Last Man Standing (1996)
+[Build] Skipped: Last Man Standing
+
+[Build-Popular] (25/3000) Processing: Antebellum (2020)
+[Build] Skipped: Antebellum
+
+[Build-Popular] (26/3000) Processing: The Eagle Has Landed (1976)
+[Build] Skipped: The Eagle Has Landed
+
+[Build-Popular] (27/3000) Processing: Maquia: When the Promised Flower Blooms (2018)
+[Build] Skipped: Maquia: When the Promised Flower Blooms
+
+[Build-Popular] (28/3000) Processing: Uncle Drew (2018)
+[Build] Skipped: Uncle Drew
+
+[Build-Popular] (29/3000) Processing: Star Trek Beyond (2016)
+[Build] Skipped: Star Trek Beyond
+
+[Build-Popular] (30/3000) Processing: The Last Starfighter (1984)
+[Build] Skipped: The Last Starfighter
+
+[Build-Popular] (31/3000) Processing: The Skeleton Key (2005)
+[Build] Skipped: The Skeleton Key
+
+[Build-Popular] (32/3000) Processing: On the Line (2022)
+[Build] Skipped: On the Line
+
+[Build-Popular] (33/3000) Processing: The Salton Sea (2002)
+[Build] Skipped: The Salton Sea
+
+[Build-Popular] (34/3000) Processing: The International (2009)
+[Build] Skipped: The International
+
+[Build-Popular] (35/3000) Processing: Red Dawn (1984)
+[Build] Skipped: Red Dawn
+
+[Build-Popular] (36/3000) Processing: Miss Violence (2013)
+[Build] Skipped: Miss Violence
+
+[Build-Popular] (37/3000) Processing: Populaire (2012)
+[Build] Skipped: Populaire
+
+[Build-Popular] (38/3000) Processing: The Girl in the Spider's Web (2018)
+[Build] Skipped: The Girl in the Spider's Web
+
+[Build-Popular] (39/3000) Processing: Ma Rainey's Black Bottom (2020)
+[Build] Skipped: Ma Rainey's Black Bottom
+
+[Build-Popular] (40/3000) Processing: Inheritance (2020)
+[Build] Skipped: Inheritance
+
+[Build-Popular] (41/3000) Processing: Goliath (2022)
+[Build] Skipped: Goliath
+
+[Build-Popular] (42/3000) Processing: Hitch (2005)
+[Build] Skipped: Hitch
+
+[Build-Popular] (43/3000) Processing: Dinner for Schmucks (2010)
+[Build] Skipped: Dinner for Schmucks
+
+[Build-Popular] (44/3000) Processing: First Reformed (2018)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: First Reformed -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: First Reformed
+
+[Build-Popular] (45/3000) Processing: Arachnophobia (1990)
+[Build] Skipped: Arachnophobia
+
+[Build-Popular] (46/3000) Processing: Pain & Gain (2013)
+[Build] Skipped: Pain & Gain
+
+[Build-Popular] (47/3000) Processing: Set It Off (1996)
+[Build] Skipped: Set It Off
+
+[Build-Popular] (48/3000) Processing: The Basketball Diaries (1995)
+[Build] Skipped: The Basketball Diaries
+
+[Build-Popular] (49/3000) Processing: One, Two, Three (1961)
+[Build] Saved: One, Two, Three
+
+[Build-Popular] (50/3000) Processing: State of Grace (1990)
+[Build] Skipped: State of Grace
+
+[Build-Popular] (51/3000) Processing: Chopper (2000)
+[Build] Skipped: Chopper
+
+[Build-Popular] (52/3000) Processing: Pitch Perfect (2012)
+[Build] Skipped: Pitch Perfect
+
+[Build-Popular] (53/3000) Processing: Hostiles (2017)
+[Build] Skipped: Hostiles
+
+[Build-Popular] (54/3000) Processing: The Way Back (2020)
+[Build] Skipped: The Way Back
+
+[Build-Popular] (55/3000) Processing: Nine (2009)
+[Build] Skipped: Nine
+
+[Build-Popular] (56/3000) Processing: The Man in the Iron Mask (1998)
+[Build] Skipped: The Man in the Iron Mask
+
+[Build-Popular] (57/3000) Processing: Hollow Man (2000)
+[Build] Skipped: Hollow Man
+
+[Build-Popular] (58/3000) Processing: Let Go (2024)
+[Build] Skipped: Let Go
+
+[Build-Popular] (59/3000) Processing: Soul Kitchen (2009)
+[Build] Skipped: Soul Kitchen
+
+[Build-Popular] (60/3000) Processing: Don't Stop Me Now (2019)
+[Build] Skipped: Don't Stop Me Now
+
+[Build-Popular] (61/3000) Processing: Jem and the Holograms (2015)
+[Build] Skipped: Jem and the Holograms
+
+[Build-Popular] (62/3000) Processing: The Strangers: Prey at Night (2018)
+[Build] Skipped: The Strangers: Prey at Night
+
+[Build-Popular] (63/3000) Processing: P.S. I Love You (2007)
+[Build] Skipped: P.S. I Love You
+
+[Build-Popular] (64/3000) Processing: Flight Risk (2025)
+[Build] Skipped: Flight Risk
+
+[Build-Popular] (65/3000) Processing: The Woman in the Yard (2025)
+[Build] Skipped: The Woman in the Yard
+
+[Build-Popular] (66/3000) Processing: Valentine's Day (2010)
+[Build] Skipped: Valentine's Day
+
+[Build-Popular] (67/3000) Processing: Annie (2014)
+[Build] Skipped: Annie
+
+[Build-Popular] (68/3000) Processing: Transformers: The Last Knight (2017)
+[Build] Skipped: Transformers: The Last Knight
+
+[Build-Popular] (69/3000) Processing: M3GAN (2022)
+[Build] Skipped: M3GAN
+
+[Build-Popular] (70/3000) Processing: The Illusionist (2006)
+[Build] Saved: The Illusionist
+
+[Build-Popular] (71/3000) Processing: Calendar Girls (2003)
+[Build] Skipped: Calendar Girls
+
+[Build-Popular] (72/3000) Processing: Rumble Fish (1983)
+[Build] Skipped: Rumble Fish
+
+[Build-Popular] (73/3000) Processing: Capote (2005)
+[Build] Skipped: Capote
+
+[Build-Popular] (74/3000) Processing: John Q (2002)
+[Build] Skipped: John Q
+
+[Build-Popular] (75/3000) Processing: #Alive (2020)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: #Alive
+
+[Build-Popular] (76/3000) Processing: King Cobra (2016)
+[Build] Skipped: King Cobra
+
+[Build-Popular] (77/3000) Processing: Imagine Me & You (2006)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Imagine Me & You -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Imagine Me & You
+
+[Build-Popular] (78/3000) Processing: The People vs. Larry Flynt (1996)
+[Build] Skipped: The People vs. Larry Flynt
+
+[Build-Popular] (79/3000) Processing: Gladiator II (2024)
+[Build] Skipped: Gladiator II
+
+[Build-Popular] (80/3000) Processing: A Nightmare on Elm Street (2010)
+[Build] Skipped: A Nightmare on Elm Street
+
+[Build-Popular] (81/3000) Processing: Empire State (2013)
+[Build] Skipped: Empire State
+
+[Build-Popular] (82/3000) Processing: The DUFF (2015)
+[Build] Skipped: The DUFF
+
+[Build-Popular] (83/3000) Processing: Michael Clayton (2007)
+[Build] Skipped: Michael Clayton
+
+[Build-Popular] (84/3000) Processing: No Way Up (2024)
+[Build] Skipped: No Way Up
+
+[Build-Popular] (85/3000) Processing: The Adam Project (2022)
+[Build] Skipped: The Adam Project
+
+[Build-Popular] (86/3000) Processing: Resident Evil: Apocalypse (2004)
+[Build] Skipped: Resident Evil: Apocalypse
+
+[Build-Popular] (87/3000) Processing: Home on the Range (2004)
+[Build] Skipped: Home on the Range
+
+[Build-Popular] (88/3000) Processing: High Strung (2016)
+[Build] Skipped: High Strung
+
+[Build-Popular] (89/3000) Processing: Dragon Ball Z: Battle of Gods (2013)
+[Build] Skipped: Dragon Ball Z: Battle of Gods
+
+[Build-Popular] (90/3000) Processing: The Bourne Legacy (2012)
+[Build] Skipped: The Bourne Legacy
+
+[Build-Popular] (91/3000) Processing: Roma (2018)
+[Build] Saved: Roma
+
+[Build-Popular] (92/3000) Processing: The Seventh Seal (1957)
+[Build] Saved: The Seventh Seal
+
+[Build-Popular] (93/3000) Processing: The Water Diviner (2014)
+[Build] Skipped: The Water Diviner
+
+[Build-Popular] (94/3000) Processing: The Dark Half (1993)
+[Build] Skipped: The Dark Half
+
+[Build-Popular] (95/3000) Processing: Revenge (2018)
+TMDb find returned no movie for IMDb ID: tt8215922
+[Build] Incomplete: Revenge -> [INCOMPLETE] missing fields: plot
+[Build] Skipped: Revenge
+
+[Build-Popular] (96/3000) Processing: Aladdin (1992)
+[Build] Saved: Aladdin
+
+[Build-Popular] (97/3000) Processing: Cherry (2021)
+[Build] Skipped: Cherry
+
+[Build-Popular] (98/3000) Processing: Pay It Forward (2000)
+[Build] Skipped: Pay It Forward
+
+[Build-Popular] (99/3000) Processing: Paddington 2 (2017)
+[Build] Saved: Paddington 2
+
+[Build-Popular] (100/3000) Processing: Leto (2018)
+[Build] Skipped: Leto
+
+[Build-Popular] (101/3000) Processing: Sissi: The Young Empress (1956)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Sissi: The Young Empress -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Sissi: The Young Empress
+
+[Build-Popular] (102/3000) Processing: Pet Sematary: Bloodlines (2023)
+[Build] Skipped: Pet Sematary: Bloodlines
+
+[Build-Popular] (103/3000) Processing: The Princess Diaries (2001)
+[Build] Skipped: The Princess Diaries
+
+[Build-Popular] (104/3000) Processing: Zambezia (2012)
+[Build] Skipped: Zambezia
+
+[Build-Popular] (105/3000) Processing: Badland Hunters (2024)
+[Build] Skipped: Badland Hunters
+
+[Build-Popular] (106/3000) Processing: Lisa Frankenstein (2024)
+[Build] Skipped: Lisa Frankenstein
+
+[Build-Popular] (107/3000) Processing: The Giver (2014)
+[Build] Skipped: The Giver
+
+[Build-Popular] (108/3000) Processing: Descendants 2 (2017)
+[Build] Skipped: Descendants 2
+
+[Build-Popular] (109/3000) Processing: Marshall (2017)
+[Build] Skipped: Marshall
+
+[Build-Popular] (110/3000) Processing: Haunter (2013)
+[Build] Skipped: Haunter
+
+[Build-Popular] (111/3000) Processing: Cape Fear (1962)
+[Build] Saved: Cape Fear
+
+[Build-Popular] (112/3000) Processing: Monty Python and the Holy Grail (1975)
+[Build] Saved: Monty Python and the Holy Grail
+
+[Build-Popular] (113/3000) Processing: Solitary Man (2009)
+[Build] Skipped: Solitary Man
+
+[Build-Popular] (114/3000) Processing: Super Troopers (2001)
+[Build] Skipped: Super Troopers
+
+[Build-Popular] (115/3000) Processing: Relic (2020)
+[Build] Skipped: Relic
+
+[Build-Popular] (116/3000) Processing: Proof of Life (2000)
+[Build] Skipped: Proof of Life
+
+[Build-Popular] (117/3000) Processing: Thank You for Smoking (2005)
+[Build] Saved: Thank You for Smoking
+
+[Build-Popular] (118/3000) Processing: The Strangers: Chapter 1 (2024)
+[Build] Skipped: The Strangers: Chapter 1
+
+[Build-Popular] (119/3000) Processing: Barbie and the Magic of Pegasus (2005)
+[Build] Skipped: Barbie and the Magic of Pegasus
+
+[Build-Popular] (120/3000) Processing: Memoirs of a Geisha (2005)
+[Build] Skipped: Memoirs of a Geisha
+
+[Build-Popular] (121/3000) Processing: The Rescuers Down Under (1990)
+[Build] Skipped: The Rescuers Down Under
+
+[Build-Popular] (122/3000) Processing: The World's End (2013)
+[Build] Skipped: The World's End
+
+[Build-Popular] (123/3000) Processing: My Father and My Son (2005)
+[Build] Saved: My Father and My Son
+
+[Build-Popular] (124/3000) Processing: We Can Be Heroes (2020)
+[Build] Skipped: We Can Be Heroes
+
+[Build-Popular] (125/3000) Processing: Turbo: A Power Rangers Movie (1997)
+[Build] Skipped: Turbo: A Power Rangers Movie
+
+[Build-Popular] (126/3000) Processing: The Matrix Resurrections (2021)
+[Build] Skipped: The Matrix Resurrections
+
+[Build-Popular] (127/3000) Processing: I Am Legend (2007)
+[Build] Skipped: I Am Legend
+
+[Build-Popular] (128/3000) Processing: Your Sister's Sister (2011)
+[Build] Skipped: Your Sister's Sister
+
+[Build-Popular] (129/3000) Processing: Somebody to Love (2025)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Somebody to Love -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Somebody to Love
+
+[Build-Popular] (130/3000) Processing: Wild Card (2015)
+[Build] Skipped: Wild Card
+
+[Build-Popular] (131/3000) Processing: Lifeboat (1944)
+[Build] Saved: Lifeboat
+
+[Build-Popular] (132/3000) Processing: Badlands (1974)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Badlands -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Badlands
+
+[Build-Popular] (133/3000) Processing: The Mortal Instruments: City of Bones (2013)
+[Build] Skipped: The Mortal Instruments: City of Bones
+
+[Build-Popular] (134/3000) Processing: System Crasher (2019)
+[Build] Saved: System Crasher
+
+[Build-Popular] (135/3000) Processing: Meg 2: The Trench (2023)
+[Build] Skipped: Meg 2: The Trench
+
+[Build-Popular] (136/3000) Processing: Wicked (2024)
+[Build] Skipped: Wicked
+
+[Build-Popular] (137/3000) Processing: City Hunter (1993)
+[Build] Skipped: City Hunter
+
+[Build-Popular] (138/3000) Processing: Stalker (1979)
+[Build] Saved: Stalker
+
+[Build-Popular] (139/3000) Processing: The Lost World: Jurassic Park (1997)
+[Build] Skipped: The Lost World: Jurassic Park
+
+[Build-Popular] (140/3000) Processing: I Am Dragon (2015)
+[Build] Skipped: I Am Dragon
+
+[Build-Popular] (141/3000) Processing: The Old Guard (2020)
+[Build] Skipped: The Old Guard
+
+[Build-Popular] (142/3000) Processing: 8 Women (2002)
+[Build] Skipped: 8 Women
+
+[Build-Popular] (143/3000) Processing: Vacation Friends (2021)
+[Build] Skipped: Vacation Friends
+
+[Build-Popular] (144/3000) Processing: Are We Done Yet? (2007)
+[Build] Skipped: Are We Done Yet?
+
+[Build-Popular] (145/3000) Processing: Prey (2024)
+[Build] Skipped: Prey
+
+[Build-Popular] (146/3000) Processing: Ut繪ya: July 22 (2018)
+[Build] Skipped: Ut繪ya: July 22
+
+[Build-Popular] (147/3000) Processing: The Stepford Wives (2004)
+[Build] Skipped: The Stepford Wives
+
+[Build-Popular] (148/3000) Processing: Quills (2000)
+[Build] Skipped: Quills
+
+[Build-Popular] (149/3000) Processing: The Laundromat (2019)
+[Build] Skipped: The Laundromat
+
+[Build-Popular] (150/3000) Processing: Death Race 2 (2010)
+[Build] Skipped: Death Race 2
+
+[Build-Popular] (151/3000) Processing: Cobweb (2023)
+[Build] Skipped: Cobweb
+
+[Build-Popular] (152/3000) Processing: Forbidden Empire (2014)
+[Build] Skipped: Forbidden Empire
+
+[Build-Popular] (153/3000) Processing: Belle (2021)
+[Build] Skipped: Belle
+
+[Build-Popular] (154/3000) Processing: Laws of Attraction (2004)
+[Build] Skipped: Laws of Attraction
+
+[Build-Popular] (155/3000) Processing: Small Soldiers (1998)
+[Build] Skipped: Small Soldiers
+
+[Build-Popular] (156/3000) Processing: Shutter (2008)
+[Build] Skipped: Shutter
+
+[Build-Popular] (157/3000) Processing: Flipper (1996)
+[Build] Skipped: Flipper
+
+[Build-Popular] (158/3000) Processing: Rise (2022)
+[Build] Skipped: Rise
+
+[Build-Popular] (159/3000) Processing: The Pink Panther Strikes Again (1976)
+[Build] Skipped: The Pink Panther Strikes Again
+
+[Build-Popular] (160/3000) Processing: Inside Man (2006)
+[Build] Saved: Inside Man
+
+[Build-Popular] (161/3000) Processing: Russian Ark (2002)
+[Build] Skipped: Russian Ark
+
+[Build-Popular] (162/3000) Processing: Ride Along (2014)
+[Build] Skipped: Ride Along
+
+[Build-Popular] (163/3000) Processing: Knock Off (1998)
+[Build] Skipped: Knock Off
+
+[Build-Popular] (164/3000) Processing: 3:10 to Yuma (1957)
+[Build] Saved: 3:10 to Yuma
+
+[Build-Popular] (165/3000) Processing: Night Moves (2014)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Night Moves -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Night Moves
+
+[Build-Popular] (166/3000) Processing: D.A.R.Y.L. (1985)
+[Build] Skipped: D.A.R.Y.L.
+
+[Build-Popular] (167/3000) Processing: Horrible Bosses (2011)
+[Build] Skipped: Horrible Bosses
+
+[Build-Popular] (168/3000) Processing: When Evil Lurks (2023)
+[Build] Skipped: When Evil Lurks
+
+[Build-Popular] (169/3000) Processing: I.S.S. (2024)
+TMDb find returned no movie for IMDb ID: tt32351030
+[Build] Incomplete: I.S.S. -> [INCOMPLETE] missing fields: director, runtime, plot
+[Build] Skipped: I.S.S.
+
+[Build-Popular] (170/3000) Processing: No One Gets Out Alive (2021)
+[Build] Skipped: No One Gets Out Alive
+
+[Build-Popular] (171/3000) Processing: Bride of Re-Animator (1990)
+[Build] Skipped: Bride of Re-Animator
+
+[Build-Popular] (172/3000) Processing: Harold & Kumar Escape from Guantanamo Bay (2008)
+[Build] Skipped: Harold & Kumar Escape from Guantanamo Bay
+
+[Build-Popular] (173/3000) Processing: Diabolik: Ginko Attacks! (2022)
+[Build] Skipped: Diabolik: Ginko Attacks!
+
+[Build-Popular] (174/3000) Processing: The Baader Meinhof Complex (2008)
+[Build] Skipped: The Baader Meinhof Complex
+
+[Build-Popular] (175/3000) Processing: The War with Grandpa (2020)
+[Build] Skipped: The War with Grandpa
+
+[Build-Popular] (176/3000) Processing: The Diary of a Teenage Girl (2015)
+[Build] Skipped: The Diary of a Teenage Girl
+
+[Build-Popular] (177/3000) Processing: Freakier Friday (2025)
+[Build] Skipped: Freakier Friday
+
+[Build-Popular] (178/3000) Processing: Dilwale (2015)
+[Build] Skipped: Dilwale
+
+[Build-Popular] (179/3000) Processing: The Addams Family (2019)
+[Build] Skipped: The Addams Family
+
+[Build-Popular] (180/3000) Processing: Bad Santa 2 (2016)
+[Build] Skipped: Bad Santa 2
+
+[Build-Popular] (181/3000) Processing: Downsizing (2017)
+[Build] Skipped: Downsizing
+
+[Build-Popular] (182/3000) Processing: The Three Brothers (1995)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Three Brothers -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Three Brothers
+
+[Build-Popular] (183/3000) Processing: Ray (2004)
+[Build] Saved: Ray
+
+[Build-Popular] (184/3000) Processing: Red Cliff II (2009)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Saved: Red Cliff II
+
+[Build-Popular] (185/3000) Processing: Rashomon (1950)
+[Build] Saved: Rashomon
+
+[Build-Popular] (186/3000) Processing: I, Daniel Blake (2016)
+[Build] Saved: I, Daniel Blake
+
+[Build-Popular] (187/3000) Processing: Never Back Down (2008)
+[Build] Skipped: Never Back Down
+
+[Build-Popular] (188/3000) Processing: The Beyond (1981)
+[Build] Skipped: The Beyond
+
+[Build-Popular] (189/3000) Processing: Loveless (2017)
+[Build] Saved: Loveless
+
+[Build-Popular] (190/3000) Processing: Justice League vs. Teen Titans (2016)
+[Build] Skipped: Justice League vs. Teen Titans
+
+[Build-Popular] (191/3000) Processing: King Kong (2005)
+[Build] Skipped: King Kong
+
+[Build-Popular] (192/3000) Processing: Cypher (2002)
+[Build] Skipped: Cypher
+
+[Build-Popular] (193/3000) Processing: The Color Purple (1985)
+[Build] Saved: The Color Purple
+
+[Build-Popular] (194/3000) Processing: Dangerous Animals (2025)
+[Build] Skipped: Dangerous Animals
+
+[Build-Popular] (195/3000) Processing: The Thing (2011)
+[Build] Skipped: The Thing
+
+[Build-Popular] (196/3000) Processing: Fred Claus (2007)
+[Build] Skipped: Fred Claus
+
+[Build-Popular] (197/3000) Processing: The Odd Life of Timothy Green (2012)
+[Build] Skipped: The Odd Life of Timothy Green
+
+[Build-Popular] (198/3000) Processing: 100 Girls (2000)
+[Build] Skipped: 100 Girls
+
+[Build-Popular] (199/3000) Processing: See How They Run (2022)
+[Build] Skipped: See How They Run
+
+[Build-Popular] (200/3000) Processing: Shadows in Paradise (1986)
+[Build] Skipped: Shadows in Paradise
+
+[Build-Popular] (201/3000) Processing: Toy Story 4 (2019)
+[Build] Saved: Toy Story 4
+
+[Build-Popular] (202/3000) Processing: The Cutting Edge (1992)
+[Build] Skipped: The Cutting Edge
+
+[Build-Popular] (203/3000) Processing: Caddyshack (1980)
+[Build] Skipped: Caddyshack
+
+[Build-Popular] (204/3000) Processing: Like Crazy (2016)
+[Build] Skipped: Like Crazy
+
+[Build-Popular] (205/3000) Processing: Working Girl (1988)
+[Build] Skipped: Working Girl
+
+[Build-Popular] (206/3000) Processing: Anonymous (2011)
+[Build] Skipped: Anonymous
+
+[Build-Popular] (207/3000) Processing: 2010 (1984)
+[Build] Skipped: 2010
+
+[Build-Popular] (208/3000) Processing: Frozen II (2019)
+[Build] Skipped: Frozen II
+
+[Build-Popular] (209/3000) Processing: The Martian (2015)
+[Build] Saved: The Martian
+
+[Build-Popular] (210/3000) Processing: Jane Got a Gun (2015)
+[Build] Skipped: Jane Got a Gun
+
+[Build-Popular] (211/3000) Processing: Farewell, My Queen (2012)
+[Build] Skipped: Farewell, My Queen
+
+[Build-Popular] (212/3000) Processing: The Skeleton Dance (1929)
+[Build] Saved: The Skeleton Dance
+
+[Build-Popular] (213/3000) Processing: The Best Is Yet to Come (2019)
+[Build] Skipped: The Best Is Yet to Come
+
+[Build-Popular] (214/3000) Processing: Jessabelle (2014)
+[Build] Skipped: Jessabelle
+
+[Build-Popular] (215/3000) Processing: The Lunchbox (2013)
+[Build] Saved: The Lunchbox
+
+[Build-Popular] (216/3000) Processing: Harold & Kumar Go to White Castle (2004)
+[Build] Skipped: Harold & Kumar Go to White Castle
+
+[Build-Popular] (217/3000) Processing: And Now for Something Completely Different (1971)
+[Build] Saved: Monty Python's and Now for Something Completely Different
+
+[Build-Popular] (218/3000) Processing: The Blackening (2023)
+TMDb find returned no movie for IMDb ID: tt31379549
+[Build] Incomplete: The Blackening -> [INCOMPLETE] missing fields: genre, director, runtime, language, plot
+[Build] Skipped: The Blackening
+
+[Build-Popular] (219/3000) Processing: Papillon (1973)
+[Build] Saved: Papillon
+
+[Build-Popular] (220/3000) Processing: The Silence (1963)
+[Build] Saved: The Silence
+
+[Build-Popular] (221/3000) Processing: Marriage Story (2019)
+[Build] Saved: Marriage Story
+
+[Build-Popular] (222/3000) Processing: Captain Underpants: The First Epic Movie (2017)
+[Build] Skipped: Captain Underpants: The First Epic Movie
+
+[Build-Popular] (223/3000) Processing: All the Way Boys (1972)
+[Build] Skipped: All the Way Boys
+
+[Build-Popular] (224/3000) Processing: Click (2006)
+[Build] Skipped: Click
+
+[Build-Popular] (225/3000) Processing: Miss Congeniality (2000)
+[Build] Skipped: Miss Congeniality
+
+[Build-Popular] (226/3000) Processing: Nobody 2 (2025)
+[Build] Skipped: Nobody 2
+
+[Build-Popular] (227/3000) Processing: Friday (1995)
+[Build] Skipped: Friday
+
+[Build-Popular] (228/3000) Processing: The Bonfire of the Vanities (1990)
+[Build] Skipped: The Bonfire of the Vanities
+
+[Build-Popular] (229/3000) Processing: The Valet (2022)
+[Build] Skipped: The Valet
+
+[Build-Popular] (230/3000) Processing: The Hangover Part III (2013)
+[Build] Skipped: The Hangover Part III
+
+[Build-Popular] (231/3000) Processing: Short Circuit 2 (1988)
+[Build] Skipped: Short Circuit 2
+
+[Build-Popular] (232/3000) Processing: 3 Men and a Little Lady (1990)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: 3 Men and a Little Lady -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: 3 Men and a Little Lady
+
+[Build-Popular] (233/3000) Processing: Labyrinth (1986)
+[Build] Skipped: Labyrinth
+
+[Build-Popular] (234/3000) Processing: Divorce Italian Style (1961)
+[Build] Saved: Divorce Italian Style
+
+[Build-Popular] (235/3000) Processing: Memories (1995)
+[Build] Saved: Memories
+
+[Build-Popular] (236/3000) Processing: The Second Best Exotic Marigold Hotel (2015)
+[Build] Skipped: The Second Best Exotic Marigold Hotel
+
+[Build-Popular] (237/3000) Processing: Anna and the King (1999)
+[Build] Skipped: Anna and the King
+
+[Build-Popular] (238/3000) Processing: Naruto Shippuden the Movie: Bonds (2008)
+[Build] Skipped: Naruto Shippuden the Movie: Bonds
+
+[Build-Popular] (239/3000) Processing: The Perfect Guy (2015)
+[Build] Skipped: The Perfect Guy
+
+[Build-Popular] (240/3000) Processing: Fiddler on the Roof (1971)
+[Build] Saved: Fiddler on the Roof
+
+[Build-Popular] (241/3000) Processing: Chinatown (1974)
+[Build] Saved: Chinatown
+
+[Build-Popular] (242/3000) Processing: The Karate Kid Part II (1986)
+[Build] Skipped: The Karate Kid Part II
+
+[Build-Popular] (243/3000) Processing: Mallrats (1995)
+[Build] Skipped: Mallrats
+
+[Build-Popular] (244/3000) Processing: The Congress (2013)
+[Build] Skipped: The Congress
+
+[Build-Popular] (245/3000) Processing: The Water Horse (2007)
+[Build] Skipped: The Water Horse
+
+[Build-Popular] (246/3000) Processing: LOL (2012)
+[Build] Skipped: LOL
+
+[Build-Popular] (247/3000) Processing: Evita (1996)
+[Build] Skipped: Evita
+
+[Build-Popular] (248/3000) Processing: Fire in the Sky (1993)
+[Build] Skipped: Fire in the Sky
+
+[Build-Popular] (249/3000) Processing: Before the Devil Knows You're Dead (2007)
+[Build] Skipped: Before the Devil Knows You're Dead
+
+[Build-Popular] (250/3000) Processing: Don't Blame the Kid (2016)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: Don't Blame the Kid
+
+[Build-Popular] (251/3000) Processing: Ash Is Purest White (2018)
+[Build] Skipped: Ash Is Purest White
+
+[Build-Popular] (252/3000) Processing: The Ramen Girl (2008)
+[Build] Skipped: The Ramen Girl
+
+[Build-Popular] (253/3000) Processing: Toc Toc (2017)
+[Build] Skipped: Toc Toc
+
+[Build-Popular] (254/3000) Processing: The Fabelmans (2022)
+[Build] Saved: The Fabelmans
+
+[Build-Popular] (255/3000) Processing: Deliverance (1972)
+[Build] Saved: Deliverance
+
+[Build-Popular] (256/3000) Processing: Saboteur (1942)
+[Build] Skipped: Saboteur
+
+[Build-Popular] (257/3000) Processing: Elite Squad: The Enemy Within (2010)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Elite Squad: The Enemy Within -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Elite Squad: The Enemy Within
+
+[Build-Popular] (258/3000) Processing: Flashback (2020)
+[Build] Skipped: Flashback
+
+[Build-Popular] (259/3000) Processing: Kidnap (2017)
+[Build] Skipped: Kidnap
+
+[Build-Popular] (260/3000) Processing: High Crimes (2002)
+[Build] Skipped: High Crimes
+
+[Build-Popular] (261/3000) Processing: Toni Erdmann (2016)
+[Build] Skipped: Toni Erdmann
+
+[Build-Popular] (262/3000) Processing: Stewie Griffin: The Untold Story (2005)
+[Build] Saved: Stewie Griffin: The Untold Story
+
+[Build-Popular] (263/3000) Processing: Your Place or Mine (2023)
+[Build] Skipped: Your Place or Mine
+
+[Build-Popular] (264/3000) Processing: Midnight Run (1988)
+[Build] Saved: Midnight Run
+
+[Build-Popular] (265/3000) Processing: Pickpocket (1959)
+[Build] Saved: Pickpocket
+
+[Build-Popular] (266/3000) Processing: The Big Year (2011)
+[Build] Skipped: The Big Year
+
+[Build-Popular] (267/3000) Processing: The Prestige (2006)
+[Build] Saved: The Prestige
+
+[Build-Popular] (268/3000) Processing: Promised Land (2012)
+[Build] Skipped: Promised Land
+
+[Build-Popular] (269/3000) Processing: Love Again (2023)
+[Build] Skipped: Love Again
+
+[Build-Popular] (270/3000) Processing: Creature from the Black Lagoon (1954)
+[Build] Skipped: Creature from the Black Lagoon
+
+[Build-Popular] (271/3000) Processing: Monster Pets: A Hotel Transylvania Short (2021)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: Monster Pets: A Hotel Transylvania Short
+
+[Build-Popular] (272/3000) Processing: #realityhigh (2017)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: #realityhigh
+
+[Build-Popular] (273/3000) Processing: The Boy Who Cried Werewolf (2010)
+[Build] Skipped: The Boy Who Cried Werewolf
+
+[Build-Popular] (274/3000) Processing: L'Atalante (1934)
+[Build] Saved: L'Atalante
+
+[Build-Popular] (275/3000) Processing: Mr. Deeds Goes to Town (1936)
+[Build] Saved: Mr. Deeds Goes to Town
+
+[Build-Popular] (276/3000) Processing: Hamlet (1996)
+[Build] Saved: Hamlet
+
+[Build-Popular] (277/3000) Processing: Deepwater Horizon (2016)
+[Build] Skipped: Deepwater Horizon
+
+[Build-Popular] (278/3000) Processing: Father Figures (2017)
+[Build] Skipped: Father Figures
+
+[Build-Popular] (279/3000) Processing: Gandhi (1982)
+[Build] Saved: Gandhi
+
+[Build-Popular] (280/3000) Processing: To Kill a Mockingbird (1962)
+[Build] Saved: To Kill a Mockingbird
+
+[Build-Popular] (281/3000) Processing: Hands of Stone (2016)
+[Build] Skipped: Hands of Stone
+
+[Build-Popular] (282/3000) Processing: Inferno (1999)
+[Build] Skipped: Inferno
+
+[Build-Popular] (283/3000) Processing: Under the Silver Lake (2018)
+[Build] Skipped: Under the Silver Lake
+
+[Build-Popular] (284/3000) Processing: Knox Goes Away (2024)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Knox Goes Away -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Knox Goes Away
+
+[Build-Popular] (285/3000) Processing: Great Balls of Fire! (1989)
+[Build] Skipped: Great Balls of Fire!
+
+[Build-Popular] (286/3000) Processing: Beauty and the Beast (2014)
+[Build] Skipped: Beauty and the Beast
+
+[Build-Popular] (287/3000) Processing: Lights Out (2016)
+[Build] Skipped: Lights Out
+
+[Build-Popular] (288/3000) Processing: Crouching Tiger, Hidden Dragon (2000)
+[Build] Saved: Crouching Tiger, Hidden Dragon
+
+[Build-Popular] (289/3000) Processing: SPY x FAMILY CODE: White (2023)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Skipped: SPY x FAMILY CODE: White
+
+[Build-Popular] (290/3000) Processing: The Blackcoat's Daughter (2017)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Blackcoat's Daughter -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Blackcoat's Daughter
+
+[Build-Popular] (291/3000) Processing: 6 Underground (2019)
+[Build] Skipped: 6 Underground
+
+[Build-Popular] (292/3000) Processing: Aliens in the Attic (2009)
+[Build] Skipped: Aliens in the Attic
+
+[Build-Popular] (293/3000) Processing: Ben-Hur (1959)
+[Build] Saved: Ben-Hur
+
+[Build-Popular] (294/3000) Processing: Close Range (2015)
+[Build] Skipped: Close Range
+
+[Build-Popular] (295/3000) Processing: The Ladykillers (2004)
+[Build] Skipped: The Ladykillers
+
+[Build-Popular] (296/3000) Processing: Christmas & Co. (2017)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Christmas & Co.
+
+[Build-Popular] (297/3000) Processing: The Science of Sleep (2006)
+[Build] Skipped: The Science of Sleep
+
+[Build-Popular] (298/3000) Processing: Big Game (2015)
+TMDb find returned no movie for IMDb ID: tt4434016
+[Build] Incomplete: Big Game -> [INCOMPLETE] missing fields: director, runtime, plot
+[Build] Skipped: Big Game
+
+[Build-Popular] (299/3000) Processing: Out of the Clear Blue Sky (2019)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Out of the Clear Blue Sky
+
+[Build-Popular] (300/3000) Processing: Meatballs (1979)
+[Build] Skipped: Meatballs
+
+[Build-Popular] (301/3000) Processing: Capernaum (2018)
+[Build] Saved: Capernaum
+
+[Build-Popular] (302/3000) Processing: Mortal Kombat Legends: Battle of the Realms (2021)
+[Build] Skipped: Mortal Kombat Legends: Battle of the Realms
+
+[Build-Popular] (303/3000) Processing: Scooby-Doo! The Mystery Begins (2009)
+[Build] Skipped: Scooby-Doo! The Mystery Begins
+
+[Build-Popular] (304/3000) Processing: Cyborg (1989)
+[Build] Skipped: Cyborg
+
+[Build-Popular] (305/3000) Processing: Iron Mask (2019)
+[Build] Skipped: Iron Mask
+
+[Build-Popular] (306/3000) Processing: Tekkonkinkreet (2006)
+[Build] Saved: Tekkonkinkreet
+
+[Build-Popular] (307/3000) Processing: Everyone Says I Love You (1996)
+[Build] Skipped: Everyone Says I Love You
+
+[Build-Popular] (308/3000) Processing: Die Another Day (2002)
+[Build] Skipped: Die Another Day
+
+[Build-Popular] (309/3000) Processing: Muppets from Space (1999)
+[Build] Skipped: Muppets from Space
+
+[Build-Popular] (310/3000) Processing: Comment c'est loin (2015)
+[Build] Skipped: Comment c'est loin
+
+[Build-Popular] (311/3000) Processing: The Negotiator (1998)
+[Build] Skipped: The Negotiator
+
+[Build-Popular] (312/3000) Processing: The Hobbit: The Battle of the Five Armies (2014)
+[Build] Skipped: The Hobbit: The Battle of the Five Armies
+
+[Build-Popular] (313/3000) Processing: Beyond the Black Rainbow (2010)
+[Build] Skipped: Beyond the Black Rainbow
+
+[Build-Popular] (314/3000) Processing: Time Cut (2024)
+[Build] Skipped: Time Cut
+
+[Build-Popular] (315/3000) Processing: Cool Runnings (1993)
+[Build] Skipped: Cool Runnings
+
+[Build-Popular] (316/3000) Processing: Tammy (2014)
+[Build] Skipped: Tammy
+
+[Build-Popular] (317/3000) Processing: Daisies (1966)
+[Build] Skipped: Daisies
+
+[Build-Popular] (318/3000) Processing: What We Do in the Shadows (2014)
+[Build] Saved: What We Do in the Shadows
+
+[Build-Popular] (319/3000) Processing: Southern Comfort (1981)
+[Build] Skipped: Southern Comfort
+
+[Build-Popular] (320/3000) Processing: Puss in Boots (2011)
+[Build] Skipped: Puss in Boots
+
+[Build-Popular] (321/3000) Processing: The Ghost and Mrs. Muir (1947)
+[Build] Saved: The Ghost and Mrs. Muir
+
+[Build-Popular] (322/3000) Processing: Honeymoon in Vegas (1992)
+[Build] Skipped: Honeymoon in Vegas
+
+[Build-Popular] (323/3000) Processing: 7 and 8 (2007)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: 7 and 8
+
+[Build-Popular] (324/3000) Processing: Juno (2007)
+[Build] Skipped: Juno
+
+[Build-Popular] (325/3000) Processing: The Boss (2016)
+[Build] Skipped: The Boss
+
+[Build-Popular] (326/3000) Processing: Goosebumps (2015)
+[Build] Skipped: Goosebumps
+
+[Build-Popular] (327/3000) Processing: Weathering with You (2019)
+[Build] Saved: Weathering with You
+
+[Build-Popular] (328/3000) Processing: Carol (2015)
+[Build] Skipped: Carol
+
+[Build-Popular] (329/3000) Processing: See No Evil 2 (2014)
+[Build] Skipped: See No Evil 2
+
+[Build-Popular] (330/3000) Processing: The Shootist (1976)
+[Build] Saved: The Shootist
+
+[Build-Popular] (331/3000) Processing: Inconceivable (2017)
+[Build] Skipped: Inconceivable
+
+[Build-Popular] (332/3000) Processing: A Dog's Journey (2019)
+[Build] Skipped: A Dog's Journey
+
+[Build-Popular] (333/3000) Processing: Dobermann (1997)
+[Build] Skipped: Dobermann
+
+[Build-Popular] (334/3000) Processing: Aguirre, the Wrath of God (1972)
+[Build] Saved: Aguirre, the Wrath of God
+
+[Build-Popular] (335/3000) Processing: Underworld: Blood Wars (2016)
+[Build] Skipped: Underworld: Blood Wars
+
+[Build-Popular] (336/3000) Processing: Ayla: The Daughter of War (2017)
+[Build] Saved: Ayla: The Daughter of War
+
+[Build-Popular] (337/3000) Processing: The Limey (1999)
+[Build] Skipped: The Limey
+
+[Build-Popular] (338/3000) Processing: Traitor (2008)
+[Build] Skipped: Traitor
+
+[Build-Popular] (339/3000) Processing: The Librarian: Quest for the Spear (2004)
+[Build] Skipped: The Librarian: Quest for the Spear
+
+[Build-Popular] (340/3000) Processing: Moonlight (2016)
+[Build] Skipped: Moonlight
+
+[Build-Popular] (341/3000) Processing: Perras (2011)
+[Build] Skipped: Perras
+
+[Build-Popular] (342/3000) Processing: The 15:17 to Paris (2018)
+[Build] Skipped: The 15:17 to Paris
+
+[Build-Popular] (343/3000) Processing: War on Everyone (2016)
+[Build] Skipped: War on Everyone
+
+[Build-Popular] (344/3000) Processing: House of Games (1987)
+[Build] Skipped: House of Games
+
+[Build-Popular] (345/3000) Processing: Top Gun: Maverick (2022)
+[Build] Saved: Top Gun: Maverick
+
+[Build-Popular] (346/3000) Processing: Joint Security Area (2000)
+[Build] Saved: Joint Security Area
+
+[Build-Popular] (347/3000) Processing: The Machine (2013)
+[Build] Skipped: The Machine
+
+[Build-Popular] (348/3000) Processing: Dragnet (1987)
+[Build] Skipped: Dragnet
+
+[Build-Popular] (349/3000) Processing: Godzilla vs. Kong (2021)
+[Build] Skipped: Godzilla vs. Kong
+
+[Build-Popular] (350/3000) Processing: The Last Kiss (2001)
+[Build] Skipped: The Last Kiss
+
+[Build-Popular] (351/3000) Processing: Thor: Love and Thunder (2022)
+[Build] Skipped: Thor: Love and Thunder
+
+[Build-Popular] (352/3000) Processing: To Catch a Thief (1955)
+[Build] Skipped: To Catch a Thief
+
+[Build-Popular] (353/3000) Processing: The Forgotten (2004)
+[Build] Skipped: The Forgotten
+
+[Build-Popular] (354/3000) Processing: Your Name. (2016)
+[Build] Saved: Your Name.
+
+[Build-Popular] (355/3000) Processing: Seven Chances (1925)
+[Build] Saved: Seven Chances
+
+[Build-Popular] (356/3000) Processing: Bros (2022)
+[Build] Skipped: Bros
+
+[Build-Popular] (357/3000) Processing: Delicacy (2011)
+[Build] Skipped: Delicacy
+
+[Build-Popular] (358/3000) Processing: D3: The Mighty Ducks (1996)
+[Build] Skipped: D3: The Mighty Ducks
+
+[Build-Popular] (359/3000) Processing: Presence (2025)
+TMDb find returned no movie for IMDb ID: tt36175132
+[Build] Skipped: Presence
+
+[Build-Popular] (360/3000) Processing: King of Thieves (2018)
+[Build] Skipped: King of Thieves
+
+[Build-Popular] (361/3000) Processing: The Voices (2014)
+[Build] Skipped: The Voices
+
+[Build-Popular] (362/3000) Processing: Waiting... (2005)
+[Build] Skipped: Waiting...
+
+[Build-Popular] (363/3000) Processing: The Grand Budapest Hotel (2014)
+[Build] Saved: The Grand Budapest Hotel
+
+[Build-Popular] (364/3000) Processing: The Wedding Ringer (2015)
+[Build] Skipped: The Wedding Ringer
+
+[Build-Popular] (365/3000) Processing: O (2001)
+[Build] Skipped: O
+
+[Build-Popular] (366/3000) Processing: Quigley Down Under (1990)
+[Build] Skipped: Quigley Down Under
+
+[Build-Popular] (367/3000) Processing: Hit & Run (2012)
+TMDb find returned no movie for IMDb ID: tt2150592
+[Build] Skipped: Hit & Run
+
+[Build-Popular] (368/3000) Processing: Nope (2022)
+[Build] Skipped: Nope
+
+[Build-Popular] (369/3000) Processing: How to Train Your Dragon 2 (2014)
+[Build] Saved: How to Train Your Dragon 2
+
+[Build-Popular] (370/3000) Processing: White Squall (1996)
+[Build] Skipped: White Squall
+
+[Build-Popular] (371/3000) Processing: Mickey, Donald, Goofy: The Three Musketeers (2004)
+[Build] Skipped: Mickey, Donald, Goofy: The Three Musketeers
+
+[Build-Popular] (372/3000) Processing: The Guard (2011)
+[Build] Skipped: The Guard
+
+[Build-Popular] (373/3000) Processing: Chip 'n Dale: Rescue Rangers (2022)
+[Build] Skipped: Chip 'n Dale: Rescue Rangers
+
+[Build-Popular] (374/3000) Processing: The Flight of the Phoenix (1965)
+[Build] Saved: The Flight of the Phoenix
+
+[Build-Popular] (375/3000) Processing: In Safe Hands (2018)
+[Build] Skipped: In Safe Hands
+
+[Build-Popular] (376/3000) Processing: Harry Potter and the Deathly Hallows: Part 1 (2010)
+[Build] Saved: Harry Potter and the Deathly Hallows: Part 1
+
+[Build-Popular] (377/3000) Processing: Dearest Relatives, Poisonous Relations (1992)
+[Build] Skipped: Dearest Relatives, Poisonous Relations
+
+[Build-Popular] (378/3000) Processing: Shanghai Noon (2000)
+[Build] Skipped: Shanghai Noon
+
+[Build-Popular] (379/3000) Processing: Monsters University (2013)
+[Build] Skipped: Monsters University
+
+[Build-Popular] (380/3000) Processing: The Land Before Time IV: Journey Through the Mists (1996)
+[Build] Skipped: The Land Before Time IV: Journey Through the Mists
+
+[Build-Popular] (381/3000) Processing: Miracle (2004)
+[Build] Saved: Miracle
+
+[Build-Popular] (382/3000) Processing: The Substitute (1996)
+[Build] Skipped: The Substitute
+
+[Build-Popular] (383/3000) Processing: Pusher II (2004)
+[Build] Skipped: Pusher II
+
+[Build-Popular] (384/3000) Processing: A Boy Called Christmas (2021)
+[Build] Skipped: A Boy Called Christmas
+
+[Build-Popular] (385/3000) Processing: Compartment No. 6 (2021)
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Compartment No. 6 -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Compartment No. 6
+
+[Build-Popular] (386/3000) Processing: Back to the Outback (2021)
+[Build] Skipped: Back to the Outback
+
+[Build-Popular] (387/3000) Processing: One Shot (2021)
+[Build] Skipped: One Shot
+
+[Build-Popular] (388/3000) Processing: Journey to the Center of the Earth (1959)
+[Build] Skipped: Journey to the Center of the Earth
+
+[Build-Popular] (389/3000) Processing: Watcher (2022)
+[Build] Skipped: Watcher
+
+[Build-Popular] (390/3000) Processing: Downfall (2004)
+[Build] Saved: Downfall
+
+[Build-Popular] (391/3000) Processing: DeepStar Six (1989)
+[Build] Skipped: DeepStar Six
+
+[Build-Popular] (392/3000) Processing: The Little Rascals (1994)
+[Build] Skipped: The Little Rascals
+
+[Build-Popular] (393/3000) Processing: Ramona and Beezus (2010)
+[Build] Skipped: Ramona and Beezus
+
+[Build-Popular] (394/3000) Processing: Ogni maledetto Natale (2014)
+Wikipedia fetch failed: Request failed with status code 404
+[Build] Incomplete: Ogni maledetto Natale -> [INCOMPLETE] missing fields: plot, detailedPlot
+[Build] Skipped: Ogni maledetto Natale
+
+[Build-Popular] (395/3000) Processing: Hoodwinked! (2005)
+[Build] Skipped: Hoodwinked!
+
+[Build-Popular] (396/3000) Processing: Redeeming Love (2022)
+[Build] Skipped: Redeeming Love
+
+[Build-Popular] (397/3000) Processing: The Bourne Ultimatum (2007)
+[Build] Saved: The Bourne Ultimatum
+
+[Build-Popular] (398/3000) Processing: The Crow (1994)
+[Build] Saved: The Crow
+
+[Build-Popular] (399/3000) Processing: Marry Me (2022)
+[Build] Skipped: Marry Me
+
+[Build-Popular] (400/3000) Processing: Who's Afraid of Virginia Woolf? (1966)
+[Build] Saved: Who's Afraid of Virginia Woolf?
+
+[Build-Popular] (401/3000) Processing: First Blood (1982)
+[Build] Saved: First Blood
+
+[Build-Popular] (402/3000) Processing: If Anything Happens I Love You (2020)
+[Build] Saved: If Anything Happens I Love You
+
+[Build-Popular] (403/3000) Processing: Gremlins 2: The New Batch (1990)
+[Build] Skipped: Gremlins 2: The New Batch
+
+[Build-Popular] (404/3000) Processing: The Fourth Kind (2009)
+[Build] Skipped: The Fourth Kind
+
+[Build-Popular] (405/3000) Processing: Night Moves (1975)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Night Moves -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Night Moves
+
+[Build-Popular] (406/3000) Processing: Twisters (2024)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Twisters -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Twisters
+
+[Build-Popular] (407/3000) Processing: Serenity (2005)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Serenity -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Serenity
+
+[Build-Popular] (408/3000) Processing: Nell (1994)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Nell -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Nell
+
+[Build-Popular] (409/3000) Processing: Old People (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Old People -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Old People
+
+[Build-Popular] (410/3000) Processing: Skylines (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Skylines -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Skylines
+
+[Build-Popular] (411/3000) Processing: Withnail & I (1987)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Withnail & I -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Withnail & I
+
+[Build-Popular] (412/3000) Processing: Stranger Than Paradise (1984)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Stranger Than Paradise -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Stranger Than Paradise
+
+[Build-Popular] (413/3000) Processing: Predator: Killer of Killers (2025)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Predator: Killer of Killers -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Predator: Killer of Killers
+
+[Build-Popular] (414/3000) Processing: The Ten Commandments (1956)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Ten Commandments -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Ten Commandments
+
+[Build-Popular] (415/3000) Processing: Galaxy Quest (1999)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Galaxy Quest -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Galaxy Quest
+
+[Build-Popular] (416/3000) Processing: The Miracle Season (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Miracle Season -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Miracle Season
+
+[Build-Popular] (417/3000) Processing: Wake in Fright (1971)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Wake in Fright -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Wake in Fright
+
+[Build-Popular] (418/3000) Processing: Walking Tall (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Walking Tall -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Walking Tall
+
+[Build-Popular] (419/3000) Processing: The Old Man & the Gun (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Old Man & the Gun -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Old Man & the Gun
+
+[Build-Popular] (420/3000) Processing: Klute (1971)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Klute -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Klute
+
+[Build-Popular] (421/3000) Processing: Collateral Damage (2002)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Collateral Damage -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Collateral Damage
+
+[Build-Popular] (422/3000) Processing: College Road Trip (2008)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: College Road Trip -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: College Road Trip
+
+[Build-Popular] (423/3000) Processing: Race (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Race -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Race
+
+[Build-Popular] (424/3000) Processing: XOXO (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: XOXO -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: XOXO
+
+[Build-Popular] (425/3000) Processing: The Invisibles (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Invisibles -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Invisibles
+
+[Build-Popular] (426/3000) Processing: About Last Night (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: About Last Night -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: About Last Night
+
+[Build-Popular] (427/3000) Processing: All the Money in the World (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: All the Money in the World -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: All the Money in the World
+
+[Build-Popular] (428/3000) Processing: USS Indianapolis: Men of Courage (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: USS Indianapolis: Men of Courage -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: USS Indianapolis: Men of Courage
+
+[Build-Popular] (429/3000) Processing: Excalibur (1981)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Excalibur -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Excalibur
+
+[Build-Popular] (430/3000) Processing: Philomena (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Philomena -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Philomena
+
+[Build-Popular] (431/3000) Processing: Amateur (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Amateur -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Amateur
+
+[Build-Popular] (432/3000) Processing: Mr. Church (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Mr. Church -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Mr. Church
+
+[Build-Popular] (433/3000) Processing: The Searchers (1956)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Searchers -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Searchers
+
+[Build-Popular] (434/3000) Processing: The Other Side of Hope (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Other Side of Hope -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Other Side of Hope
+
+[Build-Popular] (435/3000) Processing: When the Bough Breaks (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: When the Bough Breaks -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: When the Bough Breaks
+
+[Build-Popular] (436/3000) Processing: White God (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: White God -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: White God
+
+[Build-Popular] (437/3000) Processing: Warrior (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Warrior -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Warrior
+
+[Build-Popular] (438/3000) Processing: The Barbie Diaries (2006)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Barbie Diaries -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Barbie Diaries
+
+[Build-Popular] (439/3000) Processing: Wrong Turn 5: Bloodlines (2012)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Wrong Turn 5: Bloodlines -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Wrong Turn 5: Bloodlines
+
+[Build-Popular] (440/3000) Processing: Survivor (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Survivor -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Survivor
+
+[Build-Popular] (441/3000) Processing: Based on a True Story (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Based on a True Story -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Based on a True Story
+
+[Build-Popular] (442/3000) Processing: Hippocrates (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Hippocrates -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Hippocrates
+
+[Build-Popular] (443/3000) Processing: Christmas with the Kranks (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Christmas with the Kranks -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Christmas with the Kranks
+
+[Build-Popular] (444/3000) Processing: Point Blank (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Point Blank -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Point Blank
+
+[Build-Popular] (445/3000) Processing: Frankenweenie (1984)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Frankenweenie -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Frankenweenie
+
+[Build-Popular] (446/3000) Processing: Sabrina the Teenage Witch (1996)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Sabrina the Teenage Witch -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Sabrina the Teenage Witch
+
+[Build-Popular] (447/3000) Processing: Belle and Sebastian: The Adventure Continues (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Belle and Sebastian: The Adventure Continues -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Belle and Sebastian: The Adventure Continues
+
+[Build-Popular] (448/3000) Processing: Midsommar (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Midsommar -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Midsommar
+
+[Build-Popular] (449/3000) Processing: Kaboom (2010)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Kaboom -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Kaboom
+
+[Build-Popular] (450/3000) Processing: Shallow Grave (1994)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Shallow Grave -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Shallow Grave
+
+[Build-Popular] (451/3000) Processing: Leviathan (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Leviathan -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Leviathan
+
+[Build-Popular] (452/3000) Processing: Mildred Pierce (1945)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Mildred Pierce -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Mildred Pierce
+
+[Build-Popular] (453/3000) Processing: Oldboy (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Oldboy -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Oldboy
+
+[Build-Popular] (454/3000) Processing: Till (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Till -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Till
+
+[Build-Popular] (455/3000) Processing: Coach Carter (2005)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Coach Carter -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Coach Carter
+
+[Build-Popular] (456/3000) Processing: Superman/Batman: Public Enemies (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Superman/Batman: Public Enemies -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Superman/Batman: Public Enemies
+
+[Build-Popular] (457/3000) Processing: Everly (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Everly -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Everly
+
+[Build-Popular] (458/3000) Processing: Time Trap (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Time Trap -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Time Trap
+
+[Build-Popular] (459/3000) Processing: Benji (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Benji -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Benji
+
+[Build-Popular] (460/3000) Processing: Rogue (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Rogue -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Rogue
+
+[Build-Popular] (461/3000) Processing: An American Werewolf in Paris (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: An American Werewolf in Paris -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: An American Werewolf in Paris
+
+[Build-Popular] (462/3000) Processing: Now You See Me 2 (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Now You See Me 2 -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Now You See Me 2
+
+[Build-Popular] (463/3000) Processing: The Gruffalo (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Gruffalo -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Gruffalo
+
+[Build-Popular] (464/3000) Processing: Jack the Giant Slayer (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Jack the Giant Slayer -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Jack the Giant Slayer
+
+[Build-Popular] (465/3000) Processing: The Shadow (1994)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Shadow -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Shadow
+
+[Build-Popular] (466/3000) Processing: Snake Eyes (1998)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Snake Eyes -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Snake Eyes
+
+[Build-Popular] (467/3000) Processing: Home Team (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Home Team -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Home Team
+
+[Build-Popular] (468/3000) Processing: Mr. Holmes (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Mr. Holmes -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Mr. Holmes
+
+[Build-Popular] (469/3000) Processing: Battle for Sevastopol (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Battle for Sevastopol -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Battle for Sevastopol
+
+[Build-Popular] (470/3000) Processing: Singles (1992)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Singles -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Singles
+
+[Build-Popular] (471/3000) Processing: Not Another Teen Movie (2001)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Not Another Teen Movie -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Not Another Teen Movie
+
+[Build-Popular] (472/3000) Processing: The Dead Don't Die (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Dead Don't Die -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Dead Don't Die
+
+[Build-Popular] (473/3000) Processing: Abominable (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Abominable -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Abominable
+
+[Build-Popular] (474/3000) Processing: With Every Heartbeat (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: With Every Heartbeat -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: With Every Heartbeat
+
+[Build-Popular] (475/3000) Processing: War Machine (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: War Machine -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: War Machine
+
+[Build-Popular] (476/3000) Processing: Twitches Too (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Twitches Too -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Twitches Too
+
+[Build-Popular] (477/3000) Processing: Put Grandma in the Freezer (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Put Grandma in the Freezer -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Put Grandma in the Freezer
+
+[Build-Popular] (478/3000) Processing: Anastasia (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Anastasia -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Anastasia
+
+[Build-Popular] (479/3000) Processing: Matthias & Maxime (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Matthias & Maxime -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Matthias & Maxime
+
+[Build-Popular] (480/3000) Processing: Trapped (2002)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Trapped -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Trapped
+
+[Build-Popular] (481/3000) Processing: The Exorcist: Believer (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Exorcist: Believer -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Exorcist: Believer
+
+[Build-Popular] (482/3000) Processing: A Haunted House (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: A Haunted House -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: A Haunted House
+
+[Build-Popular] (483/3000) Processing: Zodiac (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Zodiac -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Zodiac
+
+[Build-Popular] (484/3000) Processing: Love and Honor (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Love and Honor -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Love and Honor
+
+[Build-Popular] (485/3000) Processing: Sorcerer (1977)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Sorcerer -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Sorcerer
+
+[Build-Popular] (486/3000) Processing: Toto, Peppino, and the Hussy (1956)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Toto, Peppino, and the Hussy -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Toto, Peppino, and the Hussy
+
+[Build-Popular] (487/3000) Processing: Down Periscope (1996)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Down Periscope -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Down Periscope
+
+[Build-Popular] (488/3000) Processing: Black Bag (2025)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Black Bag -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Black Bag
+
+[Build-Popular] (489/3000) Processing: Sicario (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Sicario -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Sicario
+
+[Build-Popular] (490/3000) Processing: Ronin (1998)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Ronin -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Ronin
+
+[Build-Popular] (491/3000) Processing: Lethal Weapon (1987)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Lethal Weapon -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Lethal Weapon
+
+[Build-Popular] (492/3000) Processing: Save the Last Dance (2001)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Save the Last Dance -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Save the Last Dance
+
+[Build-Popular] (493/3000) Processing: Extortion (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Extortion -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Extortion
+
+[Build-Popular] (494/3000) Processing: E.T. the Extra-Terrestrial (1982)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: E.T. the Extra-Terrestrial -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: E.T. the Extra-Terrestrial
+
+[Build-Popular] (495/3000) Processing: Big Trouble in Little China (1986)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Big Trouble in Little China -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Big Trouble in Little China
+
+[Build-Popular] (496/3000) Processing: The Devil's Own (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Devil's Own -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Devil's Own
+
+[Build-Popular] (497/3000) Processing: Clouds (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Clouds -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Clouds
+
+[Build-Popular] (498/3000) Processing: Toy Story 2 (1999)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Toy Story 2 -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Toy Story 2
+
+[Build-Popular] (499/3000) Processing: District 13: Ultimatum (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: District 13: Ultimatum -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: District 13: Ultimatum
+
+[Build-Popular] (500/3000) Processing: BPM (Beats per Minute) (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: BPM (Beats per Minute) -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: BPM (Beats per Minute)
+
+[Build-Popular] (501/3000) Processing: Barbie as The Princess & the Pauper (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Barbie as The Princess & the Pauper
+
+[Build-Popular] (502/3000) Processing: Turistas (2006)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Turistas -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Turistas
+
+[Build-Popular] (503/3000) Processing: Bottle Rocket (1996)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Bottle Rocket -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Bottle Rocket
+
+[Build-Popular] (504/3000) Processing: Casablanca (1943)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Casablanca -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Casablanca
+
+[Build-Popular] (505/3000) Processing: The Simpsons in Plusaversary (2021)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Simpsons in Plusaversary -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Simpsons in Plusaversary
+
+[Build-Popular] (506/3000) Processing: Roman J. Israel, Esq. (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Roman J. Israel, Esq. -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Roman J. Israel, Esq.
+
+[Build-Popular] (507/3000) Processing: Beerfest (2006)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Beerfest -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Beerfest
+
+[Build-Popular] (508/3000) Processing: The Love Punch (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Love Punch -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Love Punch
+
+[Build-Popular] (509/3000) Processing: Blue Mountain State: The Rise of Thadland (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Blue Mountain State: The Rise of Thadland -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Blue Mountain State: The Rise of Thadland
+
+[Build-Popular] (510/3000) Processing: Shinjuku Incident (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Shinjuku Incident -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Shinjuku Incident
+
+[Build-Popular] (511/3000) Processing: The Fugitives (1986)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Fugitives -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Fugitives
+
+[Build-Popular] (512/3000) Processing: The Other Zoey (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Other Zoey -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Other Zoey
+
+[Build-Popular] (513/3000) Processing: Force Majeure (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Force Majeure -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Force Majeure
+
+[Build-Popular] (514/3000) Processing: Life Is Beautiful (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Life Is Beautiful -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Life Is Beautiful
+
+[Build-Popular] (515/3000) Processing: Broker (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Broker -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Broker
+
+[Build-Popular] (516/3000) Processing: Hick (2012)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Hick -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Hick
+
+[Build-Popular] (517/3000) Processing: Albert Nobbs (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Albert Nobbs -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Albert Nobbs
+
+[Build-Popular] (518/3000) Processing: 2001: A Space Odyssey (1968)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: 2001: A Space Odyssey -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: 2001: A Space Odyssey
+
+[Build-Popular] (519/3000) Processing: Prime (2005)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Prime -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Prime
+
+[Build-Popular] (520/3000) Processing: Outland (1981)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Outland -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Outland
+
+[Build-Popular] (521/3000) Processing: Soul (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Soul -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Soul
+
+[Build-Popular] (522/3000) Processing: El Infierno (2010)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: El Infierno -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: El Infierno
+
+[Build-Popular] (523/3000) Processing: The Hallow (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Hallow -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Hallow
+
+[Build-Popular] (524/3000) Processing: The Good, the Bad and the Ugly (1966)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Good, the Bad and the Ugly -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Good, the Bad and the Ugly
+
+[Build-Popular] (525/3000) Processing: Zack Snyder's Justice League (2021)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Zack Snyder's Justice League -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Zack Snyder's Justice League
+
+[Build-Popular] (526/3000) Processing: 9 Songs (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: 9 Songs -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: 9 Songs
+
+[Build-Popular] (527/3000) Processing: The Tall Blond Man with One Black Shoe (1972)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Tall Blond Man with One Black Shoe -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Tall Blond Man with One Black Shoe
+
+[Build-Popular] (528/3000) Processing: Because I Said So (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Because I Said So -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Because I Said So
+
+[Build-Popular] (529/3000) Processing: Shoot 'Em Up (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Shoot 'Em Up -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Shoot 'Em Up
+
+[Build-Popular] (530/3000) Processing: The Swan (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Swan -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Swan
+
+[Build-Popular] (531/3000) Processing: Skins (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Skins -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Skins
+
+[Build-Popular] (532/3000) Processing: Little Tickles (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Little Tickles -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Little Tickles
+
+[Build-Popular] (533/3000) Processing: Bill & Ted's Excellent Adventure (1989)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Bill & Ted's Excellent Adventure -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Bill & Ted's Excellent Adventure
+
+[Build-Popular] (534/3000) Processing: Bill & Ted Face the Music (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Bill & Ted Face the Music -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Bill & Ted Face the Music
+
+[Build-Popular] (535/3000) Processing: Liar Liar (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Liar Liar -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Liar Liar
+
+[Build-Popular] (536/3000) Processing: MacGruber (2010)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: MacGruber -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: MacGruber
+
+[Build-Popular] (537/3000) Processing: Richly Poor (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Richly Poor
+
+[Build-Popular] (538/3000) Processing: Sleepover (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Sleepover -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Sleepover
+
+[Build-Popular] (539/3000) Processing: Descendants 3 (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Descendants 3 -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Descendants 3
+
+[Build-Popular] (540/3000) Processing: Crocodile Dundee II (1988)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Crocodile Dundee II -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Crocodile Dundee II
+
+[Build-Popular] (541/3000) Processing: Desert Flower (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Desert Flower -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Desert Flower
+
+[Build-Popular] (542/3000) Processing: Pirates of the Caribbean: On Stranger Tides (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Pirates of the Caribbean: On Stranger Tides -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Pirates of the Caribbean: On Stranger Tides
+
+[Build-Popular] (543/3000) Processing: GirlHouse (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: GirlHouse
+
+[Build-Popular] (544/3000) Processing: The Night Clerk (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Night Clerk -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Night Clerk
+
+[Build-Popular] (545/3000) Processing: Chaplin (1992)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Chaplin -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Chaplin
+
+[Build-Popular] (546/3000) Processing: Opera (1987)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Opera -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Opera
+
+[Build-Popular] (547/3000) Processing: Cocktail (1988)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Cocktail -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Cocktail
+
+[Build-Popular] (548/3000) Processing: The Call (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Call -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Call
+
+[Build-Popular] (549/3000) Processing: Weekend at Bernie's (1989)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Weekend at Bernie's -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Weekend at Bernie's
+
+[Build-Popular] (550/3000) Processing: Kickboxer (1989)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Kickboxer -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Kickboxer
+
+[Build-Popular] (551/3000) Processing: We Have a Ghost (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: We Have a Ghost -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: We Have a Ghost
+
+[Build-Popular] (552/3000) Processing: Noroi: The Curse (2005)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Noroi: The Curse -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Noroi: The Curse
+
+[Build-Popular] (553/3000) Processing: Mummies (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Mummies -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Mummies
+
+[Build-Popular] (554/3000) Processing: The Party (1968)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Party -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Party
+
+[Build-Popular] (555/3000) Processing: I Love You, Man (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: I Love You, Man -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: I Love You, Man
+
+[Build-Popular] (556/3000) Processing: The Dark Tower (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Dark Tower -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Dark Tower
+
+[Build-Popular] (557/3000) Processing: Death Note: The Last Name (2006)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Death Note: The Last Name -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Death Note: The Last Name
+
+[Build-Popular] (558/3000) Processing: Prom (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Prom -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Prom
+
+[Build-Popular] (559/3000) Processing: Open Water (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Open Water -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Open Water
+
+[Build-Popular] (560/3000) Processing: 3000 Miles to Graceland (2001)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: 3000 Miles to Graceland -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: 3000 Miles to Graceland
+
+[Build-Popular] (561/3000) Processing: Cure (1997)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Cure -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Cure
+
+[Build-Popular] (562/3000) Processing: The Evil Dead (1981)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Evil Dead -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Evil Dead
+
+[Build-Popular] (563/3000) Processing: Le Trou (1960)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Le Trou -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Le Trou
+
+[Build-Popular] (564/3000) Processing: Snowtown (2011)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Snowtown -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Snowtown
+
+[Build-Popular] (565/3000) Processing: Beautiful Boy (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Beautiful Boy -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Beautiful Boy
+
+[Build-Popular] (566/3000) Processing: The Big Chill (1983)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Big Chill -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Big Chill
+
+[Build-Popular] (567/3000) Processing: Amusement (2008)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Amusement -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Amusement
+
+[Build-Popular] (568/3000) Processing: Lucy Shimmers and the Prince of Peace (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Lucy Shimmers and the Prince of Peace
+
+[Build-Popular] (569/3000) Processing: Wrong Cops (2013)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Wrong Cops -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Wrong Cops
+
+[Build-Popular] (570/3000) Processing: Love the Coopers (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Love the Coopers -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Love the Coopers
+
+[Build-Popular] (571/3000) Processing: The Beasts (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Beasts -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Beasts
+
+[Build-Popular] (572/3000) Processing: X (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: X -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: X
+
+[Build-Popular] (573/3000) Processing: Fall (2022)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Fall -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Fall
+
+[Build-Popular] (574/3000) Processing: You Only Live Twice (1967)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: You Only Live Twice -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: You Only Live Twice
+
+[Build-Popular] (575/3000) Processing: Little Women (1994)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Little Women -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Little Women
+
+[Build-Popular] (576/3000) Processing: Who Framed Roger Rabbit (1988)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Who Framed Roger Rabbit -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Who Framed Roger Rabbit
+
+[Build-Popular] (577/3000) Processing: Eraserhead (1977)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Eraserhead -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Eraserhead
+
+[Build-Popular] (578/3000) Processing: Damage (1992)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Damage -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Damage
+
+[Build-Popular] (579/3000) Processing: The Animal Kingdom (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Animal Kingdom -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Animal Kingdom
+
+[Build-Popular] (580/3000) Processing: Basic (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Basic -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Basic
+
+[Build-Popular] (581/3000) Processing: Away We Go (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Away We Go -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Away We Go
+
+[Build-Popular] (582/3000) Processing: Onibaba (1964)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Onibaba -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Onibaba
+
+[Build-Popular] (583/3000) Processing: Beavis and Butt-Head Do America (1996)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Beavis and Butt-Head Do America -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Beavis and Butt-Head Do America
+
+[Build-Popular] (584/3000) Processing: The Motorcycle Diaries (2004)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Motorcycle Diaries -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Motorcycle Diaries
+
+[Build-Popular] (585/3000) Processing: Oscar (1967)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Oscar -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Oscar
+
+[Build-Popular] (586/3000) Processing: Before I Fall (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Before I Fall -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Before I Fall
+
+[Build-Popular] (587/3000) Processing: Bird on a Wire (1990)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Bird on a Wire -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Bird on a Wire
+
+[Build-Popular] (588/3000) Processing: Something's Gotta Give (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Something's Gotta Give -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Something's Gotta Give
+
+[Build-Popular] (589/3000) Processing: Bulletproof Monk (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Bulletproof Monk -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Bulletproof Monk
+
+[Build-Popular] (590/3000) Processing: Walk of Shame (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Walk of Shame -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Walk of Shame
+
+[Build-Popular] (591/3000) Processing: Cold Skin (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Cold Skin -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Cold Skin
+
+[Build-Popular] (592/3000) Processing: Heartbeats (2010)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Heartbeats -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Heartbeats
+
+[Build-Popular] (593/3000) Processing: Time Lapse (2014)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Time Lapse -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Time Lapse
+
+[Build-Popular] (594/3000) Processing: A Whole Life Ahead (2008)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: A Whole Life Ahead
+
+[Build-Popular] (595/3000) Processing: Boston Strangler (2023)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Boston Strangler -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Boston Strangler
+
+[Build-Popular] (596/3000) Processing: Vagabond (1985)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Vagabond -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Vagabond
+
+[Build-Popular] (597/3000) Processing: Gentlemen Prefer Blondes (1953)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Gentlemen Prefer Blondes -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Gentlemen Prefer Blondes
+
+[Build-Popular] (598/3000) Processing: The Pink Panther 2 (2009)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Pink Panther 2 -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Pink Panther 2
+
+[Build-Popular] (599/3000) Processing: La Vie en Rose (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: La Vie en Rose -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: La Vie en Rose
+
+[Build-Popular] (600/3000) Processing: Spirit: Stallion of the Cimarron (2002)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Spirit: Stallion of the Cimarron -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Spirit: Stallion of the Cimarron
+
+[Build-Popular] (601/3000) Processing: Cabin Fever (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Cabin Fever -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Cabin Fever
+
+[Build-Popular] (602/3000) Processing: Skiptrace (2016)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Skiptrace -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Skiptrace
+
+[Build-Popular] (603/3000) Processing: The Silence (2019)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Silence -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Silence
+
+[Build-Popular] (604/3000) Processing: Brahms: The Boy II (2020)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Brahms: The Boy II -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Brahms: The Boy II
+
+[Build-Popular] (605/3000) Processing: I Think We're Alone Now (2018)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: I Think We're Alone Now -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: I Think We're Alone Now
+
+[Build-Popular] (606/3000) Processing: Fear Street: 1978 (2021)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Fear Street: 1978
+
+[Build-Popular] (607/3000) Processing: Anger Management (2003)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Anger Management -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Anger Management
+
+[Build-Popular] (608/3000) Processing: The Lion King (1994)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Lion King -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Lion King
+
+[Build-Popular] (609/3000) Processing: The Double Life of V矇ronique (1991)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Double Life of V矇ronique -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Double Life of V矇ronique
+
+[Build-Popular] (610/3000) Processing: Cargo (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Cargo -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Cargo
+
+[Build-Popular] (611/3000) Processing: Curve (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Curve -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Curve
+
+[Build-Popular] (612/3000) Processing: Man on a Ledge (2012)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Man on a Ledge -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Man on a Ledge
+
+[Build-Popular] (613/3000) Processing: Dragon Hunters (2008)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Dragon Hunters -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Dragon Hunters
+
+[Build-Popular] (614/3000) Processing: The Fox and the Child (2007)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Fox and the Child -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Fox and the Child
+
+[Build-Popular] (615/3000) Processing: Standing Tall (2015)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Standing Tall -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Standing Tall
+
+[Build-Popular] (616/3000) Processing: Are We There Yet? (2005)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Are We There Yet? -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Are We There Yet?
+
+[Build-Popular] (617/3000) Processing: Alice Doesn't Live Here Anymore (1974)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Alice Doesn't Live Here Anymore -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Alice Doesn't Live Here Anymore
+
+[Build-Popular] (618/3000) Processing: Mirror Mirror (2012)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: Mirror Mirror -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: Mirror Mirror
+
+[Build-Popular] (619/3000) Processing: A Ghost Story (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: A Ghost Story -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: A Ghost Story
+
+[Build-Popular] (620/3000) Processing: Last Man Down (2021)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+Wikipedia fetch failed: Request failed with status code 404
+Movie not found.
+[Build] Skipped: Last Man Down
+
+[Build-Popular] (621/3000) Processing: The Fate of the Furious (2017)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.
+[Build] Incomplete: The Fate of the Furious -> [INCOMPLETE] missing fields: year, genre, director, runtime, language, imdbId, plot
+[Build] Skipped: The Fate of the Furious
+
+[Build-Popular] (622/3000) Processing: Friends with Kids (2012)
+OMDb fetch failed: Request failed with status code 401
+Movie not found in OMDb; falling back to Wikipedia-only data if available.

@@ -1,5 +1,1126 @@
 {
  "Resources": {
+  "VectorVpc1392A2DD": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/Resource"
+   }
+  },
+  "VectorVpcPublicSubnet1Subnet05FC762D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "eu-west-3a",
+    "CidrBlock": "10.0.0.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet1/Subnet"
+   }
+  },
+  "VectorVpcPublicSubnet1RouteTable81C51486": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet1/RouteTable"
+   }
+  },
+  "VectorVpcPublicSubnet1RouteTableAssociationBCF8B36F": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VectorVpcPublicSubnet1RouteTable81C51486"
+    },
+    "SubnetId": {
+     "Ref": "VectorVpcPublicSubnet1Subnet05FC762D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "VectorVpcPublicSubnet1DefaultRouteB230F2E5": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VectorVpcIGWF75FD827"
+    },
+    "RouteTableId": {
+     "Ref": "VectorVpcPublicSubnet1RouteTable81C51486"
+    }
+   },
+   "DependsOn": [
+    "VectorVpcVPCGW1966BC30"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "VectorVpcPublicSubnet2SubnetBB1156AA": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "eu-west-3b",
+    "CidrBlock": "10.0.64.0/18",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet2/Subnet"
+   }
+  },
+  "VectorVpcPublicSubnet2RouteTable5949E0D8": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet2/RouteTable"
+   }
+  },
+  "VectorVpcPublicSubnet2RouteTableAssociation37B86F28": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VectorVpcPublicSubnet2RouteTable5949E0D8"
+    },
+    "SubnetId": {
+     "Ref": "VectorVpcPublicSubnet2SubnetBB1156AA"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "VectorVpcPublicSubnet2DefaultRouteCF7E9DAF": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VectorVpcIGWF75FD827"
+    },
+    "RouteTableId": {
+     "Ref": "VectorVpcPublicSubnet2RouteTable5949E0D8"
+    }
+   },
+   "DependsOn": [
+    "VectorVpcVPCGW1966BC30"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "VectorVpcIsolatedSubnet1Subnet922F8CA2": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "eu-west-3a",
+    "CidrBlock": "10.0.128.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/IsolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet1/Subnet"
+   }
+  },
+  "VectorVpcIsolatedSubnet1RouteTable7BF5A01A": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/IsolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet1/RouteTable"
+   }
+  },
+  "VectorVpcIsolatedSubnet1RouteTableAssociation737AFDA0": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VectorVpcIsolatedSubnet1RouteTable7BF5A01A"
+    },
+    "SubnetId": {
+     "Ref": "VectorVpcIsolatedSubnet1Subnet922F8CA2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet1/RouteTableAssociation"
+   }
+  },
+  "VectorVpcIsolatedSubnet2Subnet79D7EED3": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "eu-west-3b",
+    "CidrBlock": "10.0.192.0/18",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/IsolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet2/Subnet"
+   }
+  },
+  "VectorVpcIsolatedSubnet2RouteTableA0C3B65A": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc/IsolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet2/RouteTable"
+   }
+  },
+  "VectorVpcIsolatedSubnet2RouteTableAssociation409C2756": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VectorVpcIsolatedSubnet2RouteTableA0C3B65A"
+    },
+    "SubnetId": {
+     "Ref": "VectorVpcIsolatedSubnet2Subnet79D7EED3"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IsolatedSubnet2/RouteTableAssociation"
+   }
+  },
+  "VectorVpcIGWF75FD827": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "ReLivreAppStack/VectorVpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/IGW"
+   }
+  },
+  "VectorVpcVPCGW1966BC30": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "VectorVpcIGWF75FD827"
+    },
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorVpc/VPCGW"
+   }
+  },
+  "VectorCluster19B78B16": {
+   "Type": "AWS::ECS::Cluster",
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/VectorCluster/Resource"
+   }
+  },
+  "FaissIndexBucketCB614AA4": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+       }
+      }
+     ]
+    },
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:cr-owned:index:561883c3",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissIndexBucket/Resource"
+   }
+  },
+  "FaissIndexBucketPolicy0D11D3DF": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "FaissIndexBucketCB614AA4"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:*",
+       "Condition": {
+        "Bool": {
+         "aws:SecureTransport": "false"
+        }
+       },
+       "Effect": "Deny",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FaissIndexBucketCB614AA4",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FaissIndexBucketCB614AA4",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissIndexBucket/Policy/Resource"
+   }
+  },
+  "DeployFaissIndexAwsCliLayerD1907766": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": "cdk-hnb659fds-assets-056323207409-eu-west-3",
+     "S3Key": "c49d356cac773d491c5f7ac148995a1181498a8e289429f8612a7f7e3814f535.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/DeployFaissIndex/AwsCliLayer/Resource",
+    "aws:asset:path": "asset.c49d356cac773d491c5f7ac148995a1181498a8e289429f8612a7f7e3814f535.zip",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Content"
+   }
+  },
+  "DeployFaissIndexCustomResourceFB233999": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     "cdk-hnb659fds-assets-056323207409-eu-west-3"
+    ],
+    "SourceObjectKeys": [
+     "e8c6f721454963f685f5f2a4334417190dc8d6f306e0fbc79506c0bf458eee44.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "FaissIndexBucketCB614AA4"
+    },
+    "DestinationBucketKeyPrefix": "index",
+    "WaitForDistributionInvalidation": true,
+    "Prune": true,
+    "OutputObjectKeys": true
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/DeployFaissIndex/CustomResource/Default"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-056323207409-eu-west-3"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-056323207409-eu-west-3/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FaissIndexBucketCB614AA4",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FaissIndexBucketCB614AA4",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FrontendBucketEFE2E19C",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FrontendBucketEFE2E19C",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "cloudfront:GetInvalidation",
+        "cloudfront:CreateInvalidation"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "Roles": [
+     {
+      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-056323207409-eu-west-3",
+     "S3Key": "3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+     }
+    },
+    "Handler": "index.handler",
+    "Layers": [
+     {
+      "Ref": "DeployFaissIndexAwsCliLayerD1907766"
+     }
+    ],
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.13",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+    "aws:asset:path": "asset.3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "FaissVectorServiceLBEB373144": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "FaissVectorServiceLBSecurityGroup925B0DBC",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Ref": "VectorVpcPublicSubnet1Subnet05FC762D"
+     },
+     {
+      "Ref": "VectorVpcPublicSubnet2SubnetBB1156AA"
+     }
+    ],
+    "Type": "application"
+   },
+   "DependsOn": [
+    "VectorVpcPublicSubnet1DefaultRouteB230F2E5",
+    "VectorVpcPublicSubnet1RouteTableAssociationBCF8B36F",
+    "VectorVpcPublicSubnet2DefaultRouteCF7E9DAF",
+    "VectorVpcPublicSubnet2RouteTableAssociation37B86F28"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/LB/Resource"
+   }
+  },
+  "FaissVectorServiceLBSecurityGroup925B0DBC": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Automatically created Security Group for ELB ReLivreAppStackFaissVectorServiceLBAC4D8DB0",
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow from anyone on port 80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/LB/SecurityGroup/Resource"
+   }
+  },
+  "FaissVectorServiceLBSecurityGrouptoReLivreAppStackFaissVectorServiceSecurityGroup867A55D280083831AEF8": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "DestinationSecurityGroupId": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceSecurityGroup95441732",
+      "GroupId"
+     ]
+    },
+    "FromPort": 8008,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceLBSecurityGroup925B0DBC",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "ToPort": 8008
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/LB/SecurityGroup/to ReLivreAppStackFaissVectorServiceSecurityGroup867A55D2:8008"
+   }
+  },
+  "FaissVectorServiceLBPublicListener25F88A83": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "FaissVectorServiceLBPublicListenerECSGroup3D7AADEE"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "FaissVectorServiceLBEB373144"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/LB/PublicListener/Resource"
+   }
+  },
+  "FaissVectorServiceLBPublicListenerECSGroup3D7AADEE": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "HealthCheckPath": "/health",
+    "Matcher": {
+     "HttpCode": "200"
+    },
+    "Port": 80,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "ip",
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/LB/PublicListener/ECSGroup/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefTaskRoleAD7251BA": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/TaskRole/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FaissIndexBucketCB614AA4",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FaissIndexBucketCB614AA4",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94",
+    "Roles": [
+     {
+      "Ref": "FaissVectorServiceTaskDefTaskRoleAD7251BA"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/TaskRole/DefaultPolicy/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefCACFCFBF": {
+   "Type": "AWS::ECS::TaskDefinition",
+   "Properties": {
+    "ContainerDefinitions": [
+     {
+      "Environment": [
+       {
+        "Name": "LOCAL_DATA_PATH",
+        "Value": "/opt/data"
+       },
+       {
+        "Name": "INDEX_BUCKET",
+        "Value": {
+         "Ref": "FaissIndexBucketCB614AA4"
+        }
+       },
+       {
+        "Name": "INDEX_PREFIX",
+        "Value": "index"
+       }
+      ],
+      "Essential": true,
+      "Image": {
+       "Fn::Sub": "056323207409.dkr.ecr.eu-west-3.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-056323207409-eu-west-3:bd795d8a0f499ac3eabc03eacc061ca42aaf9a5be7f7fe8e4907cff32aabfce7"
+      },
+      "LogConfiguration": {
+       "LogDriver": "awslogs",
+       "Options": {
+        "awslogs-group": {
+         "Ref": "FaissVectorServiceTaskDefwebLogGroup6355A6E8"
+        },
+        "awslogs-stream-prefix": "FaissVectorService",
+        "awslogs-region": "eu-west-3"
+       }
+      },
+      "Name": "web",
+      "PortMappings": [
+       {
+        "ContainerPort": 8008,
+        "Protocol": "tcp"
+       }
+      ]
+     }
+    ],
+    "Cpu": "256",
+    "ExecutionRoleArn": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceTaskDefExecutionRoleFED38B9E",
+      "Arn"
+     ]
+    },
+    "Family": "ReLivreAppStackFaissVectorServiceTaskDefBAEC6ECA",
+    "Memory": "512",
+    "NetworkMode": "awsvpc",
+    "RequiresCompatibilities": [
+     "FARGATE"
+    ],
+    "TaskRoleArn": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceTaskDefTaskRoleAD7251BA",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefwebLogGroup6355A6E8": {
+   "Type": "AWS::Logs::LogGroup",
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/web/LogGroup/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefExecutionRoleFED38B9E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/ExecutionRole/Resource"
+   }
+  },
+  "FaissVectorServiceTaskDefExecutionRoleDefaultPolicyDF5A6A0E": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":ecr:eu-west-3:056323207409:repository/cdk-hnb659fds-container-assets-056323207409-eu-west-3"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "ecr:GetAuthorizationToken",
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "FaissVectorServiceTaskDefwebLogGroup6355A6E8",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FaissVectorServiceTaskDefExecutionRoleDefaultPolicyDF5A6A0E",
+    "Roles": [
+     {
+      "Ref": "FaissVectorServiceTaskDefExecutionRoleFED38B9E"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/TaskDef/ExecutionRole/DefaultPolicy/Resource"
+   }
+  },
+  "FaissVectorService3D3D3C29": {
+   "Type": "AWS::ECS::Service",
+   "Properties": {
+    "Cluster": {
+     "Ref": "VectorCluster19B78B16"
+    },
+    "DeploymentConfiguration": {
+     "Alarms": {
+      "AlarmNames": [],
+      "Enable": false,
+      "Rollback": false
+     },
+     "MaximumPercent": 200,
+     "MinimumHealthyPercent": 50
+    },
+    "DesiredCount": 1,
+    "EnableECSManagedTags": false,
+    "HealthCheckGracePeriodSeconds": 30,
+    "LaunchType": "FARGATE",
+    "LoadBalancers": [
+     {
+      "ContainerName": "web",
+      "ContainerPort": 8008,
+      "TargetGroupArn": {
+       "Ref": "FaissVectorServiceLBPublicListenerECSGroup3D7AADEE"
+      }
+     }
+    ],
+    "NetworkConfiguration": {
+     "AwsvpcConfiguration": {
+      "AssignPublicIp": "ENABLED",
+      "SecurityGroups": [
+       {
+        "Fn::GetAtt": [
+         "FaissVectorServiceSecurityGroup95441732",
+         "GroupId"
+        ]
+       }
+      ],
+      "Subnets": [
+       {
+        "Ref": "VectorVpcPublicSubnet1Subnet05FC762D"
+       },
+       {
+        "Ref": "VectorVpcPublicSubnet2SubnetBB1156AA"
+       }
+      ]
+     }
+    },
+    "TaskDefinition": {
+     "Ref": "FaissVectorServiceTaskDefCACFCFBF"
+    }
+   },
+   "DependsOn": [
+    "FaissVectorServiceLBPublicListenerECSGroup3D7AADEE",
+    "FaissVectorServiceLBPublicListener25F88A83",
+    "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94",
+    "FaissVectorServiceTaskDefTaskRoleAD7251BA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/Service/Service"
+   }
+  },
+  "FaissVectorServiceSecurityGroup95441732": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "ReLivreAppStack/FaissVectorService/Service/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VectorVpc1392A2DD"
+    }
+   },
+   "DependsOn": [
+    "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94",
+    "FaissVectorServiceTaskDefTaskRoleAD7251BA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/Service/SecurityGroup/Resource"
+   }
+  },
+  "FaissVectorServiceSecurityGroupfromReLivreAppStackFaissVectorServiceLBSecurityGroup866A68D5800800B6AD14": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "FromPort": 8008,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceSecurityGroup95441732",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "FaissVectorServiceLBSecurityGroup925B0DBC",
+      "GroupId"
+     ]
+    },
+    "ToPort": 8008
+   },
+   "DependsOn": [
+    "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94",
+    "FaissVectorServiceTaskDefTaskRoleAD7251BA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ReLivreAppStack/FaissVectorService/Service/SecurityGroup/from ReLivreAppStackFaissVectorServiceLBSecurityGroup866A68D5:8008"
+   }
+  },
   "SearchFunctionServiceRole04BBC868": {
    "Type": "AWS::IAM::Role",
    "Properties": {
@@ -40,7 +1161,11 @@
     "PolicyDocument": {
      "Statement": [
       {
-       "Action": "dynamodb:Scan",
+       "Action": [
+        "dynamodb:Scan",
+        "dynamodb:BatchGetItem",
+        "dynamodb:GetItem"
+       ],
        "Effect": "Allow",
        "Resource": "arn:aws:dynamodb:eu-west-3:056323207409:table/reLivre-movies"
       },
@@ -68,11 +1193,25 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-056323207409-eu-west-3",
-     "S3Key": "61e489bea34b2053b877834b2bf267db8b30c0af3dce768ca36bb8623121f5f0.zip"
+     "S3Key": "a429bf6ff02a59404be79e0b86373bc1c3fc4fcaa581923c45b066ce3ea82152.zip"
     },
     "Environment": {
      "Variables": {
       "DDB_TABLE_NAME": "reLivre-movies",
+      "FAISS_SERVICE_URL": {
+       "Fn::Join": [
+        "",
+        [
+         "http://",
+         {
+          "Fn::GetAtt": [
+           "FaissVectorServiceLBEB373144",
+           "DNSName"
+          ]
+         }
+        ]
+       ]
+      },
       "OPENAI_API_KEY_SSM_PARAM": "/relivre/openai_api_key",
       "OPENAI_EMBEDDING_MODEL": "text-embedding-3-small"
      }
@@ -94,7 +1233,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "ReLivreAppStack/SearchFunction/Resource",
-    "aws:asset:path": "asset.61e489bea34b2053b877834b2bf267db8b30c0af3dce768ca36bb8623121f5f0",
+    "aws:asset:path": "asset.a429bf6ff02a59404be79e0b86373bc1c3fc4fcaa581923c45b066ce3ea82152",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -509,7 +1648,7 @@
      "cdk-hnb659fds-assets-056323207409-eu-west-3"
     ],
     "SourceObjectKeys": [
-     "65f9163938b27619cbf71fc12533a683d1d0d5cac4e248f9f32f5a961a4c84f7.zip"
+     "2721b302364541384d2bee782f4c41e0d73a6d97fdf31c597cd47a964cad26e3.zip"
     ],
     "DestinationBucketName": {
      "Ref": "FrontendBucketEFE2E19C"
@@ -530,180 +1669,10 @@
     "aws:cdk:path": "ReLivreAppStack/DeployFrontend/CustomResource/Default"
    }
   },
-  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
-   "Type": "AWS::IAM::Role",
-   "Properties": {
-    "AssumeRolePolicyDocument": {
-     "Statement": [
-      {
-       "Action": "sts:AssumeRole",
-       "Effect": "Allow",
-       "Principal": {
-        "Service": "lambda.amazonaws.com"
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "ManagedPolicyArns": [
-     {
-      "Fn::Join": [
-       "",
-       [
-        "arn:",
-        {
-         "Ref": "AWS::Partition"
-        },
-        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-       ]
-      ]
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
-   }
-  },
-  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-    "PolicyDocument": {
-     "Statement": [
-      {
-       "Action": [
-        "s3:GetObject*",
-        "s3:GetBucket*",
-        "s3:List*"
-       ],
-       "Effect": "Allow",
-       "Resource": [
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":s3:::cdk-hnb659fds-assets-056323207409-eu-west-3"
-          ]
-         ]
-        },
-        {
-         "Fn::Join": [
-          "",
-          [
-           "arn:",
-           {
-            "Ref": "AWS::Partition"
-           },
-           ":s3:::cdk-hnb659fds-assets-056323207409-eu-west-3/*"
-          ]
-         ]
-        }
-       ]
-      },
-      {
-       "Action": [
-        "s3:GetObject*",
-        "s3:GetBucket*",
-        "s3:List*",
-        "s3:DeleteObject*",
-        "s3:PutObject",
-        "s3:PutObjectLegalHold",
-        "s3:PutObjectRetention",
-        "s3:PutObjectTagging",
-        "s3:PutObjectVersionTagging",
-        "s3:Abort*"
-       ],
-       "Effect": "Allow",
-       "Resource": [
-        {
-         "Fn::GetAtt": [
-          "FrontendBucketEFE2E19C",
-          "Arn"
-         ]
-        },
-        {
-         "Fn::Join": [
-          "",
-          [
-           {
-            "Fn::GetAtt": [
-             "FrontendBucketEFE2E19C",
-             "Arn"
-            ]
-           },
-           "/*"
-          ]
-         ]
-        }
-       ]
-      },
-      {
-       "Action": [
-        "cloudfront:GetInvalidation",
-        "cloudfront:CreateInvalidation"
-       ],
-       "Effect": "Allow",
-       "Resource": "*"
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
-    "Roles": [
-     {
-      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
-   }
-  },
-  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
-   "Type": "AWS::Lambda::Function",
-   "Properties": {
-    "Code": {
-     "S3Bucket": "cdk-hnb659fds-assets-056323207409-eu-west-3",
-     "S3Key": "3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9.zip"
-    },
-    "Environment": {
-     "Variables": {
-      "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
-     }
-    },
-    "Handler": "index.handler",
-    "Layers": [
-     {
-      "Ref": "DeployFrontendAwsCliLayerD774ED8F"
-     }
-    ],
-    "Role": {
-     "Fn::GetAtt": [
-      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
-      "Arn"
-     ]
-    },
-    "Runtime": "python3.13",
-    "Timeout": 900
-   },
-   "DependsOn": [
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
-    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
-    "aws:asset:path": "asset.3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9",
-    "aws:asset:is-bundled": false,
-    "aws:asset:property": "Code"
-   }
-  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22RQW/CMAyFfwv3kG1llx1LERrSJBBIu1YhNZUhTarYoUJV//uUFFg17fTes744lp3JbJHJbKY6muvqMjd4lP2Blb4I1VHZG9UcKyX7dbCa0VlRnOzU78A3SHRPX+oG/ht8yge0tQF2T34QqBrZ752BCCfdOYP6ljolNwhalL0iAiaZRxEVtMbdGrAsl0FfgFfPQqRlP1aXikCMNra7u1F+f5nmQagWa8XQqds1k/0nc5u3GLEoMR5Y1WnY0cTS3gUe3cYy1F49VvEnJm4Q2rhQnbyzLPutxxptrjUQbSqwjJyGKiKzjsy/xAqJPR7Do/M0D4PYA7ngNYi0rjgo2lqMhytNvEipOtIGZd5RYTAdSRSB2DXPt3Hgid8GbgMPwroK5JlertmrfPuQ77MzIc59sIwNyP2oP7m1x6FEAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31TwW7bMAz9lt5VbUt32dF11i5AgQZJ0WtAy4zHRpYMkUpgGP73QbaTeFmxEx8fHyWSohZ68bDQizs48b0pD/eWCt1tBcxBwYl3HZqF7t4bo/K9e1/nah0LS2YbC4eSuCva+Cj4BoXFK3/lMmZvCIS8u4jVOtARBK9nrJxgcCjPIHiCdrp08jIRML9rdKK2aGIgaZ+Dj81w3X+Jn1VA5n/olRv4XqFh3eU2smBIqjN8glBBaoAPS9yTo3P5t4x3AuQwzLgpd4vhSGYcyQh7xQ+6e4zmMPY8odGsvSXTXunJH51H4CF715XYWN+mUegxtLwQCphRWGfJ9MpCXZSgu3zvXqDF8I6BU3lbcpVF8e4pOjMWfAb53s3xGkNNnJJ6RVDrbuPHJx7steARpWGG3VTD0psDhlUNFQ7lpJjeYOOZxIc29ZNmv2tA0ruzzprGkhm25MVD+QgWnMHyZpZogYWM9VAWg4JcdVzo7vPs4UX/8uc6YkE3ac54Fn+DUKFctmrm9sr6inX34qtL+Ix7BQ1V49amwn6JNFlDSZJMcrcC1bgVA0jU+CcSSt+gCpfPcuMOul4Z62O5D96J7l4DVeQyY5B5VaITknZcZB/Lp6T5VLEklkBFPJ889/tebZB9DAanJdrZtEA7OLGxpLMT55aGnVLD46ZGyFUqjyy+vuSmgmf4NUoTpVfOl6g/+Mtx8VV/+6G/330w0X2ITqhGvRntH1d9/tGdBAAA"
    },
    "Metadata": {
     "aws:cdk:path": "ReLivreAppStack/CDKMetadata/Default"
@@ -711,6 +1680,30 @@
   }
  },
  "Outputs": {
+  "FaissVectorServiceLoadBalancerDNS3C8A8B7E": {
+   "Value": {
+    "Fn::GetAtt": [
+     "FaissVectorServiceLBEB373144",
+     "DNSName"
+    ]
+   }
+  },
+  "FaissVectorServiceServiceURLA8B4AD8D": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "FaissVectorServiceLBEB373144",
+        "DNSName"
+       ]
+      }
+     ]
+    ]
+   }
+  },
   "FrontendUrl": {
    "Value": {
     "Fn::Join": [
@@ -750,6 +1743,27 @@
   },
   "OpenAiApiKeySsmParam": {
    "Value": "/relivre/openai_api_key"
+  },
+  "FaissServiceUrl": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "FaissVectorServiceLBEB373144",
+        "DNSName"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "FaissIndexBucketName": {
+   "Value": {
+    "Ref": "FaissIndexBucketCB614AA4"
+   }
   }
  },
  "Parameters": {

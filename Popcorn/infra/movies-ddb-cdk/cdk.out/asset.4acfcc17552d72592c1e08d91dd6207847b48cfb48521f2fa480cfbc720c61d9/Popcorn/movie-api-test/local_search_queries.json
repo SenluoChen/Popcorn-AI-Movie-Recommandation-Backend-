@@ -1,0 +1,56 @@
+[
+  { "query": "敦克爾克大撤退相關電影", "expectedImdbId": "tt5013056" },
+  { "query": "二戰 英國 邱吉爾 首相 決策", "expectedImdbId": "tt4555426" },
+  { "query": "World War II evacuation at Dunkirk", "expectedImdbId": "tt5013056" },
+
+  { "query": "高中課堂做獨裁實驗 變成法西斯的那部", "expectedImdbId": "tt1063669" },
+  { "query": "German classroom experiment about autocracy", "expectedImdbId": "tt1063669" },
+
+  { "query": "有外星人語言 需要翻譯溝通的科幻", "expectedImdbId": "tt2543164" },
+  { "query": "linguist tries to communicate with aliens", "expectedImdbId": "tt2543164" },
+
+  { "query": "伊拉克 拆炸彈 小隊 戰爭片", "expectedImdbId": "tt0887912" },
+  { "query": "bomb disposal unit in Iraq war", "expectedImdbId": "tt0887912" },
+
+  { "query": "犯罪記者 偷拍 社會新聞 變態成癮", "expectedImdbId": "tt2872718" },
+  { "query": "a dark thriller about a freelance cameraman", "expectedImdbId": "tt2872718" },
+
+  { "query": "芭蕾舞 心理崩壞 黑暗驚悚", "expectedImdbId": "tt0947798" },
+  { "query": "ballet dancer psychological thriller", "expectedImdbId": "tt0947798" },
+
+  { "query": "七宗罪 連環殺人 罪與罰", "expectedImdbId": "tt0114369" },
+  { "query": "serial killer murders based on seven deadly sins", "expectedImdbId": "tt0114369" },
+
+  { "query": "沉默的羔羊 連環殺手 心理側寫", "expectedImdbId": "tt0102926" },
+  { "query": "FBI trainee seeks help from Hannibal Lecter", "expectedImdbId": "tt0102926" },
+
+  { "query": "香港警匪 臥底 內鬼 兩邊都有間諜", "expectedImdbId": "tt0338564" },
+  { "query": "Hong Kong undercover cop and mole in police", "expectedImdbId": "tt0338564" },
+
+  { "query": "荒誕官僚 反烏托邦 黑色幽默", "expectedImdbId": "tt0088846" },
+  { "query": "dystopian bureaucracy dark comedy", "expectedImdbId": "tt0088846" },
+
+  { "query": "義大利政治人物 迪沃 那部傳記", "expectedImdbId": "tt1023490" },
+
+  { "query": "拉斯維加斯 嗑藥 迷幻 公路片", "expectedImdbId": "tt0120669" },
+
+  { "query": "賭城 十一人 搶劫 團隊", "expectedImdbId": "tt0240772" },
+
+  { "query": "德州 電鋸 殺人魔 恐怖片", "expectedImdbId": "tt0072271" },
+
+  { "query": "聖誕老人 百貨公司 童話 溫馨", "expectedImdbId": "tt0039628" },
+
+  { "query": "蒂芬妮珠寶店 早餐 1960年代 愛情喜劇", "expectedImdbId": "tt0054698" },
+
+  { "query": "拳擊手 傳記 黑白 走向毀滅", "expectedImdbId": "tt0081398" },
+
+  { "query": "二戰 戰俘 越獄 大逃亡", "expectedImdbId": "tt0057115" },
+
+  { "query": "復仇 基督山伯爵", "expectedImdbId": "tt0245844" },
+
+  { "query": "寄生上流 貧富差距 黑色幽默 驚悚", "expectedImdbId": "tt6751668" },
+
+  { "query": "我想看鼓手很拼被老師虐的電影", "expectedImdbId": "tt2582802" },
+
+  { "query": "asdfghjkl qwerty", "expectedImdbId": [] }
+]

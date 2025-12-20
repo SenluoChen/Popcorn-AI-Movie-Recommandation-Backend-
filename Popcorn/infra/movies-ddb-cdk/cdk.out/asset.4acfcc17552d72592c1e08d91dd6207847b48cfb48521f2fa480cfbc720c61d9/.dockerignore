@@ -1,0 +1,9 @@
+**/.git
+**/.DS_Store
+**/node_modules
+**/cdk.out
+Popcorn/build
+Popcorn/**/build
+**/__pycache__
+**/*.pyc
+Movie-data/logs

@@ -92,7 +92,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::056323207409:role/cdk-hnb659fds-deploy-role-056323207409-eu-west-3",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::056323207409:role/cdk-hnb659fds-cfn-exec-role-056323207409-eu-west-3",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-056323207409-eu-west-3/2870e8463a32e375bc72543b6cd670b15968c7a9ae6cb61dcfd15242f3e22cd7.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-056323207409-eu-west-3/d2ddd4b22d177ddf7072086dbe81eead36eba0c87ca3326c1d7f7734bb822fbc.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -108,6 +108,304 @@
         "ReLivreAppStack.assets"
       ],
       "metadata": {
+        "/ReLivreAppStack/VectorVpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpc1392A2DD"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet1Subnet05FC762D"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet1RouteTable81C51486"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet1RouteTableAssociationBCF8B36F"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet1DefaultRouteB230F2E5"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet2SubnetBB1156AA"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet2RouteTable5949E0D8"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet2RouteTableAssociation37B86F28"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcPublicSubnet2DefaultRouteCF7E9DAF"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet1Subnet922F8CA2"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet1RouteTable7BF5A01A"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet1RouteTableAssociation737AFDA0"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet2Subnet79D7EED3"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet2RouteTableA0C3B65A"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IsolatedSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIsolatedSubnet2RouteTableAssociation409C2756"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcIGWF75FD827"
+          }
+        ],
+        "/ReLivreAppStack/VectorVpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorVpcVPCGW1966BC30"
+          }
+        ],
+        "/ReLivreAppStack/VectorCluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "VectorCluster19B78B16"
+          }
+        ],
+        "/ReLivreAppStack/FaissIndexBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissIndexBucketCB614AA4"
+          }
+        ],
+        "/ReLivreAppStack/FaissIndexBucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissIndexBucketPolicy0D11D3DF"
+          }
+        ],
+        "/ReLivreAppStack/DeployFaissIndex/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployFaissIndexAwsCliLayerD1907766"
+          }
+        ],
+        "/ReLivreAppStack/DeployFaissIndex/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeployFaissIndexCustomResourceFB233999"
+          }
+        ],
+        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-singleton",
+            "data": true
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+            "data": 2
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-singleton",
+            "data": true
+          },
+          {
+            "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+            "data": 2
+          }
+        ],
+        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLBEB373144"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LB/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLBSecurityGroup925B0DBC"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LB/SecurityGroup/to ReLivreAppStackFaissVectorServiceSecurityGroup867A55D2:8008": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLBSecurityGrouptoReLivreAppStackFaissVectorServiceSecurityGroup867A55D280083831AEF8"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LB/PublicListener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLBPublicListener25F88A83"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LB/PublicListener/ECSGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLBPublicListenerECSGroup3D7AADEE"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/LoadBalancerDNS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceLoadBalancerDNS3C8A8B7E"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/ServiceURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceServiceURLA8B4AD8D"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/TaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefTaskRoleAD7251BA"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/TaskRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefTaskRoleDefaultPolicy02B40F94"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefCACFCFBF"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/web/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefwebLogGroup6355A6E8"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefExecutionRoleFED38B9E"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/TaskDef/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceTaskDefExecutionRoleDefaultPolicyDF5A6A0E"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/Service": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "minHealthyPercent has not been configured so the default value of 50% is used. The number of running tasks will decrease below the desired count during deployments etc. See https://github.com/aws/aws-cdk/issues/31705 [ack: @aws-cdk/aws-ecs:minHealthyPercent]",
+            "trace": [
+              "Annotations.addMessage (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2066)",
+              "Annotations.addWarningV2 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:984)",
+              "new BaseService (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\aws-ecs\\lib\\base\\base-service.js:1:8675)",
+              "new FargateService2 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\aws-ecs\\lib\\fargate\\fargate-service.js:1:6318)",
+              "new FargateService2 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\core\\lib\\prop-injectable.js:1:681)",
+              "new ApplicationLoadBalancedFargateService2 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\aws-ecs-patterns\\lib\\fargate\\application-load-balanced-fargate-service.js:1:6099)",
+              "new ApplicationLoadBalancedFargateService2 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\aws-cdk-lib\\core\\lib\\prop-injectable.js:1:681)",
+              "new ReLivreAppStack (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\lib\\relivre-app-stack.ts:62:26)",
+              "Object.<anonymous> (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\bin\\app.ts:17:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1529:14)",
+              "Module.m._compile (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\index.ts:1618:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1613:10)",
+              "Object.require.extensions.<computed> [as .ts] (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\index.ts:1621:12)",
+              "Module.load (node:internal/modules/cjs/loader:1275:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:1096:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)",
+              "phase4 (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\bin.ts:649:14)",
+              "bootstrap (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\bin.ts:95:10)",
+              "main (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\bin.ts:55:10)",
+              "Object.<anonymous> (C:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn\\infra\\movies-ddb-cdk\\node_modules\\ts-node\\src\\bin.ts:800:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1529:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1613:10)",
+              "Module.load (node:internal/modules/cjs/loader:1275:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:1096:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)",
+              "node:internal/main/run_main_module:28:49"
+            ]
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/Service/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorService3D3D3C29"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/Service/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceSecurityGroup95441732"
+          }
+        ],
+        "/ReLivreAppStack/FaissVectorService/Service/SecurityGroup/from ReLivreAppStackFaissVectorServiceLBSecurityGroup866A68D5:8008": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissVectorServiceSecurityGroupfromReLivreAppStackFaissVectorServiceLBSecurityGroup866A68D5800800B6AD14"
+          }
+        ],
         "/ReLivreAppStack/SearchFunction/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -204,34 +502,6 @@
             "data": "DeployFrontendCustomResource3E02C3B7"
           }
         ],
-        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
-          {
-            "type": "aws:cdk:is-custom-resource-handler-singleton",
-            "data": true
-          },
-          {
-            "type": "aws:cdk:is-custom-resource-handler-runtime-family",
-            "data": 2
-          }
-        ],
-        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
-          }
-        ],
-        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
-          }
-        ],
-        "/ReLivreAppStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
-          }
-        ],
         "/ReLivreAppStack/FrontendUrl": [
           {
             "type": "aws:cdk:logicalId",
@@ -254,6 +524,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "OpenAiApiKeySsmParam"
+          }
+        ],
+        "/ReLivreAppStack/FaissServiceUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissServiceUrl"
+          }
+        ],
+        "/ReLivreAppStack/FaissIndexBucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FaissIndexBucketName"
           }
         ],
         "/ReLivreAppStack/CDKMetadata/Default": [
