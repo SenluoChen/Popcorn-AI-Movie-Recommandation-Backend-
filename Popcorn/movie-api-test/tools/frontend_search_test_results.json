@@ -1,0 +1,91 @@
+{
+  "timestamp": "2025-12-20T14:24:41.474Z",
+  "api": "https://olc433bmpe.execute-api.eu-west-3.amazonaws.com/search",
+  "results": [
+    {
+      "name": "relaxing_not_horror_zh",
+      "query": "想看放鬆、不血腥、不要恐怖",
+      "status": 200,
+      "ok": true,
+      "durationMs": 5219,
+      "top": {
+        "imdbId": "tt10620868",
+        "title": "#Alive",
+        "year": "2020",
+        "tmdbId": 614696,
+        "similarity": 0.3401433876396547,
+        "score": 0.3401433876396547,
+        "lexicalBoost": 0,
+        "productionCountry": "South Korea"
+      }
+    },
+    {
+      "name": "romantic_not_too_sad_en",
+      "query": "romantic but not too sad",
+      "status": 200,
+      "ok": true,
+      "durationMs": 1769,
+      "top": {
+        "imdbId": "tt0018455",
+        "title": "Sunrise: A Song of Two Humans",
+        "year": "1927",
+        "tmdbId": 631,
+        "similarity": 0.42285595437533097,
+        "score": 0.42285595437533097,
+        "lexicalBoost": 0,
+        "productionCountry": "United States of America"
+      }
+    },
+    {
+      "name": "family_fun",
+      "query": "適合全家一起看的歡樂電影",
+      "status": 200,
+      "ok": true,
+      "durationMs": 2779,
+      "top": {
+        "imdbId": "tt2850386",
+        "title": "The Croods: A New Age",
+        "year": "2020",
+        "tmdbId": 529203,
+        "similarity": 0.43347526907745043,
+        "score": 0.43347526907745043,
+        "lexicalBoost": 0,
+        "productionCountry": "United States of America"
+      }
+    },
+    {
+      "name": "suspense_chinese",
+      "query": "懸疑緊張，不要太暴力",
+      "status": 200,
+      "ok": true,
+      "durationMs": 4986,
+      "top": {
+        "imdbId": "tt1857824",
+        "title": "Perras",
+        "year": "2011",
+        "tmdbId": 114168,
+        "similarity": 0.43042664010978987,
+        "score": 0.43042664010978987,
+        "lexicalBoost": 0,
+        "productionCountry": "Mexico"
+      }
+    },
+    {
+      "name": "alien_adventure",
+      "query": "外星人冒險、刺激、想要輕鬆感",
+      "status": 200,
+      "ok": true,
+      "durationMs": 2743,
+      "top": {
+        "imdbId": "tt0090605",
+        "title": "Aliens",
+        "year": "1986",
+        "tmdbId": 679,
+        "similarity": 0.4718474202911667,
+        "score": 0.4718474202911667,
+        "lexicalBoost": 0,
+        "productionCountry": "United States of America"
+      }
+    }
+  ]
+}

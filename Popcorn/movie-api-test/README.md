@@ -35,6 +35,35 @@ $env:LOCAL_DATA_PATH="C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data"
 
 ```bash
 node fetchMovie.js build
+
+## Build 10k (local) – rapide et scalable
+
+Pour monter à 10,000 films en local sans "faire exploser" la base (et en gardant une recherche rapide/précise), le flux recommandé est :
+
+1) Générer la base locale (movies + embeddings) via TMDb seeds (pas besoin de `movie_titles.json`)
+
+```bash
+# depuis la racine du repo
+node Popcorn/movie-api-test/fetchMovie.js build-popular \
+	--count 10000 \
+	--pages 500 \
+	--min-votes 500 \
+	--min-vote-average 6.5 \
+	--min-imdb-rating 6.5 \
+	--delay-ms 350 \
+	--moodtags
+```
+
+2) Construire l’index FAISS (pour la recherche rapide sur gros volume)
+
+```bash
+cd Popcorn/vector-service
+python build_index.py
+```
+
+Notes importantes:
+- Pour la performance, évitez la recherche par scan DynamoDB. La voie rapide est: FAISS -> topK clés -> fetch détails.
+- La structure des objets movie n’est pas modifiée (les champs restent présents). Les scripts de normalisation sont optionnels.
 ```
 
 - Construire/mettre à jour des films spécifiques

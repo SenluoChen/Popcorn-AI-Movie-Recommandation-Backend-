@@ -1193,7 +1193,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-056323207409-eu-west-3",
-     "S3Key": "a429bf6ff02a59404be79e0b86373bc1c3fc4fcaa581923c45b066ce3ea82152.zip"
+     "S3Key": "d7232bd63a4bbe4e0eba27d674ab9bc14a7110eec8ea188a35fe2120d0c7e1e6.zip"
     },
     "Environment": {
      "Variables": {
@@ -1233,7 +1233,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "ReLivreAppStack/SearchFunction/Resource",
-    "aws:asset:path": "asset.a429bf6ff02a59404be79e0b86373bc1c3fc4fcaa581923c45b066ce3ea82152",
+    "aws:asset:path": "asset.d7232bd63a4bbe4e0eba27d674ab9bc14a7110eec8ea188a35fe2120d0c7e1e6",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }

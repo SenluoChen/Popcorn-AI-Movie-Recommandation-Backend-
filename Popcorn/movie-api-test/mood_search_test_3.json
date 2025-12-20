@@ -1,0 +1,92 @@
+﻿{
+  "ok": true,
+  "query": "瘚芣憤??雿?閬云?脣?敶?,
+  "queryEnglish": "Romantic sweet but not too sad movie",
+  "mood": {
+    "want": [
+      "romantic"
+    ],
+    "avoid": [
+      "melancholic"
+    ]
+  },
+  "topK": 5,
+  "results": [
+    {
+      "title": "Sunrise: A Song of Two Humans",
+      "imdbId": "tt0018455",
+      "key": "tt0018455",
+      "similarity": 0.4579107767416061,
+      "score": 0.6489107767416061,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "romantic"
+      ],
+      "matchedWantTags": [
+        "romantic"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "The Vow",
+      "imdbId": "tt1606389",
+      "key": "tt1606389",
+      "similarity": 0.42896780792943373,
+      "score": 0.6199678079294337,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "romantic"
+      ],
+      "matchedWantTags": [
+        "romantic"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "A Short Film About Love",
+      "imdbId": "tt0095467",
+      "key": "tt0095467",
+      "similarity": 0.42541767550522147,
+      "score": 0.6164176755052215,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "romantic"
+      ],
+      "matchedWantTags": [
+        "romantic"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "The Man in the Moon",
+      "imdbId": "tt0102388",
+      "key": "tt0102388",
+      "similarity": 0.40472657855873484,
+      "score": 0.6107265785587349,
+      "lexicalBoost": 0.03,
+      "matchedTerms": [
+        "romantic",
+        "sweet"
+      ],
+      "matchedWantTags": [
+        "romantic"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Now Is Good",
+      "imdbId": "tt1937264",
+      "key": "tt1937264",
+      "similarity": 0.41381872787945423,
+      "score": 0.6048187278794542,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "romantic"
+      ],
+      "matchedWantTags": [
+        "romantic"
+      ],
+      "matchedAvoidTags": []
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+﻿{
+  "ok": true,
+  "query": "I want to watch healing, warm, and relaxing movies, not horror.",
+  "mood": {
+    "want": [
+      "relaxing",
+      "healing"
+    ],
+    "avoid": [
+      "scary"
+    ]
+  },
+  "topK": 5,
+  "results": [
+    {
+      "title": "It's Such a Beautiful Day",
+      "imdbId": "tt2396224",
+      "key": "tt2396224",
+      "similarity": 0.32391258215999047,
+      "score": 0.32391258215999047,
+      "lexicalBoost": 0,
+      "matchedTerms": [],
+      "matchedWantTags": [],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Spring, Summer, Fall, Winter... and Spring",
+      "imdbId": "tt0374546",
+      "key": "tt0374546",
+      "similarity": 0.31974138569729943,
+      "score": 0.31974138569729943,
+      "lexicalBoost": 0,
+      "matchedTerms": [],
+      "matchedWantTags": [],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Chainsaw Man - The Movie: Reze Arc",
+      "imdbId": "tt30472557",
+      "key": "tt30472557",
+      "similarity": 0.31871596696873467,
+      "score": 0.31871596696873467,
+      "lexicalBoost": 0,
+      "matchedTerms": [],
+      "matchedWantTags": [],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "War Room",
+      "imdbId": "tt3832914",
+      "key": "tt3832914",
+      "similarity": 0.31378153898457034,
+      "score": 0.31378153898457034,
+      "lexicalBoost": 0,
+      "matchedTerms": [],
+      "matchedWantTags": [],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Miracles from Heaven",
+      "imdbId": "tt4257926",
+      "key": "tt4257926",
+      "similarity": 0.29781925931610503,
+      "score": 0.31281925931610505,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "healing"
+      ],
+      "matchedWantTags": [],
+      "matchedAvoidTags": []
+    }
+  ]
+}

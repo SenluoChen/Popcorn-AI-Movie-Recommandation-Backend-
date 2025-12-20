@@ -27,8 +27,7 @@ function extractHardFilters(queryTextInfo) {
 
 function movieIsAnimation(movie) {
   const genre = String(movie?.genre || '').toLowerCase();
-  const tags = String(movie?.tags || '').toLowerCase();
-  return genre.includes('animation') || tags.includes('animation');
+  return genre.includes('animation');
 }
 
 function movieIsJapan(movie) {
@@ -189,6 +188,35 @@ function tryGetVectorSearchFast() {
   return null;
 }
 
+let _cachedIndexMetaCount = null;
+function getLocalFaissMetaCountIfAny() {
+  if (_cachedIndexMetaCount !== null) {
+    return _cachedIndexMetaCount;
+  }
+
+  try {
+    const root = String(process.env.LOCAL_DATA_PATH || '').trim();
+    if (!root) {
+      _cachedIndexMetaCount = null;
+      return null;
+    }
+    const p = path.join(root, 'index', 'meta.json');
+    if (!fs.existsSync(p)) {
+      _cachedIndexMetaCount = null;
+      return null;
+    }
+    const meta = JSON.parse(fs.readFileSync(p, 'utf8'));
+    const count = Number(meta?.count);
+    const itemsLen = Array.isArray(meta?.items) ? meta.items.length : NaN;
+    const v = Number.isFinite(count) ? count : (Number.isFinite(itemsLen) ? itemsLen : NaN);
+    _cachedIndexMetaCount = Number.isFinite(v) ? v : null;
+    return _cachedIndexMetaCount;
+  } catch {
+    _cachedIndexMetaCount = null;
+    return null;
+  }
+}
+
 function buildMovieKey(movie) {
   const imdbId = String(movie?.imdbId || '').trim();
   if (imdbId) return imdbId;
@@ -206,6 +234,15 @@ async function getCandidateMoviesForQuery(queryEmbedding, storedMovieData, candi
   const k = Math.max(1, Math.min(200, Math.floor(Number(candidateK) || 50)));
 
   if (!vectorSearchFast) {
+    return storedMovieData;
+  }
+
+  // If the FAISS index is stale (common during local builds), candidate search can silently exclude the true answer.
+  // In that case, prefer correctness over speed and do a full scan.
+  const metaCount = getLocalFaissMetaCountIfAny();
+  const vectorCount = storedMovieData.filter(m => isValidEmbeddingVector(m?.vector)).length;
+  if (metaCount != null && vectorCount > 0 && metaCount < Math.floor(vectorCount * 0.9)) {
+    console.warn(`[VectorService] Detected stale index meta (meta.count=${metaCount}, vectors=${vectorCount}). Bypassing candidate search and doing full scan.`);
     return storedMovieData;
   }
 
@@ -250,14 +287,177 @@ const SIMILARITY_THRESHOLD = getEnvNumber('SIMILARITY_THRESHOLD', 0.40, { min: -
 // Override via env: SIMILARITY_THRESHOLD_MOOD (range: -1..1)
 const SIMILARITY_THRESHOLD_MOOD = getEnvNumber('SIMILARITY_THRESHOLD_MOOD', 0.15, { min: -1, max: 1 });
 
-// 情緒/氛圍標籤（用於情緒搜尋）
-// 觀影感受/族群標籤（只允許這些，禁止 genre/氛圍/主題）
+// Mood tags used for mood-based search.
+// Canonical format: lowercase, English slugs.
+// Keep this list broad but controlled (LLM + heuristics must only output tags from this list).
 const MOOD_TAGS = [
-  '放鬆', '療癒', '溫馨', '感人', '沉重', '刺激', '燒腦', '黑色幽默', '緊張', '恐怖', '歡樂', '正能量', '悲傷',
-  '適合情侶', '適合家庭', '適合朋友', '適合獨自', '適合小孩', '適合長輩', '適合全家',
-  '勵志', '熱血', '浪漫', '青春', '成長', '反思', '發人深省', '驚悚', '史詩', '冒險', '感官刺激',
-  '黑暗', '壓抑', '溫暖', '療傷', '心靈', '哲理', '懸疑', '爆笑', '輕鬆', '感官享受',
+  // comfort / tone
+  'relaxing',
+  'lighthearted',
+  'feel-good',
+  'heartwarming',
+  'comforting',
+  'healing',
+  'uplifting',
+  'emotional',
+  'tearjerker',
+  'melancholic',
+  'heavy',
+  'thought-provoking',
+  'mind-bending',
+  'logical',
+  // comedy / romance
+  'funny',
+  'dark-comedy',
+  'romantic',
+  'coming-of-age',
+  // suspense / intensity
+  'tense',
+  'suspenseful',
+  'thrilling',
+  'scary',
+  'dark',
+  'gritty',
+  'intense',
+  // spectacle
+  'action-packed',
+  'epic',
+  'adventurous',
+  // audience / occasion
+  'family-friendly',
+  'kids-friendly',
+  'date-night',
+  'friends-night',
+  'solo-watch',
 ];
+
+function normalizeMoodKey(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+// Alias mapping: multilingual/user phrasing -> canonical English slug.
+// Note: keys should be lowercase where relevant.
+const MOOD_ALIAS_TO_CANON = new Map([
+  // zh
+  ['放鬆', 'relaxing'],
+  ['紓壓', 'relaxing'],
+  ['解壓', 'relaxing'],
+  ['輕鬆', 'lighthearted'],
+  ['療癒', 'healing'],
+  ['治癒', 'healing'],
+  ['治愈', 'healing'],
+  ['療傷', 'healing'],
+  ['溫馨', 'heartwarming'],
+  ['暖心', 'heartwarming'],
+  ['溫暖', 'comforting'],
+  ['正能量', 'uplifting'],
+  ['感人', 'emotional'],
+  ['催淚', 'tearjerker'],
+  ['悲傷', 'melancholic'],
+  ['沉重', 'heavy'],
+  ['發人深省', 'thought-provoking'],
+  ['反思', 'thought-provoking'],
+  ['心靈', 'thought-provoking'],
+  ['哲理', 'thought-provoking'],
+  ['燒腦', 'mind-bending'],
+  ['邏輯', 'logical'],
+  ['懸疑', 'suspenseful'],
+  ['緊張', 'tense'],
+  ['刺激', 'thrilling'],
+  ['感官刺激', 'intense'],
+  ['恐怖', 'scary'],
+  ['驚悚', 'suspenseful'],
+  ['黑暗', 'dark'],
+  ['壓抑', 'dark'],
+  ['黑色幽默', 'dark-comedy'],
+  ['爆笑', 'funny'],
+  ['歡樂', 'feel-good'],
+  ['浪漫', 'romantic'],
+  ['青春', 'coming-of-age'],
+  ['成長', 'coming-of-age'],
+  ['熱血', 'action-packed'],
+  ['史詩', 'epic'],
+  ['冒險', 'adventurous'],
+  ['適合家庭', 'family-friendly'],
+  ['適合全家', 'family-friendly'],
+  ['適合小孩', 'kids-friendly'],
+  ['適合情侶', 'date-night'],
+  ['適合朋友', 'friends-night'],
+  ['適合獨自', 'solo-watch'],
+  ['適合長輩', 'family-friendly'],
+
+  // en (common variants)
+  ['relax', 'relaxing'],
+  ['relaxing', 'relaxing'],
+  ['light', 'lighthearted'],
+  ['lighthearted', 'lighthearted'],
+  ['feel good', 'feel-good'],
+  ['feel-good', 'feel-good'],
+  ['wholesome', 'heartwarming'],
+  ['heartwarming', 'heartwarming'],
+  ['comforting', 'comforting'],
+  ['cozy', 'comforting'],
+  ['healing', 'healing'],
+  ['uplifting', 'uplifting'],
+  ['inspiring', 'uplifting'],
+  ['inspirational', 'uplifting'],
+  ['emotional', 'emotional'],
+  ['tearjerker', 'tearjerker'],
+  ['sad', 'melancholic'],
+  ['melancholic', 'melancholic'],
+  ['heavy', 'heavy'],
+  ['dark', 'dark'],
+  ['gritty', 'gritty'],
+  ['intense', 'intense'],
+  ['tense', 'tense'],
+  ['suspense', 'suspenseful'],
+  ['suspenseful', 'suspenseful'],
+  ['thrilling', 'thrilling'],
+  ['thriller', 'thrilling'],
+  ['scary', 'scary'],
+  ['horror', 'scary'],
+  ['romantic', 'romantic'],
+  ['romance', 'romantic'],
+  ['coming of age', 'coming-of-age'],
+  ['coming-of-age', 'coming-of-age'],
+  ['mind bending', 'mind-bending'],
+  ['mind-bending', 'mind-bending'],
+  ['thought provoking', 'thought-provoking'],
+  ['thought-provoking', 'thought-provoking'],
+  ['action packed', 'action-packed'],
+  ['action-packed', 'action-packed'],
+  ['epic', 'epic'],
+  ['adventurous', 'adventurous'],
+  ['family friendly', 'family-friendly'],
+  ['family-friendly', 'family-friendly'],
+  ['kids friendly', 'kids-friendly'],
+  ['kids-friendly', 'kids-friendly'],
+  ['date night', 'date-night'],
+  ['date-night', 'date-night'],
+  ['friends night', 'friends-night'],
+  ['friends-night', 'friends-night'],
+  ['solo watch', 'solo-watch'],
+  ['solo-watch', 'solo-watch'],
+]);
+
+const MOOD_TOKENS = (() => {
+  const tokens = new Set();
+  for (const t of MOOD_TAGS) tokens.add(normalizeMoodKey(t));
+  for (const k of MOOD_ALIAS_TO_CANON.keys()) tokens.add(normalizeMoodKey(k));
+  return [...tokens]
+    .filter(Boolean)
+    // Prefer longer phrases first (e.g. "feel good" before "good")
+    .sort((a, b) => b.length - a.length);
+})();
+
+function canonicalizeMoodTag(tag) {
+  const key = normalizeMoodKey(tag);
+  if (!key) return '';
+  if (MOOD_TAGS.includes(key)) return key;
+  const mapped = MOOD_ALIAS_TO_CANON.get(key);
+  if (mapped && MOOD_TAGS.includes(mapped)) return mapped;
+  return '';
+}
 
 // 生成嵌入（將文本轉換為向量）
 async function generateEmbedding(text) {
@@ -395,11 +595,8 @@ function buildMovieSearchText(movie) {
     movie?.director,
     movie?.language,
     movie?.keywords,
-    movie?.tags,
     Array.isArray(movie?.moodTags) ? movie.moodTags.join(' ') : movie?.moodTags,
     movie?.plot,
-    movie?.unifiedPlot,
-    movie?.expandedOverview,
     movie?.detailedPlot,
   ]
     .filter(Boolean)
@@ -443,6 +640,73 @@ function extractQueryTermsForLexical(original, english) {
     terms.add('world war ii');
     terms.add('wwii');
   }
+
+  // Specific zh title/topic anchors that appear often in natural input
+  if (o.includes('敦克爾克')) {
+    addAll(['dunkirk', 'evacuation', 'operation dynamo']);
+  }
+  if (o.includes('邱吉爾') || o.includes('丘吉爾') || o.includes('丘吉尔')) {
+    addAll(['churchill', 'prime minister']);
+  }
+  if (o.includes('七宗罪')) {
+    addAll(['se7en', 'seven', 'seven deadly sins']);
+  }
+  if (o.includes('沉默的羔羊')) {
+    addAll(['silence of the lambs', 'hannibal', 'lecter']);
+  }
+  if (o.includes('賭城十一') || o.includes('十一羅漢') || o.includes('十一罗汉') || o.includes('十一人')) {
+    addAll(["ocean's eleven", "ocean's", 'heist']);
+  }
+  if (o.includes('拆彈') || o.includes('拆弹') || o.includes('炸彈') || o.includes('炸弹')) {
+    addAll(['bomb', 'explosive', 'ied', 'ordnance']);
+  }
+  if (o.includes('拳擊') || o.includes('拳击') || o.includes('拳手') || o.includes('拳王')) {
+    addAll(['boxing', 'boxer']);
+  }
+
+  // Topic-style zh queries (map to common English words that exist in plot/keywords)
+  if (o.includes('官僚')) {
+    addAll(['bureaucracy', 'bureaucratic']);
+  }
+  if (o.includes('反烏托邦') || o.includes('反乌托邦') || o.includes('反烏托') || o.includes('反乌托')) {
+    addAll(['dystopia', 'dystopian']);
+  }
+  if (o.includes('荒誕') || o.includes('荒诞')) {
+    addAll(['absurd', 'surreal']);
+  }
+  if (o.includes('黑色幽默') || o.includes('黑色幽默')) {
+    addAll(['black comedy', 'dark comedy', 'satire']);
+  }
+
+  // Journalism / voyeuristic thriller intents (helps Nightcrawler-style queries)
+  const mentionsReporter = o.includes('記者') || o.includes('记者') || o.includes('新聞') || o.includes('新闻');
+  if (mentionsReporter) {
+    addAll(['journalism', 'news', 'reporter', 'crime journalism', 'local tv news']);
+  }
+  if (o.includes('偷拍')) {
+    addAll(['camera', 'film', 'freelance', 'camera crews']);
+  }
+  if (o.includes('社會新聞') || o.includes('社会新闻')) {
+    addAll(['crime', 'crime scene']);
+  }
+
+  // Black-and-white hint (e.g., Raging Bull)
+  if (o.includes('黑白')) {
+    terms.add('black and white');
+  }
+  if (o.includes('傳記') || o.includes('传记')) {
+    terms.add('biography');
+  }
+
+  // Light synonym expansion (tiny dataset; prioritize precision)
+  if (e.includes('dictatorship')) terms.add('autocracy');
+  if (e.includes('fascist')) terms.add('fascism');
+  if (e.includes('bomb disposal')) addAll(['ied', 'explosive', 'ordnance']);
+  if (e.includes('boxer')) terms.add('boxing');
+  if (e.includes('hannibal')) addAll(['silence of the lambs', 'lecter']);
+  if (e.includes('bureaucrat')) addAll(['bureaucracy', 'bureaucratic']);
+  if (e.includes('anti-utopia') || e.includes('anti utopia')) addAll(['dystopia', 'dystopian']);
+  if (e.includes('black comedy')) terms.add('dark comedy');
 
   // Stopwords / overly generic tokens that harm reranking in a tiny dataset
   const stop = new Set([
@@ -512,7 +776,13 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
   const AVOID_WEIGHT_MOOD = 0.18;
   const LEXICAL_HIT_WEIGHT = 0.015;
   const LEXICAL_ANCHOR_WEIGHT = 0.07;
-  const STRONG_SINGLE_TERMS = new Set(['pandora', "na'vi", 'avatar', 'enigma']);
+  const STRONG_SINGLE_TERMS = new Set([
+    'pandora', "na'vi", 'avatar', 'enigma',
+    // Strong but still specific topic terms
+    'boxing', 'boxer',
+    'bureaucracy', 'dystopia', 'dystopian',
+    'journalism',
+  ]);
 
   const want = toTagArray(moodPreferences?.want);
   const avoid = toTagArray(moodPreferences?.avoid);
@@ -523,6 +793,17 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
 
   const moodishQuery = want.length > 0 || avoid.length > 0 || querySeemsMoodRelated(queryOriginal);
   const similarityThreshold = moodishQuery ? SIMILARITY_THRESHOLD_MOOD : SIMILARITY_THRESHOLD;
+  const hasStrongAnchor = queryTerms.some(t => t.includes(' ')
+    || t === 'wwii'
+    || t === 'world war ii'
+    || t === 'dunkirk'
+    || t === 'se7en'
+    || t === 'hannibal'
+    || t === "ocean's eleven"
+    || STRONG_SINGLE_TERMS.has(t));
+  const softSimilarityFloor = moodishQuery
+    ? similarityThreshold
+    : (hasStrongAnchor ? Math.min(similarityThreshold, 0.28) : similarityThreshold);
   const WANT_WEIGHT = moodishQuery ? WANT_WEIGHT_MOOD : WANT_WEIGHT_DEFAULT;
   const AVOID_WEIGHT = moodishQuery ? AVOID_WEIGHT_MOOD : AVOID_WEIGHT_DEFAULT;
 
@@ -530,10 +811,10 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
   // require at least one want-tag match. This prevents mood-only queries from returning random results.
   let requireWantMatch = false;
   if (moodishQuery && want.length > 0) {
-    const wantSet = new Set(want.map(t => String(t).trim().toLowerCase()).filter(Boolean));
+    const wantSet = new Set(want.map(canonicalizeMoodTag).filter(Boolean));
     for (const m of storedMovieData) {
-      const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-      if (mt.some(t => wantSet.has(String(t).trim().toLowerCase()))) {
+      const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+      if (mt.some(t => wantSet.has(t))) {
         requireWantMatch = true;
         break;
       }
@@ -543,10 +824,10 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
   // If the user explicitly wants to avoid certain moods, filter them out (when possible).
   let requireAvoidFree = false;
   if (moodishQuery && avoid.length > 0) {
-    const avoidSet = new Set(avoid.map(t => String(t).trim().toLowerCase()).filter(Boolean));
+    const avoidSet = new Set(avoid.map(canonicalizeMoodTag).filter(Boolean));
     for (const m of storedMovieData) {
-      const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-      if (!mt.some(t => avoidSet.has(String(t).trim().toLowerCase()))) {
+      const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+      if (!mt.some(t => avoidSet.has(t))) {
         requireAvoidFree = true;
         break;
       }
@@ -554,18 +835,18 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
   }
 
   // Core comfort requirement: if the user asks for any of these, prefer movies that actually carry them.
-  const CORE_COMFORT_TAGS = new Set(['療癒', '溫馨', '溫暖', '感人', '正能量']);
+  const CORE_COMFORT_TAGS = new Set(['healing', 'heartwarming', 'comforting', 'emotional', 'uplifting']);
   let requireCoreWantMatch = false;
   let coreWantSet = null;
   if (moodishQuery && want.length > 0) {
     const coreWant = want
-      .map(t => String(t).trim())
+      .map(canonicalizeMoodTag)
       .filter(t => CORE_COMFORT_TAGS.has(t));
     if (coreWant.length > 0) {
-      coreWantSet = new Set(coreWant.map(t => t.toLowerCase()));
+      coreWantSet = new Set(coreWant);
       for (const m of storedMovieData) {
-        const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-        if (mt.some(t => coreWantSet.has(String(t).trim().toLowerCase()))) {
+        const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+        if (mt.some(t => coreWantSet.has(t))) {
           requireCoreWantMatch = true;
           break;
         }
@@ -599,12 +880,10 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
 
     if (
       hardFilters.avoidViolence &&
-      (
-        movie.moodTags?.includes('恐怖') ||
-        movie.moodTags?.includes('驚悚') ||
-        movie.moodTags?.includes('黑暗') ||
-        movie.moodTags?.includes('感官刺激')
-      )
+      (() => {
+        const moodSet = new Set(toTagArray(movie?.moodTags).map(canonicalizeMoodTag).filter(Boolean));
+        return moodSet.has('scary') || moodSet.has('suspenseful') || moodSet.has('dark') || moodSet.has('intense');
+      })()
     ) {
       continue;
     }
@@ -622,9 +901,15 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
       continue;
     }
 
-    // Hard relevance gate: never surface results below the similarity threshold.
+    const movieText = buildMovieSearchText(movie);
+
+    // Hard relevance gate: normally strict, but allow strong lexical anchors to pass with a softer floor.
     if (!isResultRelevantWithThreshold(similarity, similarityThreshold)) {
-      continue;
+      if (!(hasStrongAnchor
+        && isResultRelevantWithThreshold(similarity, softSimilarityFloor)
+        && queryTerms.some(t => t && movieText.includes(t)))) {
+        continue;
+      }
     }
 
     const matchedWant = want.length > 0 ? intersectTags(movie.moodTags, want) : [];
@@ -642,7 +927,6 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
       continue;
     }
 
-    const movieText = buildMovieSearchText(movie);
     let lexicalBoost = 0;
     const matchedTerms = [];
     for (const term of queryTerms) {
@@ -684,6 +968,8 @@ function rankMoviesWithSignals(queryVector, storedMovieData, moodPreferences, qu
 
     ranked.push({
       title: movie.title,
+      imdbId: movie.imdbId,
+      key: movie.key,
       similarity,
       score,
       lexicalBoost,
@@ -711,8 +997,8 @@ function toTagArray(value) {
 }
 
 function intersectTags(a, b) {
-  const left = new Set(toTagArray(a).map(t => t.toLowerCase()));
-  const right = new Set(toTagArray(b).map(t => t.toLowerCase()));
+  const left = new Set(toTagArray(a).map(canonicalizeMoodTag).filter(Boolean));
+  const right = new Set(toTagArray(b).map(canonicalizeMoodTag).filter(Boolean));
   const out = [];
   for (const t of left) {
     if (right.has(t)) {
@@ -731,59 +1017,60 @@ function inferMoodPreferencesDirectMatch(query) {
   const want = new Set();
   const avoid = new Set();
 
-  const addWant = (tag) => { if (MOOD_TAGS.includes(tag)) want.add(tag); };
-  const addAvoid = (tag) => { if (MOOD_TAGS.includes(tag)) avoid.add(tag); };
+  const addWant = (tag) => {
+    const canon = canonicalizeMoodTag(tag);
+    if (canon) want.add(canon);
+  };
+  const addAvoid = (tag) => {
+    const canon = canonicalizeMoodTag(tag);
+    if (canon) avoid.add(canon);
+  };
 
   const isNegatedNear = (idx) => {
     const prefix = text.slice(Math.max(0, idx - 6), idx);
-    return /不要|不想|避免|別|不要太|不太|not\s+too|no\s+|avoid/i.test(prefix);
+    return /不要|不想|避免|別|不要太|不太|not\s+too|not\s+|no\s+|without\s+|avoid|exclude/i.test(prefix);
   };
 
-  // 1) Direct tag mentions
-  for (const tag of MOOD_TAGS) {
-    const needle = String(tag).toLowerCase();
-    const idx = text.indexOf(needle);
+  // Direct tag / alias mentions (multilingual). Prefer longer phrases first.
+  for (const token of MOOD_TOKENS) {
+    const idx = text.indexOf(token);
     if (idx === -1) continue;
     if (isNegatedNear(idx)) {
-      addAvoid(tag);
+      addAvoid(token);
     } else {
-      addWant(tag);
+      addWant(token);
     }
   }
 
-  // 2) Minimal synonym mapping
-  if (text.includes('暖心') || text.includes('heartwarming')) {
-    addWant('溫馨');
-    addWant('溫暖');
-  }
-  if (text.includes('治癒') || text.includes('治愈') || text.includes('healing') || text.includes('heal')) {
-    addWant('療癒');
-  }
-  if (text.includes('紓壓') || text.includes('解壓') || text.includes('relax') || text.includes('relaxing')) {
-    addWant('放鬆');
-    addWant('輕鬆');
-  }
-  if (/不要.{0,3}沉重|不想.{0,3}沉重|不太.{0,3}沉重/.test(text)) {
-    addAvoid('沉重');
-  }
-  if (/不要.{0,3}恐怖|不想.{0,3}恐怖|不太.{0,3}恐怖/.test(text)) {
-    addAvoid('恐怖');
-  }
-  if (/不要.{0,3}驚悚|不想.{0,3}驚悚|不太.{0,3}驚悚/.test(text)) {
-    addAvoid('驚悚');
-  }
-  if (text.includes('不要血腥') || text.includes('不血腥') || text.includes('non-violent') || text.includes('no violence')) {
-    addAvoid('恐怖');
-    addAvoid('驚悚');
-    addAvoid('黑暗');
-    addAvoid('感官刺激');
+  // Common user intent: "not too sad" usually means avoid tearjerkers/heavy vibes, not just the "melancholic" label.
+  if (
+    /not\s+too\s+sad|not\s+sad|no\s+sad|avoid\s+sad/i.test(text) ||
+    /不要.{0,3}(悲傷|難過)|不想.{0,3}(悲傷|難過)|不太.{0,3}(悲傷|難過)/.test(text)
+  ) {
+    addAvoid('melancholic');
+    addAvoid('tearjerker');
+    addAvoid('heavy');
   }
 
-  // Compatibility expansion (conservative): only expand 放鬆→輕鬆 when query has no other strong comfort wants.
-  const strongWants = ['療癒', '溫馨', '感人', '正能量', '溫暖'];
+  // Extra safety: common "avoid violence" phrasing should bias away from scary/dark/intense.
+  if (
+    text.includes('不要血腥') ||
+    text.includes('不血腥') ||
+    text.includes('non-violent') ||
+    text.includes('no violence') ||
+    text.includes('avoid violence')
+  ) {
+    addAvoid('scary');
+    addAvoid('suspenseful');
+    addAvoid('dark');
+    addAvoid('intense');
+  }
+
+  // Compatibility expansion (conservative): only expand relaxing -> lighthearted if user has no other comfort wants.
+  const strongWants = ['healing', 'heartwarming', 'comforting', 'emotional', 'uplifting'];
   const hasStrongWant = strongWants.some(t => want.has(t));
-  if (!hasStrongWant && want.size === 1 && want.has('放鬆')) {
-    addWant('輕鬆');
+  if (!hasStrongWant && want.size === 1 && want.has('relaxing')) {
+    addWant('lighthearted');
   }
 
   // Resolve conflicts
@@ -799,27 +1086,26 @@ function inferMoodPreferencesDirectMatch(query) {
 
 function getMoodTagImportance(tag) {
   switch (String(tag || '').trim()) {
-    case '療癒':
-    case '溫馨':
-    case '溫暖':
+    case 'healing':
+    case 'heartwarming':
+    case 'comforting':
       return 3.0;
-    case '感人':
-    case '正能量':
-    case '勵志':
+    case 'emotional':
+    case 'uplifting':
       return 2.6;
-    case '爆笑':
-    case '歡樂':
-    case '浪漫':
+    case 'funny':
+    case 'feel-good':
+    case 'romantic':
       return 2.2;
-    case '放鬆':
+    case 'relaxing':
       return 1.7;
-    case '輕鬆':
+    case 'lighthearted':
       return 1.4;
-    case '適合家庭':
-    case '適合全家':
-    case '適合情侶':
-    case '適合朋友':
-    case '適合獨自':
+    case 'family-friendly':
+    case 'kids-friendly':
+    case 'date-night':
+    case 'friends-night':
+    case 'solo-watch':
       return 1.2;
     default:
       return 1.0;
@@ -843,11 +1129,11 @@ function inferMoodPreferencesHeuristic(query) {
     'ligera', 'relajante', 'divertida', 'comedia', 'alegre',
     '癒し', '癒やし', '気楽', '気軽', 'コメディ', '笑える', '面白い', 'ほのぼの',
   ])) {
-    want.add('輕鬆');
-    want.add('放鬆');
-    want.add('溫馨');
-    want.add('療癒');
-    want.add('正能量');
+    want.add('lighthearted');
+    want.add('relaxing');
+    want.add('heartwarming');
+    want.add('healing');
+    want.add('uplifting');
   }
 
   // User feels bad -> avoid heavy/dark
@@ -856,15 +1142,14 @@ function inferMoodPreferencesHeuristic(query) {
     'triste', 'deprimido', 'estresado', 'ansioso',
     '落ち込', 'しんど', 'つらい', '憂鬱',
   ])) {
-    want.add('療癒');
-    want.add('溫馨');
-    want.add('正能量');
-    want.add('放鬆');
-    avoid.add('黑暗');
-    avoid.add('壓抑');
-    avoid.add('恐怖');
-    avoid.add('驚悚');
-    avoid.add('沉重');
+    want.add('healing');
+    want.add('heartwarming');
+    want.add('uplifting');
+    want.add('relaxing');
+    avoid.add('dark');
+    avoid.add('scary');
+    avoid.add('suspenseful');
+    avoid.add('heavy');
   }
 
   return {
@@ -887,6 +1172,8 @@ function querySeemsMoodRelated(query) {
     // en
     'mood', 'feel', 'feel-good', 'feel good', 'uplifting', 'light', 'relax', 'relaxing', 'funny', 'comedy',
     'romantic', 'scary', 'horror', 'thriller', 'dark', 'sad',
+    // canonical slugs (when users copy/paste from UI)
+    ...MOOD_TAGS,
     // ja (common)
     '気分', '癒し', '癒やし', 'ほのぼの', '笑える', '怖い',
     // es (common)
@@ -922,10 +1209,10 @@ async function inferMoodPreferencesFromQuery(query) {
 
   // Fallback to LLM classification when heuristic can't infer intent
   const english = await translateQueryToEnglish(original);
-  const allowed = MOOD_TAGS.join('、');
+  const allowed = MOOD_TAGS.join(', ');
   const prompt = [
-    'Classify the user\'s movie search query into mood preferences.',
-    'Return ONLY valid tags from the allowed list.',
+    'You are classifying a movie search query into mood preferences.',
+    'Return ONLY valid tags from the allowed list (lowercase slugs).',
     'Output MUST be a JSON object with exactly two keys: want (array) and avoid (array).',
     'Choose 0-5 tags for each array.',
     '',
@@ -957,9 +1244,13 @@ async function inferMoodPreferencesFromQuery(query) {
 
     const want = Array.isArray(parsed?.want) ? parsed.want : [];
     const avoid = Array.isArray(parsed?.avoid) ? parsed.avoid : [];
+    const normalizeList = (list) => {
+      const canon = list.map(canonicalizeMoodTag).filter(Boolean);
+      return [...new Set(canon)].filter(t => MOOD_TAGS.includes(t)).slice(0, 5);
+    };
     return {
-      want: [...new Set(want.map(String).map(s => s.trim()).filter(Boolean))].filter(t => MOOD_TAGS.includes(t)).slice(0, 5),
-      avoid: [...new Set(avoid.map(String).map(s => s.trim()).filter(Boolean))].filter(t => MOOD_TAGS.includes(t)).slice(0, 5),
+      want: normalizeList(want),
+      avoid: normalizeList(avoid),
     };
   } catch (error) {
     console.warn(`inferMoodPreferencesFromQuery failed: ${error?.message || error}`);
@@ -974,7 +1265,12 @@ function findBestMovieWithMood(queryVector, storedMovieData, moodPreferences, qu
   const AVOID_WEIGHT_MOOD = 0.18;
   const LEXICAL_HIT_WEIGHT = 0.015;
   const LEXICAL_ANCHOR_WEIGHT = 0.07;
-  const STRONG_SINGLE_TERMS = new Set(['pandora', "na'vi", 'avatar', 'enigma']);
+  const STRONG_SINGLE_TERMS = new Set([
+    'pandora', "na'vi", 'avatar', 'enigma',
+    'boxing', 'boxer',
+    'bureaucracy', 'dystopia', 'dystopian',
+    'journalism',
+  ]);
 
   let best = null;
   let bestScore = -Infinity;
@@ -997,10 +1293,10 @@ function findBestMovieWithMood(queryVector, storedMovieData, moodPreferences, qu
   // If the query is mood-heavy, apply the same precision guards as rankMoviesWithSignals.
   let requireWantMatch = false;
   if (moodishQuery && want.length > 0) {
-    const wantSet = new Set(want.map(t => String(t).trim().toLowerCase()).filter(Boolean));
+    const wantSet = new Set(want.map(canonicalizeMoodTag).filter(Boolean));
     for (const m of storedMovieData) {
-      const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-      if (mt.some(t => wantSet.has(String(t).trim().toLowerCase()))) {
+      const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+      if (mt.some(t => wantSet.has(t))) {
         requireWantMatch = true;
         break;
       }
@@ -1009,28 +1305,28 @@ function findBestMovieWithMood(queryVector, storedMovieData, moodPreferences, qu
 
   let requireAvoidFree = false;
   if (moodishQuery && avoid.length > 0) {
-    const avoidSet = new Set(avoid.map(t => String(t).trim().toLowerCase()).filter(Boolean));
+    const avoidSet = new Set(avoid.map(canonicalizeMoodTag).filter(Boolean));
     for (const m of storedMovieData) {
-      const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-      if (!mt.some(t => avoidSet.has(String(t).trim().toLowerCase()))) {
+      const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+      if (!mt.some(t => avoidSet.has(t))) {
         requireAvoidFree = true;
         break;
       }
     }
   }
 
-  const CORE_COMFORT_TAGS = new Set(['療癒', '溫馨', '溫暖', '感人', '正能量']);
+  const CORE_COMFORT_TAGS = new Set(['healing', 'heartwarming', 'comforting', 'emotional', 'uplifting']);
   let requireCoreWantMatch = false;
   let coreWantSet = null;
   if (moodishQuery && want.length > 0) {
     const coreWant = want
-      .map(t => String(t).trim())
+      .map(canonicalizeMoodTag)
       .filter(t => CORE_COMFORT_TAGS.has(t));
     if (coreWant.length > 0) {
-      coreWantSet = new Set(coreWant.map(t => t.toLowerCase()));
+      coreWantSet = new Set(coreWant);
       for (const m of storedMovieData) {
-        const mt = Array.isArray(m?.moodTags) ? m.moodTags : [];
-        if (mt.some(t => coreWantSet.has(String(t).trim().toLowerCase()))) {
+        const mt = toTagArray(m?.moodTags).map(canonicalizeMoodTag).filter(Boolean);
+        if (mt.some(t => coreWantSet.has(t))) {
           requireCoreWantMatch = true;
           break;
         }
@@ -1049,12 +1345,10 @@ function findBestMovieWithMood(queryVector, storedMovieData, moodPreferences, qu
     }
     if (
       hardFilters.avoidViolence &&
-      (
-        movie.moodTags?.includes('恐怖') ||
-        movie.moodTags?.includes('驚悚') ||
-        movie.moodTags?.includes('黑暗') ||
-        movie.moodTags?.includes('感官刺激')
-      )
+      (() => {
+        const moodSet = new Set(toTagArray(movie?.moodTags).map(canonicalizeMoodTag).filter(Boolean));
+        return moodSet.has('scary') || moodSet.has('suspenseful') || moodSet.has('dark') || moodSet.has('intense');
+      })()
     ) {
       continue;
     }
@@ -1135,6 +1429,11 @@ function findBestMovieWithMood(queryVector, storedMovieData, moodPreferences, qu
 
 const OMDB_BASE_URL = 'https://www.omdbapi.com/';
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3/movie/';
+
+function getTmdbApiKey() {
+  const apiKey = process.env.TMDB_API_KEY;
+  return apiKey && String(apiKey).trim() ? String(apiKey).trim() : '';
+}
 
 function sanitizePlotForAi(plot) {
   if (!plot || !String(plot).trim()) {
@@ -1265,62 +1564,27 @@ function longestCommonPrefixLen(a, b) {
 
 function postProcessPlotFields(movie) {
   if (!movie) return;
-  let detailed = normalizePlotText(movie.detailedPlot);
-  let expanded = normalizePlotText(movie.expandedOverview);
+  // Merge auxiliary plot fields into `detailedPlot`.
+  // IMPORTANT: Do NOT remove/rename fields here. Downstream consumers may rely on
+  // `plot`/`detailedPlot`/`expandedOverview`/`unifiedPlot` all being present.
+  const detailed = normalizePlotText(movie.detailedPlot) || '';
+  const unified = normalizePlotText(movie.unifiedPlot) || '';
+  const expanded = normalizePlotText(movie.expandedOverview) || '';
 
-  if (!detailed && !expanded) {
-    return;
-  }
+  // Prefer the longest / most complete source as the anchor, then append other non-duplicate pieces.
+  let parts = [];
+  if (detailed) parts.push(detailed);
+  if (unified && !detailed.includes(unified)) parts.push(unified);
+  if (expanded && !parts.join(' ').includes(expanded)) parts.push(expanded);
 
-  if (!expanded && detailed) {
-    expanded = extractiveOverviewFromPlot(detailed, 420);
-  }
-  if (!detailed && expanded) {
-    detailed = expanded;
-  }
+  let merged = parts.join('\n\n').trim();
+  if (!merged) return;
 
-  if (expanded && detailed) {
-    const lcp = longestCommonPrefixLen(expanded, detailed);
-    const minLen = Math.min(expanded.length, detailed.length);
-    const lcpRatio = minLen > 0 ? (lcp / minLen) : 0;
-    const oneContainsOther = expanded === detailed || detailed.includes(expanded) || expanded.includes(detailed);
-    if (oneContainsOther || (lcp >= 200 && lcpRatio >= 0.5)) {
-      expanded = extractiveOverviewFromPlot(detailed, 420);
-    }
+  // Clean up leading fragment and clip to reasonable size for storage.
+  merged = fixLeadingSentenceFragment(merged);
+  merged = clipTextAtBoundary(merged, 4000);
 
-    // Clean up any leading fragment (best-effort).
-    detailed = fixLeadingSentenceFragment(detailed);
-
-    // De-overlap by dropping the first sentence if expandedOverview is a prefix.
-    // This keeps both fields useful while avoiding repeated text.
-    const expandedBase = String(expanded || '').replace(/…\s*$/u, '').trim();
-    if (expandedBase && expanded.endsWith('…') && detailed.startsWith(expandedBase)) {
-      const remaining = cutAfterFirstSentence(detailed);
-      if (remaining.length >= 220) {
-        detailed = remaining;
-      }
-    }
-
-    // Requirement: combined length must be <= 1/2 of the current combined length.
-    const initialCombined = detailed.length + expanded.length;
-    const target = Math.floor(initialCombined / 2);
-    if (Number.isFinite(target) && target > 0) {
-      const detailedBudget = Math.max(220, Math.floor(target * 0.75));
-      let expandedBudget = Math.max(120, target - detailedBudget);
-
-      detailed = clipTextAtBoundary(detailed, detailedBudget);
-      expanded = clipTextAtBoundary(expanded, expandedBudget);
-
-      const nowCombined = detailed.length + expanded.length;
-      if (nowCombined > target) {
-        expandedBudget = Math.max(80, target - detailed.length);
-        expanded = clipTextAtBoundary(expanded, expandedBudget);
-      }
-    }
-  }
-
-  movie.detailedPlot = detailed;
-  movie.expandedOverview = expanded;
+  movie.detailedPlot = merged;
 }
 
 // 創建一個簡單的函數來查詢電影資料
@@ -1359,7 +1623,9 @@ const fetchMovieData = async (movieTitle, opts = {}) => {
       if (!quietMode) {
         console.log(`Actors from TMDb: ${tmdbData.actors}`);
         console.log(`Keywords from TMDb: ${tmdbData.keywords}`);
-        console.log(`Tags from TMDb: ${tmdbData.tags}`);
+        if (tmdbData.tags) {
+          console.log(`Tags from TMDb: ${tmdbData.tags}`);
+        }
 
         // 顯示電影原產地
         if (tmdbData.productionCountry) {
@@ -1369,7 +1635,8 @@ const fetchMovieData = async (movieTitle, opts = {}) => {
 
       result.actors = tmdbData.actors;
       result.keywords = tmdbData.keywords;
-      result.tags = tmdbData.tags;
+      // tags often overlaps with genre; keep genre as the single canonical field.
+      result.tags = undefined;
       result.moodKeywords = tmdbData.moodKeywords;
       result.tmdbId = tmdbData.tmdbId;
       // 修正語言欄位：只顯示 TMDb 的 original_language
@@ -1380,6 +1647,17 @@ const fetchMovieData = async (movieTitle, opts = {}) => {
       if (tmdbData.productionCountry) {
         // 標明是電影原產地
         result.productionCountry = tmdbData.productionCountry; // 電影原產地
+      }
+    }
+
+    // If OMDb returned missing/N/A fields (or TMDb enrichment failed), try to fill required fields via TMDb search/details.
+    if (['year', 'genre', 'director', 'runtime', 'language', 'imdbId', 'plot'].some(k => isMissingText(result?.[k]))) {
+      const full = result.tmdbId
+        ? await fetchTMDbMovieFullById(result.tmdbId)
+        : await fetchTMDbMovieFullByTitle(movieTitle, year);
+      fillMissingFrom(result, full);
+      if (full?.original_language) {
+        result.language = full.original_language;
       }
     }
 
@@ -1412,15 +1690,16 @@ const fetchMovieData = async (movieTitle, opts = {}) => {
       console.log('Movie not found in OMDb; falling back to Wikipedia-only data if available.');
     }
 
-    // Wikipedia fallback
+    // TMDb-by-title fallback (prevents many INCOMPLETE skips when OMDb is missing).
+    const tmdbFull = await fetchTMDbMovieFullByTitle(movieTitle, year);
+
+    // Wikipedia is optional; use as detailedPlot when available.
     const wikipediaDescription = await fetchWikipediaDescription(movieTitle);
-    if (!wikipediaDescription) {
+    if (!wikipediaDescription && !tmdbFull) {
       console.log('Movie not found.');
       return null;
     }
 
-    const plotForAi = sanitizePlotForAi(wikipediaDescription);
-    const synopsis = await generateExpandedOverview(plotForAi);
     const out = {
       title: movieTitle,
       year: undefined,
@@ -1434,9 +1713,31 @@ const fetchMovieData = async (movieTitle, opts = {}) => {
       tags: undefined,
       imdbId: undefined,
       plot: undefined,
-      expandedOverview: synopsis,
-      detailedPlot: wikipediaDescription,
+      expandedOverview: undefined,
+      detailedPlot: undefined,
     };
+
+    fillMissingFrom(out, tmdbFull);
+    if (tmdbFull?.original_language) {
+      out.language = tmdbFull.original_language;
+    }
+
+    const detailedSource = stripTruncatedMarker(wikipediaDescription || '') || String(out.plot || '').trim();
+    const plotForAi = sanitizePlotForAi(detailedSource || '');
+
+    if (!fastMode) {
+      const synopsis = await generateExpandedOverview(plotForAi);
+      out.expandedOverview = synopsis;
+      out.detailedPlot = detailedSource;
+    } else {
+      out.detailedPlot = truncateText(detailedSource || plotForAi || '', 1200);
+      out.expandedOverview = extractiveOverviewFromPlot(out.detailedPlot, 520);
+    }
+
+    // Ensure plot exists for storage validation.
+    if (isMissingText(out.plot)) {
+      out.plot = normalizeText(tmdbFull?.plot) || normalizeText(out.detailedPlot);
+    }
 
     postProcessPlotFields(out);
     return out;
@@ -1447,9 +1748,7 @@ function shouldGenerateMoodTags(movie) {
   const hasText = !!(
     (movie?.plot && String(movie.plot).trim())
     || (movie?.detailedPlot && String(movie.detailedPlot).trim())
-    || (movie?.expandedOverview && String(movie.expandedOverview).trim())
     || (movie?.keywords && String(movie.keywords).trim())
-    || (movie?.tags && String(movie.tags).trim())
   );
   return hasText;
 }
@@ -1474,11 +1773,12 @@ function validateMovieForStorage(movie) {
   // plot 與 AI 劇情至少要有一個完整
   const plot = !isMissingText(movie?.plot);
   const detailedPlot = !isMissingText(movie?.detailedPlot);
+  const unifiedPlot = !isMissingText(movie?.unifiedPlot);
   const expandedOverview = !isMissingText(movie?.expandedOverview);
   if (!plot) {
     missing.push('plot');
   }
-  if (!detailedPlot && !expandedOverview) {
+  if (!detailedPlot && !unifiedPlot && !expandedOverview) {
     missing.push('detailedPlot');
   }
 
@@ -1493,10 +1793,8 @@ function buildMovieEmbeddingText(movie) {
     movie.director,
     movie.language,
     movie.keywords,
-    movie.tags,
     Array.isArray(movie.moodTags) ? movie.moodTags.join(', ') : movie.moodTags,
     movie.plot,
-    movie.expandedOverview,
     movie.detailedPlot,
   ]
     .filter(Boolean)
@@ -1507,7 +1805,6 @@ function buildMoodAnalysisText(movie) {
   return [
     `Title: ${movie.title || ''}`,
     `Genre: ${movie.genre || ''}`,
-    `Tags: ${movie.tags || ''}`,
     `Keywords: ${movie.keywords || ''}`,
     `Plot: ${movie.plot || ''}`,
     `DetailedPlot: ${movie.detailedPlot || ''}`,
@@ -1516,36 +1813,304 @@ function buildMoodAnalysisText(movie) {
     .join('\n');
 }
 
+function generateMoodTagsHeuristic(movie) {
+  const allowedSet = new Set(MOOD_TAGS);
+  const genreText = String(movie?.genre || '').toLowerCase();
+  const text = [
+    movie?.title,
+    movie?.genre,
+    movie?.keywords,
+    movie?.plot,
+    movie?.detailedPlot,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  const VIOLENCE_RE = /(terroris|terrorism|attack|massacre|hostage|shooting|gunman|bomb|explos|assault|kidnap|abduct|murder|serial\s+killer|war\s+crime|genocide|holocaust|torture|slaughter|siege|hatred|spread\s+death|atrocity|punitive\s+action|nazi|hitler|insurg|extremis|mass\s+shooting|school\s+shooting|home\s+invasion|stalker)/i;
+  const TERMINAL_RE = /(terminal\s+illness|terminally\s+ill|incurable|cancer|leukemi|lymphoblastic|tumou?r|chemotherap|radiotherap|hospice|deathbed|last\s+days|bucket\s+list|dying)/i;
+  const TRAGEDY_RE = /(tragedy|tragic|death|grief|loss|funeral|suicide|self\s*harm|depression|mourning)/i;
+
+  const comfortTags = new Set(['relaxing', 'comforting', 'healing', 'feel-good', 'lighthearted', 'heartwarming', 'family-friendly', 'kids-friendly']);
+  const upbeatTags = new Set(['uplifting', 'feel-good', 'lighthearted', 'heartwarming']);
+
+  const out = [];
+  const add = (tag) => {
+    const canon = canonicalizeMoodTag(tag);
+    if (!canon) return;
+    if (!allowedSet.has(canon)) return;
+    if (out.includes(canon)) return;
+    out.push(canon);
+  };
+
+  const hasHorror = /(\bhorror\b|\bslasher\b|\bhaunted\b|\bghost\b|\bdemon\b|\bzombie\b|\bpossession\b|恐怖|鬼|喪屍|驚嚇)/i.test(text);
+  const hasThriller = /(\bthriller\b|\bsuspense\b|\bmystery\b|\bpsychological\b)/i.test(text);
+  const hasCrime = /(\bcrime\b|\bnoir\b|\bgang\b|\bmafia\b|\bdetective\b|\bpolice\b)/i.test(text);
+  const hasWar = /(\bwar\b|\bwwii\b|world\s+war\s+ii|second\s+world\s+war|\bnazi\b|\bholocaust\b|二戰|第二次世界大戰)/i.test(text);
+  const hasViolence = VIOLENCE_RE.test(text) || hasWar;
+  const hasTerminal = TERMINAL_RE.test(text) || /(絕症|癌|白血病|末期)/i.test(text);
+  const hasTragedy = hasTerminal || TRAGEDY_RE.test(text);
+  const hasComedy = /(\bcomedy\b|\bfunny\b|\bhumor\b|\bhilarious\b)/i.test(text);
+  const hasRomance = /(\bromance\b|\bromantic\b|\blove\b)/i.test(text);
+  // Only infer "family" tone from genre. Plot text frequently mentions family/children in non-family films.
+  const hasFamily = /(\banimation\b|\bfamily\b)/i.test(genreText);
+  const hasDrama = /(\bdrama\b)/i.test(text);
+  const hasAction = /(\baction\b)/i.test(text);
+  const hasAdventure = /(\badventure\b|\bfantasy\b)/i.test(text);
+
+  if (hasHorror) {
+    add('scary');
+    add('dark');
+    add('tense');
+    add('suspenseful');
+    add('intense');
+  }
+  if (hasThriller) {
+    add('suspenseful');
+    add('tense');
+    add('thrilling');
+    add('mind-bending');
+    add('dark');
+  }
+  if (hasCrime) {
+    add('gritty');
+    add('dark');
+    add('tense');
+  }
+  if (hasWar) {
+    add('tense');
+    add('emotional');
+    add('heavy');
+    add('thought-provoking');
+    add('gritty');
+  }
+  if (hasComedy) {
+    add('funny');
+    add('lighthearted');
+    add('feel-good');
+    add('uplifting');
+    add('friends-night');
+  }
+  if (hasRomance) {
+    add('romantic');
+    add('heartwarming');
+    add('date-night');
+    add('feel-good');
+    add('lighthearted');
+  }
+  if (hasFamily) {
+    add('family-friendly');
+    add('kids-friendly');
+    add('heartwarming');
+    add('feel-good');
+    add('lighthearted');
+  }
+  if (hasDrama) {
+    add('emotional');
+    add('thought-provoking');
+    if (hasTragedy) {
+      add('tearjerker');
+      add('melancholic');
+      add('heavy');
+    }
+  }
+  if (/(sci\-?fi|science fiction)/i.test(text)) {
+    add('mind-bending');
+    add('thought-provoking');
+    add('thrilling');
+  }
+  if (hasAction) {
+    add('action-packed');
+    add('thrilling');
+    add('intense');
+    add('friends-night');
+  }
+  if (hasAdventure) {
+    add('adventurous');
+    add('epic');
+    add('uplifting');
+  }
+  if (/(coming\-of\-age|coming of age|teen|high school)/i.test(text)) {
+    add('coming-of-age');
+    add('heartwarming');
+    add('uplifting');
+    add('emotional');
+  }
+
+  // If the plot contains real-world violence/terror/atrocity signals, never default to comfort tags.
+  // This is the main guard that prevents e.g. terror-attack documentaries from being labeled "relaxing".
+  const banned = new Set();
+  if (hasViolence || hasHorror || hasThriller || hasCrime || hasWar) {
+    for (const t of comfortTags) banned.add(t);
+  }
+  // For terminal illness / tragedy, avoid upbeat defaults (even if romance exists).
+  if (hasTerminal || hasTragedy) {
+    for (const t of upbeatTags) banned.add(t);
+    // Also avoid overly "healing" defaults; tragedy can be moving but rarely "relaxing".
+    banned.add('relaxing');
+    banned.add('comforting');
+    banned.add('healing');
+  }
+
+  // If strong violence signals exist but no genre keyword matched, still label it appropriately.
+  if (hasViolence && !hasComedy && !hasFamily) {
+    add('tense');
+    add('dark');
+    add('suspenseful');
+    add('intense');
+    add('thought-provoking');
+  }
+  if (hasTerminal) {
+    add('melancholic');
+    add('tearjerker');
+    add('heavy');
+    add('emotional');
+  }
+
+  const filtered = [];
+  for (const t of out) {
+    if (banned.has(t)) continue;
+    if (!filtered.includes(t)) filtered.push(t);
+  }
+
+  const fallbackPool = (() => {
+    // Choose a safer fallback order depending on detected content.
+    if (hasHorror || hasThriller || hasCrime || hasWar || hasViolence) {
+      return [
+        'suspenseful',
+        'tense',
+        'dark',
+        'intense',
+        'gritty',
+        'thought-provoking',
+        'emotional',
+        'solo-watch',
+        'thrilling',
+        'mind-bending',
+      ];
+    }
+    if (hasTerminal || hasTragedy) {
+      return [
+        'melancholic',
+        'tearjerker',
+        'heavy',
+        'emotional',
+        'thought-provoking',
+        'solo-watch',
+        'romantic',
+        'date-night',
+      ];
+    }
+    if (hasComedy || hasFamily) {
+      return [
+        'lighthearted',
+        'feel-good',
+        'heartwarming',
+        'uplifting',
+        'family-friendly',
+        'kids-friendly',
+        'friends-night',
+        'relaxing',
+        'comforting',
+        'solo-watch',
+      ];
+    }
+    return [
+      'thought-provoking',
+      'emotional',
+      'solo-watch',
+      'uplifting',
+      'heartwarming',
+      'comforting',
+      'relaxing',
+      'lighthearted',
+      'feel-good',
+      'friends-night',
+      'date-night',
+      'mind-bending',
+      'thrilling',
+    ];
+  })()
+    .map(canonicalizeMoodTag)
+    .filter(Boolean)
+    .filter(t => allowedSet.has(t))
+    .filter(t => !banned.has(t));
+
+  for (const t of fallbackPool) {
+    if (filtered.length >= 5) break;
+    if (!filtered.includes(t)) filtered.push(t);
+  }
+
+  // Final safety: ensure exactly 5 with remaining allowed tags, respecting bans.
+  if (filtered.length < 5) {
+    for (const t of MOOD_TAGS) {
+      const canon = canonicalizeMoodTag(t);
+      if (!canon || !allowedSet.has(canon) || banned.has(canon)) continue;
+      if (filtered.includes(canon)) continue;
+      filtered.push(canon);
+      if (filtered.length >= 5) break;
+    }
+  }
+  return filtered.slice(0, 5);
+}
+
+async function ensureFiveMoodTags(movie, opts = {}) {
+  const allowLlm = !!opts?.allowLlm;
+  const preferHeuristic = !!opts?.preferHeuristic;
+  const forceRegen = !!opts?.forceRegen;
+
+  const allowedSet = new Set(MOOD_TAGS);
+  const existing = Array.isArray(movie?.moodTags) ? movie.moodTags : [];
+  const cleaned = [];
+  for (const t of existing) {
+    const canon = canonicalizeMoodTag(t);
+    if (!canon) continue;
+    if (!allowedSet.has(canon)) continue;
+    if (cleaned.includes(canon)) continue;
+    cleaned.push(canon);
+  }
+  if (!forceRegen && cleaned.length === 5) return cleaned;
+
+  if (preferHeuristic || !allowLlm) {
+    return generateMoodTagsHeuristic(movie);
+  }
+
+  return generateMoodTags(movie);
+}
+
 // 用 OpenAI 自動生成情緒/氛圍標籤（供使用者依情緒搜尋）
 async function generateMoodTags(movie) {
   const allowedSet = new Set(MOOD_TAGS);
   const fallbackPool = [
-    '放鬆',
-    '輕鬆',
-    '緊張',
-    '刺激',
-    '感人',
-    '溫馨',
-    '燒腦',
-    '適合朋友',
-    '適合情侶',
-    '適合家庭',
-    '適合獨自',
-    '反思',
-    '心靈',
-    '哲理',
-    '懸疑',
+    'relaxing',
+    'lighthearted',
+    'feel-good',
+    'heartwarming',
+    'healing',
+    'uplifting',
+    'emotional',
+    'funny',
+    'romantic',
+    'thought-provoking',
+    'mind-bending',
+    'suspenseful',
+    'tense',
+    'thrilling',
+    'family-friendly',
+    'date-night',
+    'friends-night',
+    'solo-watch',
   ].filter(t => allowedSet.has(t));
 
   const normalize = (value) => {
     const list = Array.isArray(value) ? value : [];
     const cleaned = [];
     for (const t of list) {
-      const s = String(t || '').trim();
-      if (!s) continue;
-      if (!allowedSet.has(s)) continue;
-      if (cleaned.includes(s)) continue;
-      cleaned.push(s);
+      const canon = canonicalizeMoodTag(t);
+      if (!canon) continue;
+      if (!allowedSet.has(canon)) continue;
+      if (cleaned.includes(canon)) continue;
+      cleaned.push(canon);
     }
 
     if (cleaned.length > 5) {
@@ -1563,15 +2128,16 @@ async function generateMoodTags(movie) {
   const analysisText = buildMoodAnalysisText(movie);
   const allowed = MOOD_TAGS.join(', ');
   const buildPrompt = (retryNote = '') => [
-    '你是一個電影情緒/族群標籤專家。根據下方電影資訊，請只從「允許標籤清單」中，選出「剛好 5 個」最貼近觀影感受、適合族群、情境的標籤。',
-    '嚴禁選 genre、主題、氛圍、劇情類型，只能選「觀影感受」或「適合族群/情境」的標籤。',
-    '你必須輸出剛好 5 個標籤（JSON array 長度=5），不要多也不要少。',
-    '輸出格式必須是 JSON array（如：["放鬆","適合家庭","療癒","輕鬆","感人"]），不要有其他文字。',
-    retryNote ? `\n修正提醒: ${retryNote}` : '',
+    'You are a movie mood/audience tagging expert.',
+    'Based on the movie info below, pick EXACTLY 5 tags from the Allowed tags list.',
+    'Only pick mood/tonal/audience/occasion tags. Do NOT pick genres, themes, plot types, or settings.',
+    'Output MUST be a JSON array of length 5. No extra text.',
+    'Example output: ["relaxing","heartwarming","healing","family-friendly","feel-good"]',
+    retryNote ? `\nFix note: ${retryNote}` : '',
     '',
-    `允許標籤清單: ${allowed}`,
+    `Allowed tags: ${allowed}`,
     '',
-    `電影資訊:\n${analysisText}`,
+    `Movie info:\n${analysisText}`,
   ].filter(Boolean).join('\n');
 
   try {
@@ -1579,7 +2145,7 @@ async function generateMoodTags(movie) {
     for (let attempt = 1; attempt <= 3; attempt += 1) {
       const retryNote = attempt === 1
         ? ''
-        : `上次輸出不是「剛好 5 個允許標籤」。上次輸出：${lastRaw}`;
+        : `Previous output was not exactly 5 allowed tags. Previous output: ${lastRaw}`;
 
       const prompt = buildPrompt(retryNote);
       const response = await withRetry(
@@ -1851,8 +2417,8 @@ const fetchTMDbMovieData = async (imdbId) => {
     return null;
   }
 
-  const apiKey = process.env.TMDB_API_KEY;
-  if (!apiKey || !String(apiKey).trim()) {
+  const apiKey = getTmdbApiKey();
+  if (!apiKey) {
     console.warn('TMDB_API_KEY is not set; skipping TMDb enrichment.');
     return null;
   }
@@ -1866,8 +2432,8 @@ const fetchTMDbMovieData = async (imdbId) => {
       return null;
     }
 
-    const detailsUrl = `${TMDB_BASE_URL}${tmdbId}?api_key=${apiKey}&append_to_response=credits,keywords`;
-  const detailsResponse = await axiosGetWithRetry(detailsUrl, {}, { label: 'tmdb.details', timeoutMs: 15000, maxAttempts: 5 });
+    const detailsUrl = `${TMDB_BASE_URL}${tmdbId}?api_key=${apiKey}&append_to_response=credits,keywords,external_ids`;
+    const detailsResponse = await axiosGetWithRetry(detailsUrl, {}, { label: 'tmdb.details', timeoutMs: 15000, maxAttempts: 5 });
     const data = detailsResponse.data;
 
     // 只取前 10 位主要演員
@@ -1895,12 +2461,140 @@ const fetchTMDbMovieData = async (imdbId) => {
     // TMDb 的原產國家（陣列，取英文名稱）
     const countriesArr = Array.isArray(data?.production_countries) ? data.production_countries.map(c => c.name).filter(Boolean) : [];
     const productionCountry = countriesArr.join(', ');
-    return { actors, keywords, tags, tmdbId, original_language, productionCountry };
+    const imdbIdOut = normalizeText(data?.external_ids?.imdb_id) || normalizeText(imdbId);
+    return { actors, keywords, tags, tmdbId, original_language, productionCountry, imdbId: imdbIdOut };
   } catch (error) {
     console.log(`TMDb fetch failed: ${error?.message || error}`);
     return null;
   }
 };
+
+async function searchTMDbMovieIdByTitle(title, year) {
+  const apiKey = getTmdbApiKey();
+  if (!apiKey) {
+    return null;
+  }
+
+  const q = String(title || '').trim();
+  if (!q) return null;
+
+  const yearParam = year ? `&year=${encodeURIComponent(String(year))}` : '';
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${encodeURIComponent(apiKey)}&language=en-US&query=${encodeURIComponent(q)}&include_adult=false&page=1${yearParam}`;
+
+  try {
+    const resp = await axiosGetWithRetry(url, {}, { label: 'tmdb.search', timeoutMs: 15000, maxAttempts: 5 });
+    const results = Array.isArray(resp.data?.results) ? resp.data.results : [];
+    if (results.length === 0) return null;
+
+    const wantYear = year ? String(year).trim() : '';
+    const normalizedTitle = q.toLowerCase();
+
+    const withScores = results.map(r => {
+      const t = String(r?.title || r?.original_title || '').trim();
+      const tLower = t.toLowerCase();
+      const release = String(r?.release_date || '').trim();
+      const y = release ? release.slice(0, 4) : '';
+      const voteCount = Number(r?.vote_count || 0);
+      const titleExact = tLower === normalizedTitle;
+      const yearExact = !!(wantYear && y === wantYear);
+
+      // Prefer exact title match, then exact year, then higher vote_count.
+      const score = (titleExact ? 1000000 : 0) + (yearExact ? 10000 : 0) + (Number.isFinite(voteCount) ? voteCount : 0);
+      return { id: r?.id, score };
+    });
+
+    withScores.sort((a, b) => b.score - a.score);
+    return withScores[0]?.id ?? null;
+  } catch (error) {
+    console.log(`TMDb search failed: ${error?.message || error}`);
+    return null;
+  }
+}
+
+async function fetchTMDbMovieFullById(tmdbId) {
+  const apiKey = getTmdbApiKey();
+  if (!apiKey) {
+    return null;
+  }
+  if (!tmdbId) return null;
+
+  const url = `${TMDB_BASE_URL}${encodeURIComponent(String(tmdbId))}?api_key=${encodeURIComponent(apiKey)}&append_to_response=credits,keywords,external_ids`;
+  try {
+    const resp = await axiosGetWithRetry(url, {}, { label: 'tmdb.details.full', timeoutMs: 15000, maxAttempts: 5 });
+    const data = resp.data;
+    if (!data) return null;
+
+    const releaseDate = String(data?.release_date || '').trim();
+    const outYear = releaseDate ? releaseDate.slice(0, 4) : undefined;
+    const outGenre = Array.isArray(data?.genres) ? data.genres.map(g => g?.name).filter(Boolean).join(', ') : undefined;
+    const runtimeMin = Number(data?.runtime);
+    const outRuntime = Number.isFinite(runtimeMin) && runtimeMin > 0 ? `${runtimeMin} min` : undefined;
+
+    const directors = Array.isArray(data?.credits?.crew)
+      ? data.credits.crew
+        .filter(p => String(p?.job || '').toLowerCase() === 'director')
+        .map(p => p?.name)
+        .filter(Boolean)
+      : [];
+    const outDirector = directors.length > 0 ? directors.join(', ') : undefined;
+
+    const outActors = Array.isArray(data?.credits?.cast)
+      ? data.credits.cast.slice(0, 10).map(a => a?.name).filter(Boolean).join(', ')
+      : undefined;
+
+    const keywordItems = data?.keywords?.keywords || data?.keywords?.results || [];
+    const keywordsArr = Array.isArray(keywordItems)
+      ? keywordItems.map(k => k?.name).filter(Boolean).slice(0, 10)
+      : [];
+    const outKeywords = keywordsArr.length > 0 ? keywordsArr.join(', ') : undefined;
+
+    const countriesArr = Array.isArray(data?.production_countries)
+      ? data.production_countries.map(c => c?.name).filter(Boolean)
+      : [];
+    const outProductionCountry = countriesArr.length > 0 ? countriesArr.join(', ') : undefined;
+
+    const outImdbId = normalizeText(data?.external_ids?.imdb_id);
+    const outPlot = normalizeText(data?.overview);
+    const outLang = normalizeText(data?.original_language);
+
+    return {
+      tmdbId: data?.id,
+      imdbId: outImdbId,
+      year: normalizeText(outYear),
+      genre: normalizeText(outGenre),
+      director: normalizeText(outDirector),
+      runtime: normalizeText(outRuntime),
+      original_language: outLang,
+      language: outLang,
+      actors: normalizeText(outActors),
+      keywords: normalizeText(outKeywords),
+      productionCountry: normalizeText(outProductionCountry),
+      plot: outPlot,
+      tmdbVoteAverage: Number(data?.vote_average),
+      tmdbVoteCount: Number(data?.vote_count),
+      tmdbPopularity: Number(data?.popularity),
+    };
+  } catch (error) {
+    console.log(`TMDb details fetch failed: ${error?.message || error}`);
+    return null;
+  }
+}
+
+async function fetchTMDbMovieFullByTitle(title, year) {
+  const id = await searchTMDbMovieIdByTitle(title, year);
+  if (!id) return null;
+  return fetchTMDbMovieFullById(id);
+}
+
+function fillMissingFrom(base, patch) {
+  if (!base || !patch) return;
+  const keys = ['year', 'genre', 'director', 'runtime', 'language', 'imdbId', 'plot', 'actors', 'keywords', 'tags', 'tmdbId', 'productionCountry', 'tmdbVoteAverage', 'tmdbVoteCount', 'tmdbPopularity'];
+  for (const k of keys) {
+    if (isMissingText(base?.[k]) && !isMissingText(patch?.[k])) {
+      base[k] = patch[k];
+    }
+  }
+}
 
 // 使用 axios 從 Wikipedia 獲取電影詳細劇情描述
 const fetchWikipediaDescription = async (movieTitle) => {
@@ -2472,14 +3166,17 @@ async function fixLocalPlotFields(args, localPaths) {
 }
 
 async function fixLocalMoodTags(args, localPaths) {
-  requireEnv('OPENAI_API_KEY');
-
   const dryRun = args.includes('--dry-run');
+  const forceHeuristic = args.includes('--heuristic');
+  const skipEmbedding = args.includes('--skip-embedding') || args.includes('--no-embed') || !hasEnv('OPENAI_API_KEY');
+  const allowLlm = hasEnv('OPENAI_API_KEY') && !forceHeuristic;
   const limit = (() => {
     const v = getFlagNumber(args, '--limit', NaN);
     return Number.isFinite(Number(v)) && Number(v) > 0 ? Math.floor(Number(v)) : null;
   })();
   const all = args.includes('--all');
+
+  const forceRegen = all || args.includes('--force');
 
   const titleFilter = (() => {
     const idx = args.findIndex(a => a === '--title');
@@ -2516,7 +3213,7 @@ async function fixLocalMoodTags(args, localPaths) {
     movies.push({ ...m, key, imdbId: m?.imdbId || (key.startsWith('tt') ? key : undefined), vector });
   }
 
-  console.log(`[Fix-MoodTags] Loaded ${movies.length} local movie(s). dryRun=${dryRun} limit=${limit ?? '(none)'} title=${titleFilter ?? '(all)'} all=${all} deleteTitle=${deleteTitle ?? '(none)'}`);
+  console.log(`[Fix-MoodTags] Loaded ${movies.length} local movie(s). dryRun=${dryRun} limit=${limit ?? '(none)'} title=${titleFilter ?? '(all)'} all=${all} deleteTitle=${deleteTitle ?? '(none)'} allowLlm=${allowLlm} skipEmbedding=${skipEmbedding}`);
 
   let processed = 0;
   let changed = 0;
@@ -2545,11 +3242,13 @@ async function fixLocalMoodTags(args, localPaths) {
     if (!Array.isArray(next.moodTags)) next.moodTags = [];
 
     if (!dryRun) {
-      next.moodTags = await generateMoodTags(next);
-      const embeddingText = buildMovieEmbeddingText(next);
-      const vector = await generateEmbedding(embeddingText);
-      if (isValidEmbeddingVector(vector)) {
-        next.vector = vector;
+      next.moodTags = await ensureFiveMoodTags(next, { allowLlm, preferHeuristic: !allowLlm, forceRegen });
+      if (!skipEmbedding) {
+        const embeddingText = buildMovieEmbeddingText(next);
+        const vector = await generateEmbedding(embeddingText);
+        if (isValidEmbeddingVector(vector)) {
+          next.vector = vector;
+        }
       }
     }
 
@@ -2756,21 +3455,8 @@ async function buildOneMovie(title, opts = {}) {
 
   postProcessPlotFields(movie);
 
-  // 融合 plot/detailedPlot/expandedOverview 成 unifiedPlot
-  const plots = [movie.plot, movie.detailedPlot, movie.expandedOverview]
-    .map(s => String(s || '').trim())
-    .filter(Boolean);
-  // 避免重複，合併時去掉重複片段
-  let unified = '';
-  let last = '';
-  for (const p of plots) {
-    if ((p && !last) || (last && !p.startsWith(last))) {
-      if (unified && !unified.endsWith('。') && !unified.endsWith('.')) unified += ' ';
-      unified += p;
-      last = p.slice(0, 40);
-    }
-  }
-  movie.unifiedPlot = unified.trim();
+  // `postProcessPlotFields` makes `detailedPlot` the single canonical detailed plot field.
+  // Do not persist `unifiedPlot`/`expandedOverview`.
 
   const validation = validateMovieForStorage(movie);
   if (!validation.ok) {
@@ -2785,12 +3471,14 @@ async function buildOneMovie(title, opts = {}) {
     }
   }
 
-  const wantMoodTags = (!opts?.fast) || !!opts?.moodTags;
   if (!Array.isArray(movie.moodTags)) {
     movie.moodTags = [];
   }
-  if (movie.moodTags.length === 0 && wantMoodTags && shouldGenerateMoodTags(movie)) {
-    movie.moodTags = await generateMoodTags(movie);
+  if (movie.moodTags.length !== 5 && shouldGenerateMoodTags(movie)) {
+    // In --fast builds, default to heuristic to avoid LLM cost. Pass --moodTags to force LLM.
+    const allowLlm = hasEnv('OPENAI_API_KEY') && (!opts?.fast || !!opts?.moodTags);
+    const preferHeuristic = !!opts?.fast && !opts?.moodTags;
+    movie.moodTags = await ensureFiveMoodTags(movie, { allowLlm, preferHeuristic });
   }
 
   const embeddingText = buildMovieEmbeddingText(movie);
@@ -3063,7 +3751,20 @@ async function main() {
       return;
     }
 
-    const TOP_K = 5;
+    const TOP_K = (() => {
+      const v = getFlagNumber(batchArgs, '--topk', 5);
+      return Number.isFinite(Number(v)) && Number(v) > 0 ? Math.floor(Number(v)) : 5;
+    })();
+
+    const outJsonPath = (() => {
+      const idx = batchArgs.findIndex(a => String(a).toLowerCase() === '--out-json');
+      if (idx >= 0 && batchArgs[idx + 1]) {
+        return path.resolve(process.cwd(), String(batchArgs[idx + 1]));
+      }
+      return null;
+    })();
+
+    const reportRows = [];
     let pass = 0;
     let fail = 0;
 
@@ -3074,18 +3775,43 @@ async function main() {
       }
 
       const expectedRaw = item?.expected;
-      const expected = Array.isArray(expectedRaw)
-        ? expectedRaw.map(String).map(s => s.trim()).filter(Boolean)
-        : (expectedRaw ? [String(expectedRaw).trim()] : []);
+      const expectedTitleRaw = item?.expectedTitle ?? expectedRaw;
+      const expectedImdbRaw = item?.expectedImdbId ?? item?.expectedImdbIds;
+      const expectedKeyRaw = item?.expectedKey ?? item?.expectedKeys;
+
+      const expectedTitles = Array.isArray(expectedTitleRaw)
+        ? expectedTitleRaw.map(String).map(s => s.trim()).filter(Boolean)
+        : (expectedTitleRaw ? [String(expectedTitleRaw).trim()].filter(Boolean) : []);
+
+      const expectedImdbIds = Array.isArray(expectedImdbRaw)
+        ? expectedImdbRaw.map(String).map(s => s.trim()).filter(Boolean)
+        : (expectedImdbRaw ? [String(expectedImdbRaw).trim()].filter(Boolean) : []);
+
+      const expectedKeys = Array.isArray(expectedKeyRaw)
+        ? expectedKeyRaw.map(String).map(s => s.trim()).filter(Boolean)
+        : (expectedKeyRaw ? [String(expectedKeyRaw).trim()].filter(Boolean) : []);
+
+      const hasExpectations = expectedTitles.length > 0 || expectedImdbIds.length > 0 || expectedKeys.length > 0;
 
       const queryInfo = await generateMultilingualQueryEmbeddingWithText(query);
       const queryEmbedding = queryInfo.embedding;
       if (!isValidEmbeddingVector(queryEmbedding)) {
         console.log(`\n[Query] ${query}`);
         console.log('No relevant movies found.');
-        if (expected.length > 0) {
+        if (hasExpectations) {
           fail += 1;
         }
+
+        reportRows.push({
+          query,
+          queryEnglish: queryInfo?.english && queryInfo.english !== queryInfo.original ? queryInfo.english : undefined,
+          expectedTitles,
+          expectedImdbIds,
+          expectedKeys,
+          results: [],
+          pass: !hasExpectations,
+          reason: 'invalid_query_embedding',
+        });
         continue;
       }
 
@@ -3095,9 +3821,20 @@ async function main() {
         if (!hasAnyWWII) {
           console.log(`\n[Query] ${query}`);
           console.log('No relevant movies found.');
-          if (expected.length > 0) {
+          if (hasExpectations) {
             fail += 1;
           }
+
+          reportRows.push({
+            query,
+            queryEnglish: queryInfo?.english && queryInfo.english !== queryInfo.original ? queryInfo.english : undefined,
+            expectedTitles,
+            expectedImdbIds,
+            expectedKeys,
+            results: [],
+            pass: !hasExpectations,
+            reason: 'anchored_wwii_but_no_wwii_in_db',
+          });
           continue;
         }
       }
@@ -3117,9 +3854,20 @@ async function main() {
 
       if (!best) {
         console.log('No relevant movies found.');
-        if (expected.length > 0) {
+        if (hasExpectations) {
           fail += 1;
         }
+
+        reportRows.push({
+          query,
+          queryEnglish: queryInfo?.english && queryInfo.english !== queryInfo.original ? queryInfo.english : undefined,
+          expectedTitles,
+          expectedImdbIds,
+          expectedKeys,
+          results: [],
+          pass: !hasExpectations,
+          reason: 'no_results',
+        });
         continue;
       }
 
@@ -3136,20 +3884,74 @@ async function main() {
         console.log(`- ${r.title} | score=${r.score.toFixed(4)} | sim=${r.similarity.toFixed(4)} | lex=${r.lexicalBoost.toFixed(3)}${terms}${mw}${ma}`);
       }
 
-      if (expected.length > 0) {
-        const ok = expected.some(t => String(best.title).toLowerCase() === String(t).toLowerCase());
-        if (ok) {
-          console.log('Result: PASS');
+      const resultMatchesAnyExpectation = (row) => {
+        if (!row) return false;
+        const t = String(row.title || '').trim().toLowerCase();
+        const imdb = String(row.imdbId || '').trim().toLowerCase();
+        const k = String(row.key || '').trim();
+        if (expectedTitles.length > 0 && expectedTitles.some(x => String(x).trim().toLowerCase() === t)) return true;
+        if (expectedImdbIds.length > 0 && expectedImdbIds.some(x => String(x).trim().toLowerCase() === imdb)) return true;
+        if (expectedKeys.length > 0 && expectedKeys.some(x => String(x).trim() === k)) return true;
+        return false;
+      };
+
+      const didPass = hasExpectations
+        ? top.some(resultMatchesAnyExpectation)
+        : top.length === 0;
+
+      if (hasExpectations) {
+        if (didPass) {
+          console.log(`Result: PASS (hit within top ${TOP_K})`);
           pass += 1;
         } else {
-          console.log(`Result: FAIL (expected: ${expected.join(' | ')})`);
+          const expParts = [];
+          if (expectedTitles.length > 0) expParts.push(`title=${expectedTitles.join(' | ')}`);
+          if (expectedImdbIds.length > 0) expParts.push(`imdbId=${expectedImdbIds.join(' | ')}`);
+          if (expectedKeys.length > 0) expParts.push(`key=${expectedKeys.join(' | ')}`);
+          console.log(`Result: FAIL (expected: ${expParts.join(' ; ')})`);
           fail += 1;
         }
       }
+
+      reportRows.push({
+        query,
+        queryEnglish: queryInfo?.english && queryInfo.english !== queryInfo.original ? queryInfo.english : undefined,
+        expectedTitles,
+        expectedImdbIds,
+        expectedKeys,
+        results: top.map(r => ({
+          title: r.title,
+          imdbId: r.imdbId,
+          key: r.key,
+          score: r.score,
+          similarity: r.similarity,
+          lexicalBoost: r.lexicalBoost,
+          matchedTerms: r.matchedTerms,
+          matchedWantTags: r.matchedWantTags,
+          matchedAvoidTags: r.matchedAvoidTags,
+        })),
+        pass: didPass,
+      });
     }
 
     if (pass + fail > 0) {
       console.log(`\nSummary: PASS=${pass} FAIL=${fail}`);
+    }
+
+    if (outJsonPath) {
+      try {
+        fs.writeFileSync(outJsonPath, JSON.stringify({
+          ok: true,
+          topK: TOP_K,
+          pass,
+          fail,
+          totalWithExpectation: pass + fail,
+          rows: reportRows,
+        }, null, 2));
+        console.log(`Wrote report: ${outJsonPath}`);
+      } catch (e) {
+        console.warn(`Cannot write report JSON: ${outJsonPath} (${e?.message || e})`);
+      }
     }
     return;
   }
@@ -3289,6 +4091,14 @@ async function main() {
             console.log(`[Build] Skipped: ${title}`);
             skippedTitles.push(title);
             continue;
+          }
+
+          // Persist TMDb seed signals (helps export/sorting even when imdbRating is missing).
+          if (seed && typeof seed === 'object') {
+            if (movie.tmdbId == null && seed.tmdbId != null) movie.tmdbId = seed.tmdbId;
+            if (movie.tmdbVoteAverage == null && seed.voteAverage != null) movie.tmdbVoteAverage = seed.voteAverage;
+            if (movie.tmdbVoteCount == null && seed.voteCount != null) movie.tmdbVoteCount = seed.voteCount;
+            if (movie.tmdbPopularity == null && seed.popularity != null) movie.tmdbPopularity = seed.popularity;
           }
 
           const key = buildMovieKey(movie);

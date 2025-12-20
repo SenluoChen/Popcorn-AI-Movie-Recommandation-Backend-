@@ -16,7 +16,7 @@ async function vectorSearchFast(queryEmbedding, topK = 50, opts = {}) {
   const envTimeout = Number(process.env.VECTOR_SERVICE_TIMEOUT_MS);
   const timeoutMs = Number.isFinite(envTimeout)
     ? envTimeout
-    : (Number.isFinite(opts.timeoutMs) ? opts.timeoutMs : 350);
+    : (Number.isFinite(opts.timeoutMs) ? opts.timeoutMs : 2000);
 
   const res = await axios.post(
     url,

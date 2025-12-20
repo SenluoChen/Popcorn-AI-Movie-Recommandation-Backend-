@@ -14,6 +14,19 @@ export type TmdbGenre = { id: number; name: string };
 
 const TMDB_BASE = "https://api.themoviedb.org/3";
 
+// Simple in-memory cache (per-tab). Helps a lot because search results often repeat.
+const TMDB_CACHE = new Map<
+  string,
+  {
+    ts: number;
+    value: any;
+  }
+>();
+
+function nowMs() {
+  return Date.now();
+}
+
 function requireApiKey(): string {
   const key = process.env.REACT_APP_TMDB_API_KEY;
   if (!key) {
@@ -36,12 +49,33 @@ function buildUrl(path: string, params: Record<string, string | number | boolean
 
 async function tmdbGet<T>(path: string, params: Record<string, string | number | boolean | undefined>) {
   const url = buildUrl(path, params);
+
+  const ttlMs = 12 * 60 * 60 * 1000; // 12h
+  const cached = TMDB_CACHE.get(url);
+  if (cached && nowMs() - cached.ts <= ttlMs) {
+    return cached.value as T;
+  }
+
   const res = await fetch(url);
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(`TMDb request failed (${res.status}): ${text}`);
   }
-  return (await res.json()) as T;
+  const data = (await res.json()) as T;
+  TMDB_CACHE.set(url, { ts: nowMs(), value: data });
+  // Bound cache size
+  if (TMDB_CACHE.size > 500) {
+    let oldestKey: string | undefined;
+    let oldestTs = Infinity;
+    TMDB_CACHE.forEach((v, k) => {
+      if (v.ts < oldestTs) {
+        oldestTs = v.ts;
+        oldestKey = k;
+      }
+    });
+    if (oldestKey) TMDB_CACHE.delete(oldestKey);
+  }
+  return data;
 }
 
 export function tmdbImage(path: string | null | undefined, size: "w185" | "w342" | "w500" | "original" = "w342") {

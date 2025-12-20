@@ -18,6 +18,10 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
 
+  // Per-session cache for enrichment results (reduces repeated TMDb calls)
+  const enrichmentCache = (globalThis as any).__POP_ENRICH_CACHE__
+    || ((globalThis as any).__POP_ENRICH_CACHE__ = new Map<string, { id: number; poster_path: string | null }>());
+
   function stableNegativeIdFromImdbId(imdbId: string): number {
     // Deterministic, stable, and very unlikely to collide for our list sizes.
     // Keeps UI working even when backend doesn't provide tmdbId and TMDb enrichment is unavailable.
@@ -57,18 +61,34 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
     };
 
     const enriched = await runWithConcurrency(items, 4, async (r) => {
+      const cacheKey = (() => {
+        const imdbId = String(r?.imdbId || '').trim().toLowerCase();
+        const title = String(r?.title || '').trim().toLowerCase();
+        const year = String(r?.year || '').slice(0, 4);
+        if (imdbId) return `imdb:${imdbId}`;
+        return `ty:${title}|${year}`;
+      })();
+      const cached = enrichmentCache.get(cacheKey);
+      if (cached) return cached;
+
       // 1) Already has TMDb id (best)
       const tmdbIdRaw = r?.tmdbId;
       const tmdbId = typeof tmdbIdRaw === "number" ? tmdbIdRaw : Number(tmdbIdRaw);
       if (Number.isFinite(tmdbId) && tmdbId > 0) {
         if (r?.poster_path) {
-          return { id: tmdbId, poster_path: r.poster_path };
+          const v = { id: tmdbId, poster_path: r.poster_path };
+          enrichmentCache.set(cacheKey, v);
+          return v;
         }
         try {
           const d = await tmdbGetMovieDetails(tmdbId, { language });
-          return { id: tmdbId, poster_path: d?.poster_path ?? null };
+          const v = { id: tmdbId, poster_path: d?.poster_path ?? null };
+          enrichmentCache.set(cacheKey, v);
+          return v;
         } catch {
-          return { id: tmdbId, poster_path: null };
+          const v = { id: tmdbId, poster_path: null };
+          enrichmentCache.set(cacheKey, v);
+          return v;
         }
       }
 
@@ -79,7 +99,9 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
           const found = await tmdbFindByImdbId(imdbId, { language });
           const first = found?.movie_results?.[0];
           if (first?.id) {
-            return { id: first.id, poster_path: first.poster_path ?? null };
+            const v = { id: first.id, poster_path: first.poster_path ?? null };
+            enrichmentCache.set(cacheKey, v);
+            return v;
           }
         } catch {
           // ignore and fallback
@@ -103,13 +125,17 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
         });
         const first = sr?.results?.[0];
         if (first?.id) {
-          return { id: first.id, poster_path: first.poster_path ?? null };
+          const v = { id: first.id, poster_path: first.poster_path ?? null };
+          enrichmentCache.set(cacheKey, v);
+          return v;
         }
       } catch {
         // ignore
       }
 
-      return { id: -1, poster_path: null };
+      const v = { id: -1, poster_path: null };
+      enrichmentCache.set(cacheKey, v);
+      return v;
     });
 
     return enriched;
@@ -169,6 +195,13 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
           _year: year,
         };
       });
+
+      // Show results ASAP (even if posters aren't resolved yet)
+      onRecommend(
+        baseList
+          .filter((m) => Boolean(m.title))
+          .map(({ _imdbId, _tmdbId, _year, ...m }) => m)
+      );
 
       // Enrich posters + numeric TMDb ids when missing
       try {

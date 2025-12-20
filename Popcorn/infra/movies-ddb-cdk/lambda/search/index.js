@@ -83,6 +83,151 @@ function normalizeQueryText(text) {
   return String(text || '').replace(/\s+/g, ' ').trim();
 }
 
+function normalizeFreeText(text) {
+  return String(text || '')
+    .replace(/[\u2010-\u2015]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function containsAny(text, patterns) {
+  const t = String(text || '');
+  for (const p of patterns || []) {
+    if (!p) continue;
+    if (typeof p === 'string') {
+      if (t.includes(p)) return true;
+    } else if (p instanceof RegExp) {
+      if (p.test(t)) return true;
+    }
+  }
+  return false;
+}
+
+function detectGenreIntents(queryText) {
+  const q = normalizeFreeText(queryText);
+  if (!q) return { required: [], excluded: [], lexicalTerms: [] };
+
+  // Note: metadata in DynamoDB appears to store genres/tags in English (e.g., "Comedy", "Science Fiction").
+  // We still detect ZH query intent and map it to those English tokens.
+  const GENRES = [
+    {
+      key: 'comedy',
+      include: ['comedy', 'funny', 'humor', 'humour', /\bcomed(y|ies)\b/i, '喜劇', '喜剧', '搞笑', '好笑', '幽默', '轻松', '輕鬆'],
+      tokens: ['comedy', 'humor', 'humour'],
+    },
+    {
+      key: 'horror',
+      include: ['horror', /\bhorror\b/i, '恐怖', '驚悚', '惊悚', '嚇', '吓'],
+      tokens: ['horror'],
+    },
+    {
+      key: 'thriller',
+      include: ['thriller', /\bthriller\b/i, '驚悚', '惊悚', '緊張', '紧张'],
+      tokens: ['thriller'],
+    },
+    {
+      key: 'romance',
+      include: ['romance', 'romantic', /\bromance\b/i, '愛情', '爱情', '戀愛', '恋爱', '浪漫'],
+      tokens: ['romance', 'romantic'],
+    },
+    {
+      key: 'action',
+      include: ['action', /\baction\b/i, '動作', '动作', '武打', '打鬥', '打斗'],
+      tokens: ['action'],
+    },
+    {
+      key: 'crime',
+      include: ['crime', 'gangster', /\bcrime\b/i, '犯罪', '黑幫', '黑帮'],
+      tokens: ['crime'],
+    },
+    {
+      key: 'mystery',
+      include: ['mystery', 'detective', /\bmystery\b/i, '懸疑', '悬疑', '推理', '破案'],
+      tokens: ['mystery'],
+    },
+    {
+      key: 'sci-fi',
+      include: ['sci-fi', 'scifi', 'science fiction', /\bsci[- ]?fi\b/i, '科幻'],
+      tokens: ['sci-fi', 'science fiction'],
+    },
+    {
+      key: 'fantasy',
+      include: ['fantasy', /\bfantasy\b/i, '奇幻', '魔幻'],
+      tokens: ['fantasy'],
+    },
+    {
+      key: 'drama',
+      include: ['drama', /\bdrama\b/i, '劇情', '剧情'],
+      tokens: ['drama'],
+    },
+    {
+      key: 'family',
+      include: ['family', /\bfamily\b/i, '家庭', '親子', '亲子', '合家'],
+      tokens: ['family'],
+    },
+    {
+      key: 'adventure',
+      include: ['adventure', /\badventure\b/i, '冒險', '冒险'],
+      tokens: ['adventure'],
+    },
+    {
+      key: 'war',
+      include: ['war', /\bwar\b/i, '戰爭', '战争', '二戰', '二战', 'wwii', 'world war'],
+      tokens: ['war'],
+    },
+    {
+      key: 'documentary',
+      include: ['documentary', /\bdocumentary\b/i, '紀錄片', '纪录片'],
+      tokens: ['documentary'],
+    },
+    {
+      key: 'music',
+      include: ['music', 'musical', /\bmusical\b/i, '音樂', '音乐', '歌舞'],
+      tokens: ['music', 'musical'],
+    },
+  ];
+
+  const required = new Set();
+  for (const g of GENRES) {
+    if (containsAny(q, g.include)) {
+      required.add(g.key);
+    }
+  }
+
+  // Explicit negations / mood constraints
+  const excluded = new Set();
+  const wantLight = containsAny(q, ['輕鬆', '轻松', '放鬆', '放松', '療癒', '治愈', '治癒', 'chill', 'relax', 'feel good', 'feel-good']);
+  const negNoHorror = containsAny(q, ['不恐怖', '不要恐怖', 'not horror', 'no horror', 'without horror', '不血腥', '不嚇人', '不吓人', '不驚悚', '不惊悚']);
+  if (wantLight || negNoHorror) {
+    excluded.add('horror');
+    excluded.add('thriller');
+  }
+  const negNoCrime = containsAny(q, ['不犯罪', '不要犯罪', 'no crime', 'not crime', '不黑幫', '不黑帮']);
+  if (wantLight || negNoCrime) {
+    excluded.add('crime');
+    excluded.add('war');
+  }
+
+  // If user explicitly requests a genre, don't exclude it even if "light" is present.
+  for (const k of required) {
+    if (excluded.has(k)) excluded.delete(k);
+  }
+
+  // Lexical terms used for a small rerank boost.
+  const lexicalTerms = new Set();
+  for (const g of GENRES) {
+    if (!required.has(g.key)) continue;
+    for (const t of g.tokens || []) lexicalTerms.add(String(t).toLowerCase());
+  }
+
+  return {
+    required: Array.from(required),
+    excluded: Array.from(excluded),
+    lexicalTerms: Array.from(lexicalTerms),
+  };
+}
+
 function buildQueryHints(query) {
   const q = String(query || '').trim();
   const qLower = q.toLowerCase();
@@ -106,6 +251,8 @@ function buildQueryHints(query) {
 
   const wantsHorror = /\b(horror)\b/i.test(qLower) || q.includes('恐怖');
   const wantsComedy = /\b(comedy)\b/i.test(qLower) || q.includes('喜劇') || q.includes('搞笑') || q.includes('好笑');
+
+  const genreIntents = detectGenreIntents(q);
 
   let wantLang;
   if (wantsJapanese) wantLang = 'ja';
@@ -136,6 +283,21 @@ function buildQueryHints(query) {
   if (wantsHorror) lexicalTerms.add('horror');
   if (wantsComedy) lexicalTerms.add('comedy');
 
+  for (const t of genreIntents.lexicalTerms || []) {
+    lexicalTerms.add(String(t).toLowerCase());
+  }
+
+  // Mood intent (soft): if user explicitly asks for inspiring/uplifting, boost matches.
+  // This is intentionally a rerank hint (not a hard filter) to avoid empty results.
+  const moodWantTags = [];
+  const wantsInspiring = containsAny(q, [
+    '激勵', '激励', '勵志', '励志', '鼓舞', '振奮', '振奋', '正能量', '正能量',
+    'inspiring', 'inspirational', 'uplifting', 'motivational', 'inspire', 'uplift',
+  ]);
+  if (wantsInspiring) {
+    moodWantTags.push('uplifting', 'heartwarming', 'healing', 'comforting', 'feel-good');
+  }
+
   return {
     expandedQuery,
     wantLang,
@@ -144,7 +306,19 @@ function buildQueryHints(query) {
     wantsEnglish,
     wantsAnimation,
     lexicalTerms: Array.from(lexicalTerms),
+    requiredGenres: genreIntents.required,
+    excludedGenres: genreIntents.excluded,
+    moodWantTags,
   };
+}
+
+function toMoodTags(value) {
+  if (Array.isArray(value)) return value.map((t) => String(t || '').trim().toLowerCase()).filter(Boolean);
+  if (!value) return [];
+  return String(value)
+    .split(/[\s,;|]+/g)
+    .map((t) => String(t || '').trim().toLowerCase())
+    .filter(Boolean);
 }
 
 function normalizeLanguageCode(value) {
@@ -193,7 +367,6 @@ function buildMovieSearchText(movie) {
   return [
     movie?.title,
     movie?.genre,
-    movie?.tags,
     movie?.keywords,
     movie?.language,
     movie?.productionCountry,
@@ -237,7 +410,73 @@ function movieMatchesHints(movie, hints) {
     }
   }
 
+  // Exclusions should always be respected (e.g., "不恐怖", "不血腥").
+  if (Array.isArray(hints?.excludedGenres) && hints.excludedGenres.length) {
+    const t = buildMovieSearchText(movie);
+    for (const g of hints.excludedGenres) {
+      if (!g) continue;
+      if (g === 'sci-fi') {
+        if (t.includes('sci-fi') || t.includes('science fiction') || t.includes('scifi')) return false;
+      } else if (t.includes(String(g).toLowerCase())) {
+        return false;
+      }
+    }
+  }
+
   return true;
+}
+
+function movieMatchesAnyRequiredGenre(movie, requiredGenres) {
+  if (!Array.isArray(requiredGenres) || requiredGenres.length === 0) return true;
+  const t = buildMovieSearchText(movie);
+  for (const g of requiredGenres) {
+    if (!g) continue;
+    if (g === 'sci-fi') {
+      if (t.includes('sci-fi') || t.includes('science fiction') || t.includes('scifi')) return true;
+      continue;
+    }
+    if (t.includes(String(g).toLowerCase())) return true;
+  }
+  return false;
+}
+
+function genreScoreAdjust(movie, hints) {
+  const t = buildMovieSearchText(movie);
+  const required = Array.isArray(hints?.requiredGenres) ? hints.requiredGenres : [];
+  const excluded = Array.isArray(hints?.excludedGenres) ? hints.excludedGenres : [];
+
+  let boost = 0;
+  let penalty = 0;
+
+  // Penalize excluded genres strongly.
+  for (const g of excluded) {
+    if (!g) continue;
+    if (g === 'sci-fi') {
+      if (t.includes('sci-fi') || t.includes('science fiction') || t.includes('scifi')) penalty -= 0.22;
+      continue;
+    }
+    if (t.includes(String(g).toLowerCase())) penalty -= 0.22;
+  }
+
+  // If user asked for genres, boost matches and slightly penalize non-matches.
+  if (required.length) {
+    let matched = 0;
+    for (const g of required) {
+      if (!g) continue;
+      if (g === 'sci-fi') {
+        if (t.includes('sci-fi') || t.includes('science fiction') || t.includes('scifi')) matched++;
+        continue;
+      }
+      if (t.includes(String(g).toLowerCase())) matched++;
+    }
+    if (matched > 0) {
+      boost += Math.min(0.14, matched * 0.06);
+    } else {
+      penalty -= 0.10;
+    }
+  }
+
+  return { boost, penalty };
 }
 
 async function sleep(ms) {
@@ -607,16 +846,29 @@ exports.handler = async (event) => {
 
     if (faissServiceUrl && String(faissServiceUrl).trim()) {
       usedFaiss = true;
-      const faissTopK = Math.max(50, topK * 20);
-      const faissData = await faissSearch({ baseUrl: faissServiceUrl, vector: queryVector, topK: faissTopK });
-      tFaissMs = nowMs() - tFaissStart;
+      try {
+        const faissTopK = Math.max(50, topK * 20);
+        const faissData = await faissSearch({ baseUrl: faissServiceUrl, vector: queryVector, topK: faissTopK });
+        tFaissMs = nowMs() - tFaissStart;
 
-      const hits = Array.isArray(faissData?.results) ? faissData.results : [];
-      const imdbIds = hits.map((r) => r?.imdbId).filter(Boolean);
+        const hits = Array.isArray(faissData?.results) ? faissData.results : [];
+        const imdbIds = hits.map((r) => r?.imdbId).filter(Boolean);
 
-      const tFetchStart = nowMs();
-      candidateMovies = await batchGetMoviesByImdbIds({ tableName, region, imdbIds });
-      tFetchMs = nowMs() - tFetchStart;
+        const tFetchStart = nowMs();
+        candidateMovies = await batchGetMoviesByImdbIds({ tableName, region, imdbIds });
+        tFetchMs = nowMs() - tFetchStart;
+      } catch (e) {
+        // If FAISS is down/unhealthy, fall back to DynamoDB scan so the endpoint still works.
+        // Keep logs safe (no secrets).
+        const msg = redactPotentialSecrets(e?.message || e);
+        console.error(`FAISS search failed; falling back to DynamoDB scan: ${msg}`);
+        usedFaiss = false;
+        tFaissMs = nowMs() - tFaissStart;
+
+        const tScanStart = nowMs();
+        candidateMovies = await scanAllMovies({ tableName, region, maxItems: Number.isFinite(maxScan) && maxScan > 0 ? Math.floor(maxScan) : null });
+        tFetchMs = nowMs() - tScanStart;
+      }
     } else {
       // Fallback to scan if FAISS isn't configured
       const tScanStart = nowMs();
@@ -628,14 +880,20 @@ exports.handler = async (event) => {
     const scored = [];
     // First pass: apply heuristic filters when query clearly asks for them.
     // If it becomes too restrictive, we'll fall back to unfiltered scoring.
-    const filtered = candidateMovies.filter((m) => movieMatchesHints(m, hints));
+    const filteredHard = candidateMovies.filter((m) => movieMatchesHints(m, hints));
+    const filteredGenres = filteredHard.filter((m) => movieMatchesAnyRequiredGenre(m, hints.requiredGenres));
 
     // If the query explicitly asks for a hard constraint (e.g., animation/anime or a target language),
     // never fall back to unfiltered results — better to return fewer/none than irrelevant items.
     const hasHardConstraints = Boolean(hints?.wantsAnimation || hints?.wantLang);
-    const candidates = hasHardConstraints
-      ? filtered
-      : ((filtered.length >= Math.min(50, topK * 10)) ? filtered : candidateMovies);
+
+    // Genre intent: try to be strict if we have enough matches, otherwise fall back and rely on rerank.
+    const wantsGenres = Array.isArray(hints?.requiredGenres) && hints.requiredGenres.length > 0;
+    const genreStrictEnough = filteredGenres.length >= Math.min(40, topK * 8);
+
+    const candidates = (hasHardConstraints || wantsGenres)
+      ? (wantsGenres ? (genreStrictEnough ? filteredGenres : filteredHard) : filteredHard)
+      : ((filteredHard.length >= Math.min(50, topK * 10)) ? filteredHard : candidateMovies);
 
     for (const m of candidates) {
       const vec = m?.vector;
@@ -654,7 +912,23 @@ exports.handler = async (event) => {
         }
       }
       lexicalBoost = Math.min(0.12, lexicalBoost);
-      const score = similarity + lexicalBoost;
+
+      // Mood rerank boost: helps queries like "激勵人心電影".
+      // Keep it small so we don't overwhelm semantic similarity.
+      let moodBoost = 0;
+      const wantMood = Array.isArray(hints?.moodWantTags) ? hints.moodWantTags : [];
+      if (wantMood.length) {
+        const mt = new Set(toMoodTags(m?.moodTags));
+        let matched = 0;
+        for (const t of wantMood) {
+          if (t && mt.has(String(t).toLowerCase())) matched += 1;
+        }
+        // Up to +0.12 (4 matches).
+        moodBoost = Math.min(0.12, matched * 0.03);
+      }
+
+      const { boost: genreBoost, penalty: genrePenalty } = genreScoreAdjust(m, hints);
+      const score = similarity + lexicalBoost + moodBoost + genreBoost + genrePenalty;
 
       scored.push({
         imdbId,
@@ -665,6 +939,9 @@ exports.handler = async (event) => {
         similarity,
         score,
         lexicalBoost,
+        moodBoost,
+        genreBoost,
+        genrePenalty,
         productionCountry: m?.productionCountry,
       });
     }
@@ -685,6 +962,8 @@ exports.handler = async (event) => {
         wantsEnglish: Boolean(hints.wantsEnglish),
         wantsAnimation: Boolean(hints.wantsAnimation),
       },
+      hintGenres: Array.isArray(hints?.requiredGenres) && hints.requiredGenres.length ? hints.requiredGenres : undefined,
+      hintExcludeGenres: Array.isArray(hints?.excludedGenres) && hints.excludedGenres.length ? hints.excludedGenres : undefined,
       timingsMs: {
         total: tTotalMs,
         translate: tTranslateMs,

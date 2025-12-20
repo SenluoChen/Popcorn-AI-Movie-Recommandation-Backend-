@@ -1,0 +1,92 @@
+﻿{
+  "ok": true,
+  "query": "Dark, gloomy, oppressive, psychological thriller",
+  "mood": {
+    "want": [
+      "thrilling",
+      "dark"
+    ],
+    "avoid": []
+  },
+  "topK": 5,
+  "results": [
+    {
+      "title": "Wait Until Dark",
+      "imdbId": "tt0062467",
+      "key": "tt0062467",
+      "similarity": 0.48285485389623456,
+      "score": 0.6578548538962345,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "thriller"
+      ],
+      "matchedWantTags": [
+        "thrilling",
+        "dark"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Se7en",
+      "imdbId": "tt0114369",
+      "key": "tt0114369",
+      "similarity": 0.49371637642424515,
+      "score": 0.6537163764242452,
+      "lexicalBoost": 0,
+      "matchedTerms": [],
+      "matchedWantTags": [
+        "thrilling",
+        "dark"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Perras",
+      "imdbId": "tt1857824",
+      "key": "tt1857824",
+      "similarity": 0.4705731836768864,
+      "score": 0.6455731836768864,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "thriller"
+      ],
+      "matchedWantTags": [
+        "thrilling",
+        "dark"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "The Conversation",
+      "imdbId": "tt0071360",
+      "key": "tt0071360",
+      "similarity": 0.46278799565069867,
+      "score": 0.6377879956506987,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "thriller"
+      ],
+      "matchedWantTags": [
+        "thrilling",
+        "dark"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "The Handmaiden",
+      "imdbId": "tt4016934",
+      "key": "tt4016934",
+      "similarity": 0.46092094272430395,
+      "score": 0.635920942724304,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "thriller"
+      ],
+      "matchedWantTags": [
+        "thrilling",
+        "dark"
+      ],
+      "matchedAvoidTags": []
+    }
+  ]
+}

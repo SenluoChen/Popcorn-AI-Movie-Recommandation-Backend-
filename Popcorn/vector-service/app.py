@@ -55,6 +55,11 @@ def _startup() -> None:
     _INDEX, _META = _load_assets()
 
 
+@app.get("/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
 @app.post("/search")
 def search(req: SearchRequest) -> dict[str, Any]:
     if _INDEX is None or _META is None:

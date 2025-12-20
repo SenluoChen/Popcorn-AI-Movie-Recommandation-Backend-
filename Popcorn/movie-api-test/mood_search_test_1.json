@@ -1,0 +1,82 @@
+﻿{
+  "ok": true,
+  "query": "?喟???皞急???擛??餃蔣嚗?閬???,
+  "queryEnglish": "I want to watch healing, warm, and relaxing movies, not horror.",
+  "mood": {
+    "want": [
+      "lighthearted",
+      "healing",
+      "comforting"
+    ],
+    "avoid": [
+      "scary"
+    ]
+  },
+  "topK": 5,
+  "results": [
+    {
+      "title": "Anima",
+      "imdbId": "tt10516984",
+      "key": "tt10516984",
+      "similarity": 0.2908643215743794,
+      "score": 0.6578643215743795,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "relaxing"
+      ],
+      "matchedWantTags": [
+        "lighthearted",
+        "comforting"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Once",
+      "imdbId": "tt9805526",
+      "key": "tt9805526",
+      "similarity": 0.2662841904722835,
+      "score": 0.6332841904722836,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "relaxing"
+      ],
+      "matchedWantTags": [
+        "lighthearted",
+        "comforting"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "The Look of Frances Ha",
+      "imdbId": "tt5923204",
+      "key": "tt5923204",
+      "similarity": 0.25450487650007014,
+      "score": 0.6215048765000701,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "relaxing"
+      ],
+      "matchedWantTags": [
+        "lighthearted",
+        "comforting"
+      ],
+      "matchedAvoidTags": []
+    },
+    {
+      "title": "Behind the Scenes of 'Hotel Mumbai'",
+      "imdbId": "tt11052402",
+      "key": "tt11052402",
+      "similarity": 0.2427741386101845,
+      "score": 0.6097741386101845,
+      "lexicalBoost": 0.015,
+      "matchedTerms": [
+        "relaxing"
+      ],
+      "matchedWantTags": [
+        "lighthearted",
+        "comforting"
+      ],
+      "matchedAvoidTags": []
+    }
+  ]
+}
