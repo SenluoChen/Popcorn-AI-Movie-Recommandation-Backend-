@@ -1,10 +1,10 @@
 // note: src/pages/SearchResultsPage.tsx
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
-import { tmdbImage } from "../utils/tmdb";
+import { tmdbGetMovieDetails, tmdbImage } from "../utils/tmdb";
 import type { MovieRecommendation } from "../utils/recommendMovies";
 
 type NavState = {
@@ -26,6 +26,70 @@ export default function SearchResultsPage() {
 
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState<MovieRecommendation[]>(initialResults);
+
+  const requestedOverviewIdsRef = useRef<Set<number>>(new Set());
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function enrichOverviews() {
+      const need = results
+        .filter((m) => Number.isFinite(m.id) && m.id > 0)
+        .filter((m) => !String(m.overview || "").trim())
+        .filter((m) => !requestedOverviewIdsRef.current.has(m.id));
+
+      if (!need.length) return;
+
+      need.forEach((m) => requestedOverviewIdsRef.current.add(m.id));
+
+      const runWithConcurrency = async <T, R>(arr: T[], limit: number, worker: (v: T) => Promise<R>) => {
+        const out: R[] = new Array(arr.length);
+        let next = 0;
+        const runners = new Array(Math.max(1, limit)).fill(0).map(async () => {
+          while (next < arr.length) {
+            const i = next++;
+            out[i] = await worker(arr[i]);
+          }
+        });
+        await Promise.all(runners);
+        return out;
+      };
+
+      const fetched = await runWithConcurrency(
+        need,
+        4,
+        async (m) => {
+          try {
+            const d = await tmdbGetMovieDetails(m.id, { language: "en-US" });
+            return { id: m.id, overview: String(d?.overview || "").trim() };
+          } catch {
+            return { id: m.id, overview: "" };
+          }
+        }
+      );
+
+      if (cancelled) return;
+
+      const byId = new Map<number, string>();
+      fetched.forEach((x) => {
+        if (x && Number.isFinite(x.id)) byId.set(x.id, x.overview || "");
+      });
+
+      setResults((prev) =>
+        prev.map((m) => {
+          const nextOverview = byId.get(m.id);
+          if (nextOverview === undefined) return m;
+          if (String(m.overview || "").trim()) return m;
+          return { ...m, overview: nextOverview };
+        })
+      );
+    }
+
+    enrichOverviews();
+    return () => {
+      cancelled = true;
+    };
+  }, [results]);
 
   // note: Keep input in sync with URL (when user navigates with browser back/forward)
   useEffect(() => {
@@ -84,6 +148,8 @@ export default function SearchResultsPage() {
                   ? m.vote_average.toFixed(1)
                   : "—";
 
+                const overviewText = String(m.overview || "").trim();
+
                 return (
                   <div
                     key={`${m.id}|${String((m as any).imdbId || '')}|${m.title}|${m.release_date || ''}`}
@@ -113,6 +179,14 @@ export default function SearchResultsPage() {
                       <div className="pc-movie-rating" style={{ color: ink }}>
                         <div className="pc-movie-rating-num">{rating}</div>
                         <div className="pc-movie-rating-star">{star}</div>
+                      </div>
+
+                      <div className="pc-movie-overview" style={{ color: "var(--text-invert)" }}>
+                        {overviewText
+                          ? overviewText
+                          : hasId
+                            ? "Loading plot…"
+                            : "Plot unavailable."}
                       </div>
                     </div>
                   </div>

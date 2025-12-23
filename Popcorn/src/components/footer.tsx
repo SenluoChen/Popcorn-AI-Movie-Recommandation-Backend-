@@ -1,8 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -13,8 +11,8 @@ export default function Footer() {
       sx={{
         backgroundColor: 'var(--brand-900)',
         borderTop: '4px solid var(--accent-500)',
-        padding: '50px 20px 30px',
-        mt: 4,
+        padding: '64px 20px 44px',
+        mt: 0,
       }}
     >
       {/*
@@ -172,22 +170,7 @@ export default function Footer() {
         </Box>
 
         {/*
- * quick note: Newsletter
- */}
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          <TextField
-            placeholder="Votre email"
-            size="small"
-            InputProps={{ sx: { color: 'var(--text-invert)' } }}
-            sx={{ backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: 1 }}
-          />
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: 'var(--accent-500)', '&:hover': { backgroundColor: 'var(--accent-600)' } }}
-          >
-            S'abonner
-          </Button>
-        </Box>
+        {/* newsletter removed per request */}
       </Box>
 
       {/*
@@ -197,14 +180,12 @@ export default function Footer() {
         sx={{
           mt: 5,
           textAlign: 'center',
-          fontSize: 12,
-          color: 'var(--text-invert)',
-          opacity: 0.8,
+          fontSize: 13,
+          color: 'var(--surface-2)',
+          opacity: 0.95,
         }}
       >
-        PAIEMENT 100% SÉCURISÉ – CB / VISA / MASTERCARD
-        <br />
-        <span>© {new Date().getFullYear()} Recyclivre</span>
+        © 2025 Popcorn AI. All rights reserved.
       </Box>
     </Box>
   );

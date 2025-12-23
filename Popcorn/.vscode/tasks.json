@@ -28,6 +28,25 @@
 				"build"
 			],
 			"isBackground": false
+		},
+		{
+			"label": "build (react-scripts)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
 		}
 	]
 }

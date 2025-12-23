@@ -389,52 +389,34 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
       <nav className="navbar-content">
         <div
           style={{
-            height: "80px",
-            display: "flex",
+            height: "70px",
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
             alignItems: "center",
-            justifyContent: "space-between",
             width: "100%",
-            padding: "0 5px",
+            padding: "0 8px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "15px",
-              flex: 1,
-            }}
-          >
-            {/*
- * Logo ?
- */}
+          {/* Left: Logo */}
+          <div style={{ display: "flex", alignItems: "center" }}>
             <Link to="/" style={{ display: "block" }}>
               <img
                 src="/0ce80c37-a090-461c-872f-0e45a2899756.png"
                 alt="Popcorn"
                 style={{
                   display: "block",
-                  height: "90px",
+                  height: "56px",
                   width: "auto",
                   objectFit: "contain",
                   cursor: "pointer",
-                  marginRight: "40px",
                 }}
               />
             </Link>
+          </div>
 
-            {/*
- * Search ?
- */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "20px",
-                flex: 1,
-              }}
-            >
-              <div style={{ position: "relative", flex: 1 }}>
+          {/* Center: Search (X/Y centered in navbar) */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 760 }}>
                 <input
                   type="text"
                   placeholder="Describe the movie you want…"
@@ -446,11 +428,11 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
                   onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                   style={{
                     width: "100%",
-                    padding: "12px 80px 12px 18px",
+                    padding: "10px 76px 10px 16px",
                     borderRadius: "22px",
                     border: "1px solid #ccc",
                     fontSize: "16px",
-                    height: "48px",
+                    height: "42px",
                     boxSizing: "border-box",
                   }}
                 />
@@ -464,19 +446,21 @@ function Navbar({ query, setQuery, onRecommend }: NavbarProps) {
                     transform: "translateY(-50%)",
                     backgroundColor: "#191e25",
                     color: "white",
-                    padding: "8px 14px",
+                    padding: "6px 12px",
                     border: "none",
                     borderRadius: "20px",
                     cursor: "pointer",
                     fontWeight: "bold",
-                    height: "36px",
+                    height: "32px",
                   }}
                 >
                   {loading ? "Searching…" : "Search"}
                 </button>
-              </div>
             </div>
           </div>
+
+          {/* Right: spacer column (keeps center truly centered) */}
+          <div />
         </div>
       </nav>
 

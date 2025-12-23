@@ -1,9 +1,6 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { tmdbImage } from './utils/tmdb';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('tmdbImage builds an image URL', () => {
+  expect(tmdbImage('/abc.jpg', 'w185')).toBe('https://image.tmdb.org/t/p/w185/abc.jpg');
+  expect(tmdbImage(null)).toBe('');
 });

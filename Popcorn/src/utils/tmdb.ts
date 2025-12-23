@@ -166,6 +166,32 @@ export async function tmdbGetMovieDetails(id: number, opts?: { language?: string
   >(`/movie/${id}`, { language: opts?.language });
 }
 
+export type TmdbCastMember = {
+  id: number;
+  name: string;
+  character?: string;
+  order?: number;
+  profile_path: string | null;
+};
+
+export type TmdbCrewMember = {
+  id: number;
+  name: string;
+  job?: string;
+  department?: string;
+  profile_path: string | null;
+};
+
+export type TmdbMovieCredits = {
+  id: number;
+  cast: TmdbCastMember[];
+  crew: TmdbCrewMember[];
+};
+
+export async function tmdbGetMovieCredits(id: number, opts?: { language?: string }) {
+  return tmdbGet<TmdbMovieCredits>(`/movie/${id}/credits`, { language: opts?.language });
+}
+
 export type WatchProvider = {
   provider_id: number;
   provider_name: string;

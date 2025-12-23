@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { tmdbFindByImdbId, tmdbGetMovieDetails } from '../utils/tmdb';
 
 type SearchResult = {
   imdbId: string;
@@ -6,6 +7,7 @@ type SearchResult = {
   year?: string;
   similarity: number;
   productionCountry?: string;
+  overview?: string;
 };
 
 function getApiBaseUrl(): string {
@@ -26,17 +28,19 @@ export default function AwsVectorSearch() {
   const [error, setError] = useState<string>('');
   const [results, setResults] = useState<SearchResult[]>([]);
 
+  const requestedImdbIdsRef = useRef<Set<string>>(new Set());
+
   const canSearch = Boolean(apiBaseUrl);
 
   async function onSearch() {
     const q = query.trim();
     if (!q) {
-      setError('請先輸入一句話再搜尋。');
+      setError('Please enter a query before searching.');
       return;
     }
 
     if (!canSearch) {
-      setError('尚未設定 API URL（REACT_APP_RELIVRE_API_URL）。');
+      setError('API URL is not configured (REACT_APP_RELIVRE_API_URL).');
       return;
     }
 
@@ -67,6 +71,73 @@ export default function AwsVectorSearch() {
     }
   }
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function enrichOverviews() {
+      const need = results
+        .map((r) => ({ ...r, imdbId: String(r?.imdbId || '').trim() }))
+        .filter((r) => /^tt\d+$/i.test(r.imdbId))
+        .filter((r) => !String(r.overview || '').trim())
+        .filter((r) => !requestedImdbIdsRef.current.has(r.imdbId));
+
+      if (!need.length) return;
+
+      need.forEach((r) => requestedImdbIdsRef.current.add(r.imdbId));
+
+      const runWithConcurrency = async <T, R>(arr: T[], limit: number, worker: (v: T) => Promise<R>) => {
+        const out: R[] = new Array(arr.length);
+        let next = 0;
+        const runners = new Array(Math.max(1, limit)).fill(0).map(async () => {
+          while (next < arr.length) {
+            const i = next++;
+            out[i] = await worker(arr[i]);
+          }
+        });
+        await Promise.all(runners);
+        return out;
+      };
+
+      const fetched = await runWithConcurrency(
+        need,
+        4,
+        async (r) => {
+          try {
+            const found = await tmdbFindByImdbId(r.imdbId, { language: 'en-US' });
+            const tmdbId = found?.movie_results?.[0]?.id;
+            if (!tmdbId) return { imdbId: r.imdbId, overview: '' };
+            const d = await tmdbGetMovieDetails(tmdbId, { language: 'en-US' });
+            return { imdbId: r.imdbId, overview: String(d?.overview || '').trim() };
+          } catch {
+            return { imdbId: r.imdbId, overview: '' };
+          }
+        }
+      );
+
+      if (cancelled) return;
+
+      const byImdbId = new Map<string, string>();
+      fetched.forEach((x) => {
+        if (x?.imdbId) byImdbId.set(x.imdbId, x.overview || '');
+      });
+
+      setResults((prev) =>
+        prev.map((r) => {
+          const imdbId = String(r?.imdbId || '').trim();
+          const nextOverview = byImdbId.get(imdbId);
+          if (nextOverview === undefined) return r;
+          if (String(r.overview || '').trim()) return r;
+          return { ...r, overview: nextOverview };
+        })
+      );
+    }
+
+    enrichOverviews();
+    return () => {
+      cancelled = true;
+    };
+  }, [results]);
+
   return (
     <div
       style={{
@@ -76,9 +147,9 @@ export default function AwsVectorSearch() {
         padding: 16,
       }}
     >
-      <div style={{ fontWeight: 700, fontSize: 16 }}>AI 向量搜尋（雲端）</div>
+      <div style={{ fontWeight: 700, fontSize: 16 }}>AI Vector Search (Cloud)</div>
       <div style={{ color: '#6e6e73', marginTop: 6, fontSize: 13 }}>
-        這會呼叫 AWS API（OpenAI embedding + DynamoDB 向量資料）
+        Calls the AWS API (OpenAI embeddings + DynamoDB vector data)
       </div>
 
       <div style={{ display: 'flex', gap: 10, marginTop: 12, flexWrap: 'wrap' }}>
@@ -90,7 +161,7 @@ export default function AwsVectorSearch() {
               onSearch();
             }
           }}
-          placeholder='例如：不血腥的懸疑推理、想看棒球電影、外星人冒險…'
+          placeholder='e.g. non-violent detective thriller, baseball movie, alien adventure…'
           style={{
             flex: '1 1 420px',
             minWidth: 260,
@@ -112,13 +183,13 @@ export default function AwsVectorSearch() {
             cursor: loading ? 'not-allowed' : 'pointer',
           }}
         >
-          {loading ? '搜尋中…' : '搜尋'}
+          {loading ? 'Searching…' : 'Search'}
         </button>
       </div>
 
       {!canSearch ? (
         <div style={{ marginTop: 10, color: '#b42318', fontSize: 13 }}>
-          尚未設定 API URL。請在 build 時設定環境變數：REACT_APP_RELIVRE_API_URL
+          API URL is not configured. Set REACT_APP_RELIVRE_API_URL at build time.
         </div>
       ) : null}
 
@@ -147,10 +218,18 @@ export default function AwsVectorSearch() {
                     {r.title}{r.year ? ` (${r.year})` : ''}
                   </div>
                   <div style={{ color: '#6e6e73', marginTop: 4, fontSize: 12 }}>
-                    {r.productionCountry ? `原產地：${r.productionCountry} · ` : ''}
+                    {r.productionCountry ? `Country: ${r.productionCountry} · ` : ''}
                     <a href={`https://www.imdb.com/title/${r.imdbId}/`} target='_blank' rel='noreferrer' style={{ color: '#6e6e73' }}>...
                       {r.imdbId}
                     </a>
+                  </div>
+
+                  <div className="pc-movie-overview" style={{ marginTop: 8, color: '#111' }}>
+                    {String(r.overview || '').trim()
+                      ? String(r.overview || '').trim()
+                      : /^tt\d+$/i.test(String(r.imdbId || '').trim())
+                        ? 'Loading plot…'
+                        : 'Plot unavailable.'}
                   </div>
                 </div>
                 <div style={{ fontVariantNumeric: 'tabular-nums', color: '#111', fontWeight: 700 }}>
