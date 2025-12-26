@@ -286,9 +286,7 @@ h1, h2 {
 }
 
 .pc-movie-meta {
-  /* Slightly reduce vertical space to make the green footer a bit shorter
-     while keeping horizontal padding for text alignment */
-  padding: 12px 14px;
+  padding: 14px;
 }
 
 .pc-movie-title {
