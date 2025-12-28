@@ -49,8 +49,21 @@
 				"build"
 			],
 			"options": {
-				"cwd": "c:\\Users\\Louis\\Visual Studio\\Popcorn\\Popcorn"
+				"cwd": "${workspaceFolder}\\frontend\\Popcorn"
 			},
+			"isBackground": false
+		},
+		{
+			"label": "Restructure into frontend/backend",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}\\scripts\\restructure_frontend_backend.ps1"
+			],
 			"isBackground": false
 		}
 	]

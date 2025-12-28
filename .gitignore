@@ -1,0 +1,8 @@
+﻿\n# TEMP ignore large artifacts\nbackend/**/node_modules/\nbackend/**/cdk.out/\nbackend/**/faiss.index\nfrontend/**/node_modules/\nfrontend/**/build/\nMovie-data/index/faiss.index\n
+# TEMP ignore large artifacts
+backend/**/node_modules/
+backend/**/cdk.out/
+backend/**/faiss.index
+frontend/**/node_modules/
+frontend/**/build/
+Movie-data/index/faiss.index
