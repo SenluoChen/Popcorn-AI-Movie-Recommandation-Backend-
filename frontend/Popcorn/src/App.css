@@ -262,7 +262,7 @@ h1, h2 {
 .pc-movie-grid {
   display: grid;
   /* Slightly wider cards so content reads better on larger screens */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 28px;
   margin-top: 14px;
   margin-bottom: 36px;
@@ -288,7 +288,7 @@ h1, h2 {
 }
 
 .pc-home .pc-movie-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 36px;
   margin-top: 18px;
   margin-bottom: 24px;
@@ -398,14 +398,14 @@ h1, h2 {
 
 .pc-movie-title {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .pc-home .pc-movie-title {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .pc-home .pc-movie-overview {
