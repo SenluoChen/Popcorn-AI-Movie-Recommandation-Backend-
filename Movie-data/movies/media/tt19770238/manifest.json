@@ -1,0 +1,57 @@
+{
+  "imdbId": "tt19770238",
+  "title": "Aftersun",
+  "year": "2022",
+  "tmdbId": 965150,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt19770238\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/8EO0wPt7dliKw1o0ebmu27MDKZv.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt19770238\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/d5l2ITQvpgP0dcWCAG6PUvp8YZw.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt19770238\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/4jdduww9j5RyzO4ITRcuBFhqNN1.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt19770238\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/hhICjHximfBciqxX09d91GgghV8.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Official Trailer #2",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "4A34B1DIGl8",
+      "url": "https://youtu.be/4A34B1DIGl8",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Official Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "vXKcWRu8K_U",
+      "url": "https://youtu.be/vXKcWRu8K_U",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Official US Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "G9jOaggGPKQ",
+      "url": "https://youtu.be/G9jOaggGPKQ",
+      "official": true,
+      "size": 1080
+    }
+  ]
+}

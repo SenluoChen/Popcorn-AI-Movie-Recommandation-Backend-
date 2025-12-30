@@ -1,0 +1,48 @@
+{
+  "imdbId": "tt0040525",
+  "title": "The Lady from Shanghai",
+  "year": "1947",
+  "tmdbId": 3766,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0040525\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/whqdqWavNMSoeXTx1X3DauO1LG6.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0040525\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/qKYClVLDxL2KwG34HkHdtRr83iK.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0040525\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/loE8zQAj5GROl4BAYNcUTWFJKAx.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0040525\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/xTHvREcS8h7le3Sy2qJSp0BUWlI.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "The Lady from Shanghai (1947) Original Trailer [FHD]",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "C_FTmZ0Y_hw",
+      "url": "https://youtu.be/C_FTmZ0Y_hw",
+      "official": false,
+      "size": 2160
+    },
+    {
+      "name": "THE LADY FROM SHANGHAI - Trailer",
+      "site": "YouTube",
+      "type": "Teaser",
+      "key": "R3lW5UKsbP4",
+      "url": "https://youtu.be/R3lW5UKsbP4",
+      "official": true,
+      "size": 480
+    }
+  ]
+}

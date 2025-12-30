@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2025-12-22T12:44:15.487Z",
+  "total": 1098,
+  "badJson": 0,
+  "withPoster": 1098,
+  "withTrailer": 1076,
+  "withBoth": 1076,
+  "missingPoster": 0,
+  "missingTrailer": 22,
+  "missingPosterExamples": [],
+  "missingTrailerExamples": [
+    {
+      "idx": 160,
+      "imdbId": "tt0057591",
+      "tmdbId": 25253,
+      "title": "Crooks in Clover"
+    },
+    {
+      "idx": 175,
+      "imdbId": "tt0060125",
+      "tmdbId": 23832,
+      "title": "For Love and Gold"
+    },
+    {
+      "idx": 185,
+      "imdbId": "tt0062083",
+      "tmdbId": 2798,
+      "title": "Oscar"
+    },
+    {
+      "idx": 486,
+      "imdbId": "tt0238891",
+      "tmdbId": 29458,
+      "title": "One Hundred Steps"
+    },
+    {
+      "idx": 496,
+      "imdbId": "tt0252985",
+      "tmdbId": 50531,
+      "title": "Ask Me If I'm Happy"
+    },
+    {
+      "idx": 588,
+      "imdbId": "tt0775408",
+      "tmdbId": 1341594,
+      "title": "'V for Vendetta' Unmasked"
+    },
+    {
+      "idx": 594,
+      "imdbId": "tt0813547",
+      "tmdbId": 7862,
+      "title": "The Counterfeiters"
+    },
+    {
+      "idx": 614,
+      "imdbId": "tt10080270",
+      "tmdbId": 652722,
+      "title": "In the Arms of an Assassin"
+    },
+    {
+      "idx": 631,
+      "imdbId": "tt10545470",
+      "tmdbId": 612368,
+      "title": "In the Name of the Land"
+    },
+    {
+      "idx": 643,
+      "imdbId": "tt10886670",
+      "tmdbId": 678580,
+      "title": "El mesero"
+    },
+    {
+      "idx": 645,
+      "imdbId": "tt10946934",
+      "tmdbId": 654299,
+      "title": "Out of the Clear Blue Sky"
+    },
+    {
+      "idx": 672,
+      "imdbId": "tt1198156",
+      "tmdbId": 290542,
+      "title": "You're Not You"
+    }
+  ]
+}

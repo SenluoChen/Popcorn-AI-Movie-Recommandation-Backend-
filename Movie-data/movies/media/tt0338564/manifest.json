@@ -1,0 +1,39 @@
+{
+  "imdbId": "tt0338564",
+  "title": "Infernal Affairs",
+  "year": "2002",
+  "tmdbId": 10775,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0338564\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/zRZhWomkYnIwf8nfWMZIKgJ7j32.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0338564\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/iiDGA97Kqt2dVU1deXQF06USBRu.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0338564\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/8KcssWQdjqBzljxHbvBSvLqqzEk.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0338564\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/4Mm5l3TcKGynSNto0eyRJgBrkJ7.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Infernal Affairs (2002) Original Trailer [4K]",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "GqdXakBnmsE",
+      "url": "https://youtu.be/GqdXakBnmsE",
+      "official": false,
+      "size": 2160
+    }
+  ]
+}

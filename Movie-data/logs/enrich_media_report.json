@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2025-12-22T12:44:11.733Z",
+  "input": {
+    "moviesNdjson": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\movies.ndjson",
+    "mediaManifest": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media_manifest_1000.json",
+    "mediaGeneratedAt": "2025-12-22T12:41:58.780Z",
+    "mediaSource": "tmdb"
+  },
+  "totals": {
+    "movies": 1098,
+    "badJson": 0
+  },
+  "counts": {
+    "missingTmdbId": 0,
+    "missingMediaEntry": 0,
+    "updatedPosterPath": 0,
+    "updatedPosterUrl": 0,
+    "updatedTrailerUrl": 0,
+    "stillMissingPoster": 0,
+    "stillMissingTrailer": 22
+  },
+  "examples": {
+    "missingTmdbId": [],
+    "missingMediaEntry": [],
+    "stillMissingPoster": [],
+    "stillMissingTrailer": [
+      {
+        "tmdbId": 25253,
+        "imdbId": "tt0057591",
+        "title": "Crooks in Clover",
+        "year": "1963"
+      },
+      {
+        "tmdbId": 23832,
+        "imdbId": "tt0060125",
+        "title": "For Love and Gold",
+        "year": "1966"
+      },
+      {
+        "tmdbId": 2798,
+        "imdbId": "tt0062083",
+        "title": "Oscar",
+        "year": "1967"
+      },
+      {
+        "tmdbId": 29458,
+        "imdbId": "tt0238891",
+        "title": "One Hundred Steps",
+        "year": "2000"
+      },
+      {
+        "tmdbId": 50531,
+        "imdbId": "tt0252985",
+        "title": "Ask Me If I'm Happy",
+        "year": "2000"
+      },
+      {
+        "tmdbId": 1341594,
+        "imdbId": "tt0775408",
+        "title": "'V for Vendetta' Unmasked",
+        "year": "2006"
+      },
+      {
+        "tmdbId": 7862,
+        "imdbId": "tt0813547",
+        "title": "The Counterfeiters",
+        "year": "2007"
+      },
+      {
+        "tmdbId": 652722,
+        "imdbId": "tt10080270",
+        "title": "In the Arms of an Assassin",
+        "year": "2019"
+      },
+      {
+        "tmdbId": 612368,
+        "imdbId": "tt10545470",
+        "title": "In the Name of the Land",
+        "year": "2019"
+      },
+      {
+        "tmdbId": 678580,
+        "imdbId": "tt10886670",
+        "title": "El mesero",
+        "year": "2021"
+      },
+      {
+        "tmdbId": 654299,
+        "imdbId": "tt10946934",
+        "title": "Out of the Clear Blue Sky",
+        "year": "2019"
+      },
+      {
+        "tmdbId": 290542,
+        "imdbId": "tt1198156",
+        "title": "You're Not You",
+        "year": "2014"
+      }
+    ]
+  },
+  "backup": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\movies.ndjson.bak.1766407452210",
+  "output": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\movies.ndjson"
+}

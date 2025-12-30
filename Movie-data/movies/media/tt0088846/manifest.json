@@ -1,0 +1,57 @@
+{
+  "imdbId": "tt0088846",
+  "title": "Brazil",
+  "year": "1985",
+  "tmdbId": 68,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0088846\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/745fbQQG6MEr9n3Fovj7clf6AT4.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0088846\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/ndSEkXyotVM0XfoBV1SSRg4AXgB.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0088846\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/sgABIixktMqkXMqWe189XAaBp03.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0088846\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/zb5aFldTPWcvAR70vXWTQWkuDnQ.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Brazil (1985) Original Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "A_7ATU9dslE",
+      "url": "https://youtu.be/A_7ATU9dslE",
+      "official": false,
+      "size": 2160
+    },
+    {
+      "name": "Harry Tuttle's Insane Break In",
+      "site": "YouTube",
+      "type": "Clip",
+      "key": "MC61Lxd_4as",
+      "url": "https://youtu.be/MC61Lxd_4as",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Three Reasons: Brazil",
+      "site": "YouTube",
+      "type": "Clip",
+      "key": "aYzUishMeck",
+      "url": "https://youtu.be/aYzUishMeck",
+      "official": true,
+      "size": 1080
+    }
+  ]
+}

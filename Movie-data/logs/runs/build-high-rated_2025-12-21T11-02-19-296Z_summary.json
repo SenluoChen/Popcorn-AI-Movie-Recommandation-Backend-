@@ -1,0 +1,22 @@
+{
+  "runId": "2025-12-21T11-02-19-296Z",
+  "command": "build-high-rated",
+  "targetTotal": 1000,
+  "seedsProcessed": 1129,
+  "localTotalAfter": 1000,
+  "skipped": 0,
+  "incomplete": 0,
+  "errors": 0,
+  "alreadyHave": 121,
+  "tmdb": {
+    "pages": 100,
+    "minVotes": 500,
+    "minVoteAverage": 7.5
+  },
+  "dynamodb": {
+    "enabled": false
+  },
+  "fast": true,
+  "delayMs": 200,
+  "timestamp": "2025-12-21T11:29:43.858Z"
+}

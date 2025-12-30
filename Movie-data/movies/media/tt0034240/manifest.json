@@ -1,0 +1,57 @@
+{
+  "imdbId": "tt0034240",
+  "title": "Sullivan's Travels",
+  "year": "1941",
+  "tmdbId": 16305,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0034240\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/z5cqIM0ysVjkCmaDfyTQnlozdIp.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0034240\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/7E4b9mXU9psvGbqCbI0aGEGI1oO.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0034240\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/tYxcWZ3sYF3JVXCmwJAn5RaH8nB.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0034240\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/qZhTUyUBMgz3xCXOyzN9Cg2PupD.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "SULLIVAN'S TRAVELS | April 10 & 14 | Austin Film Society",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "kIrdtdpPQHY",
+      "url": "https://youtu.be/kIrdtdpPQHY",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Sullivan's Travels Official Trailer #1 - (1941) HD",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "HUNHxGDLfIE",
+      "url": "https://youtu.be/HUNHxGDLfIE",
+      "official": false,
+      "size": 720
+    },
+    {
+      "name": "Sullivans Travel's 1941 Trailer | Joel McCrea | Veronica Lake",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "rh5Jbq2HCO8",
+      "url": "https://youtu.be/rh5Jbq2HCO8",
+      "official": false,
+      "size": 360
+    }
+  ]
+}

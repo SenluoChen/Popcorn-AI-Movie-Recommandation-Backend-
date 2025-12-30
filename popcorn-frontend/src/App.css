@@ -1,0 +1,867 @@
+body {
+  background-color: var(--page-bg);
+  color: var(--text-1);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.dropdown-menu {
+  position: fixed;
+  top: 60px; 
+  left: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 10px;
+  z-index: 999;
+}
+
+.dropdown-menu div {
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}
+
+ .apple-navbar {
+  background-color: var(--brand-900);
+  border-bottom: 1px solid var(--border-1);
+  padding: 4px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+.top-navbar {
+  background-color: 649a8b;
+  padding: 10px 0;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.navbar-search {
+  flex: 1;
+  margin: 0 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  max-width: 600px;
+}
+
+.navbar-icons {
+  display: flex;
+  gap: 12px;
+  color: white;
+  font-size: 14px;
+  align-items: center;
+}
+
+
+.cart-area {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2 {
+  color: #f57224;
+  margin-top: 0;
+  padding-top: 0;
+    ;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+}
+
+.filter-bar input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  min-width: 200px;
+    width: 700px;
+     border-radius: 10px;
+      border: 1px solid #ccc;
+}
+
+.filter-bar select {
+  padding: 10px;
+  font-size: 16px;
+   border-radius: 10px;
+      border: 1px solid #ffffff;
+}
+
+.shopee-banner {
+  width: 100%;
+  background-color: #191e25;
+  padding: 10px 0;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.shopee-banner-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+
+.banner {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  max-width: 2000px; 
+  height: 300px;           /* 可自訂高度 */
+}
+
+.banner img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+  
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.product-card {
+  background-color: white;
+  width: 180px;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.product-card button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: #191e25;
+}
+
+/* Popcorn: search results movie cards */
+.pc-movie-grid {
+  display: grid;
+  /* Reduce result/search cards by ~10% */
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: 25px;
+  margin-top: 14px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 640px) {
+  .pc-movie-grid {
+    /* Mobile: also reduce by ~10% */
+    grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+    gap: 16px;
+  }
+}
+
+/* HomePage: slightly roomier grid + larger type */
+.pc-home-popular {
+  position: relative;
+}
+
+.pc-home-popular::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--brand-900);
+  filter: brightness(0.82);
+  z-index: 0;
+}
+
+.pc-home-popular > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Section header styles for homepage 'Popular movies' */
+.pc-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.pc-section-kicker {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.78);
+}
+.pc-section-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text-invert);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+.pc-section-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.72);
+}
+
+.pc-home .pc-movie-grid {
+  /* Reduce homepage card footprint by ~10% */
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  gap: 32px;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .pc-home .pc-movie-grid {
+    /* Mobile: also reduce by ~10% */
+    grid-template-columns: repeat(auto-fit, minmax(144px, 1fr));
+    gap: 16px;
+  }
+}
+
+.pc-movie-card {
+  position: relative;
+  background: var(--brand-900);
+  border-radius: var(--radius-2);
+  /* Very thin bright outline (tech feel) */
+  border: 1px solid color-mix(in srgb, var(--text-invert) 22%, transparent);
+  box-shadow:
+    var(--shadow-1),
+    0 0 0 1px color-mix(in srgb, var(--text-invert) 10%, transparent),
+    0 0 14px color-mix(in srgb, var(--text-invert) 10%, transparent);
+  overflow: hidden;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.pc-movie-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px color-mix(in srgb, var(--text-invert) 16%, transparent),
+    0 0 18px color-mix(in srgb, var(--text-invert) 14%, transparent);
+}
+
+/* Favorites (heart) button on movie cards */
+.pc-fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--text-invert) 18%, transparent);
+  background: color-mix(in srgb, var(--brand-900) 72%, transparent);
+  color: var(--text-invert);
+  box-shadow: 0 10px 24px rgba(10, 12, 16, 0.40);
+  cursor: pointer;
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+.pc-fav-btn:hover {
+  border-color: color-mix(in srgb, var(--text-invert) 26%, transparent);
+  box-shadow: 0 12px 28px rgba(10, 12, 16, 0.52);
+}
+
+.pc-fav-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pc-fav-btn.is-active {
+  color: var(--accent-500);
+  border-color: color-mix(in srgb, var(--accent-500) 60%, transparent);
+}
+
+.pc-movie-poster {
+  aspect-ratio: 2 / 3;
+}
+
+/* Make movie card text readable on the brand/nav background */
+.pc-movie-card,
+.pc-movie-card .pc-movie-meta,
+.pc-movie-card .pc-movie-title,
+.pc-movie-card .pc-movie-overview,
+.pc-movie-card .pc-movie-submeta,
+.pc-movie-card .pc-movie-tagline,
+.pc-movie-card .pc-movie-rating,
+.pc-movie-card .pc-movie-rating-num,
+.pc-movie-card .pc-movie-rating-star {
+  color: var(--text-invert);
+}
+
+/* Thin divider between title and plot (subtle tech glow) */
+.pc-movie-divider {
+  height: 1px;
+  width: 100%;
+  margin: 10px 0 8px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--text-invert) 28%, transparent),
+    transparent
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--text-invert) 10%, transparent);
+  opacity: 0.8;
+}
+
+.pc-movie-meta {
+  padding: 14px;
+}
+
+.pc-home .pc-movie-meta {
+  /* Reduce padding slightly to match smaller card */
+  padding: 14px;
+}
+
+.pc-movie-submeta {
+  margin-top: 6px;
+  color: var(--surface-muted);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pc-movie-meta-part {
+  flex: 0 0 auto;
+}
+
+.pc-movie-meta-sep {
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.pc-movie-tagline {
+  color: var(--surface-muted);
+  font-style: italic;
+  font-weight: 600;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pc-movie-title {
+  font-weight: 900;
+  font-size: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pc-home .pc-movie-title {
+  /* Slightly smaller title on homepage (≈10% smaller) */
+  font-size: 19px;
+}
+
+.pc-home .pc-movie-overview {
+  /* Plot slightly larger on home/detail cards */
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.pc-movie-rating {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Make rating numbers reasonable inside grid cards (search/results) */
+.pc-movie-grid .pc-movie-rating-num {
+  /* Slightly reduced rating size for smaller cards (~10%) */
+  font-size: 23px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pc-movie-grid .pc-movie-rating-star {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Keep larger rating for dedicated home cards */
+.pc-home .pc-movie-rating-num {
+  /* Scale down prominent rating by ~10% */
+  font-size: 49px;
+}
+.pc-home .pc-movie-rating-star { font-size: 20px; }
+
+.pc-movie-overview {
+  margin-top: 10px;
+  /* Base plot size (search cards); keep smaller than title */
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 600;
+  opacity: 0.95;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cart-item button {
+  border: none;
+  background: none;
+  color: #191e25;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+hr {
+  margin: 10px 0;
+}
+
+
+
+.total {
+  font-weight: bold;
+  color: #333;
+}
+
+img {
+  display: block;
+  margin: 0;  /* 避免 img 預設底部空隙 */
+}
+
+input {
+  margin: 0;
+}
+
+.shop-area {
+  width: 100%;
+  background-color: #f5f5f5; /* 頁面背景灰 */
+}
+
+.banner-wall {
+  width: 100%;
+}
+
+.banner-container .banner {
+  width: 100%;
+  height: 300px; /* 自訂高度 */
+  object-fit: cover;
+}
+
+/* 白色廣告牆 + Grid 底圖 */
+.banner-ad-wall {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+  background-color: white;
+
+  /* 🔹 輕網格背景 */
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* 內容 Grid */
+.ad-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.ad-item {
+  font-size: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.ad-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Auth dialog (Navbar) */
+.pc-auth-dialog {
+  display: block;
+  min-height: 0;
+}
+
+.pc-auth-single {
+  padding: 22px 22px;
+  max-height: 78vh;
+  overflow: auto;
+}
+
+.pc-auth-brand {
+.pc-auth-input {
+  margin-bottom: 14px !important;
+}
+.pc-auth-input .MuiInputBase-input {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+.pc-auth-input .MuiInputLabel-root {
+  color: color-mix(in srgb, var(--text-invert) 72%, transparent) !important;
+}
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  color: var(--text-invert);
+}
+
+.pc-auth-tagline {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--text-invert) 78%, transparent);
+}
+
+.pc-auth-bullets {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.pc-auth-bullet {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--text-invert) 70%, transparent);
+  padding: 10px 10px;
+  border: 1px solid color-mix(in srgb, var(--text-invert) 10%, transparent);
+  border-radius: var(--radius-2);
+  background: color-mix(in srgb, var(--text-invert) 3%, transparent);
+}
+
+.pc-auth-left-foot {
+  display: none;
+}
+
+.pc-auth-right {
+  padding: 22px 20px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  max-height: 76vh;
+  overflow: auto;
+}
+
+.pc-auth-header {
+  margin-bottom: 12px;
+}
+
+.pc-auth-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* give MUI textfields breathing room */
+.pc-auth-right .MuiFormControl-root {
+  margin-bottom: 10px;
+}
+
+.pc-auth-header .pc-section-sub{
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+/* Prominent auth inputs */
+.pc-auth-input .MuiOutlinedInput-root {
+  background: color-mix(in srgb, var(--text-invert) 6%, transparent);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--text-invert) 6%, transparent);
+}
+
+.pc-auth-input .MuiOutlinedInput-notchedOutline {
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.pc-auth-input:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255,255,255,0.12);
+}
+
+.pc-auth-input .MuiOutlinedInput-input {
+  padding: 12px 14px;
+  color: var(--text-invert);
+  font-weight: 800;
+}
+
+.pc-auth-input .MuiInputLabel-root {
+  color: color-mix(in srgb, var(--text-invert) 72%, transparent) !important;
+  font-weight: 800;
+}
+
+.pc-auth-input .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--brand-900) 60%, var(--text-invert) 8%);
+  outline: 1px solid rgba(255,255,255,0.06);
+}
+
+.pc-auth-hint {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--text-invert) 78%, transparent);
+}
+
+.pc-auth-strong {
+  color: var(--text-invert);
+  font-weight: 950;
+}
+
+.pc-auth-error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-2);
+  border: 1px solid color-mix(in srgb, var(--danger-500) 60%, transparent);
+  background: color-mix(in srgb, var(--danger-500) 10%, transparent);
+  color: var(--danger-500);
+  font-weight: 850;
+}
+
+.pc-auth-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .pc-auth-dialog {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  .pc-auth-left {
+    border-right: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-invert) 12%, transparent);
+  }
+
+  .pc-auth-actions {
+    justify-content: space-between;
+  }
+}
+
+/* Login CTA (top-right) */
+.pc-login-cta {
+  position: absolute;
+  top: 50%;
+  right: 18px; /* leave a bit of right padding */
+  transform: translateY(-50%);
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.pc-login-pill,
+.pc-login-cta > a.pc-login-pill,
+.pc-login-cta > button.pc-login-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  height: 48px;
+  min-height: 48px;
+  box-sizing: border-box;
+  line-height: 1;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--text-invert);
+  font-weight: 900;
+  box-shadow: 0 8px 22px rgba(10,12,16,0.45), 0 1px 0 rgba(255,255,255,0.02) inset;
+  cursor: pointer;
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+.pc-login-pill svg { color: color-mix(in srgb, var(--text-invert) 86%, transparent); width: 22px; height: 22px; }
+.pc-login-pill-label { font-size: 14px; letter-spacing: 0.02em; }
+
+/* Avatar-only variant when user is logged in: circle, no label */
+.pc-login-avatar {
+  padding: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.pc-login-avatar svg { width: 36px; height: 36px; }
+.pc-login-avatar img.pc-login-avatar-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Ensure the capsule layout doesn't shift when avatar grows */
+.pc-login-cta { align-items: center; }
+
+@media (max-width: 840px) {
+  .pc-login-avatar { width: 48px; height: 48px; }
+  .pc-login-avatar svg { width: 22px; height: 22px; }
+}
+
+/* My List pill: icon-only, circular, same look as login pill */
+.pc-mylist-label {
+  color: var(--text-invert);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 840px) {
+  .pc-login-cta { right: 12px; }
+  .pc-login-pill { padding: 8px 12px; gap: 8px; height: 40px; }
+  .pc-login-pill-label { display: none; }
+  .pc-mylist-label { display: none; }
+}
+
+@media (max-width: 840px) {
+  .pc-login-cta { right: 12px; }
+  /* keep a reduced right padding on small screens */
+  .pc-login-pill { padding: 8px 20px; gap: 8px; height: 40px; }
+  .pc-login-pill-label { display: none; }
+  .pc-mylist-label { display: none; }
+}
+
+

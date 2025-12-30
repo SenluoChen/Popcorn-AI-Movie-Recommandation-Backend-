@@ -18,7 +18,7 @@ $cdkDir = Resolve-PathSafe (Join-Path $PSScriptRoot "..")
 
 # Support both layouts:
 # - legacy:   <repo>/Popcorn/Popcorn (CRA root)
-# - split:    <repo>/frontend/Popcorn (CRA root)
+# - split:    <repo>/popcorn-frontend (CRA root)
 $frontendCandidate = Join-Path $cdkDir $FrontendRoot
 if (-not (Test-Path -LiteralPath (Join-Path $frontendCandidate "package.json"))) {
   $alt = Join-Path $cdkDir "..\\..\\..\\frontend\\Popcorn"

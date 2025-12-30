@@ -1,0 +1,24 @@
+{
+  "runId": "2025-12-21T11-50-08-781Z",
+  "command": "build-high-rated",
+  "targetTotal": 1000,
+  "seedsProcessed": 1129,
+  "localTotalAfter": 1000,
+  "skipped": 0,
+  "incomplete": 0,
+  "errors": 0,
+  "alreadyHave": 0,
+  "tmdb": {
+    "pages": 500,
+    "minVotes": 500,
+    "minVoteAverage": 7.5
+  },
+  "dynamodb": {
+    "enabled": true,
+    "tableName": "reLivre-movies",
+    "writeFailures": 0
+  },
+  "fast": true,
+  "delayMs": 200,
+  "timestamp": "2025-12-21T11:50:08.784Z"
+}

@@ -37,8 +37,44 @@
 		{
 			"label": "diag: check port 3000 listener",
 			"type": "shell",
-			"command": "powershell -NoProfile -Command \"$port=3000; Write-Host '--- Get-NetTCPConnection'; Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess | Format-Table -AutoSize; Write-Host '--- netstat'; netstat -ano | findstr /R /C:':3000 .*LISTENING'; Write-Host '--- process'; $p=(Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess); if($p){ Get-Process -Id $p | Select-Object Id,ProcessName,Path | Format-List } else { Write-Host 'No listener found' }\"",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"$port=3000; Write-Host '--- Get-NetTCPConnection'; Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess | Format-Table -AutoSize; Write-Host '--- netstat'; netstat -ano | findstr /R /C:':3000 .*LISTENING'; Write-Host '--- process'; $p=(Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess); if($p){ Get-Process -Id $p | Select-Object Id,ProcessName,Path | Format-List } else { Write-Host 'No listener found' }"
+			],
 			"isBackground": false
+		},
+		{
+			"label": "Start auth backend (mock) :3001",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}\\backend\\cognito-auth-api\\scripts\\run_mock_server.ps1"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start frontend :3000 (auth->3001)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"start"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}\\popcorn-frontend",
+				"env": {
+					"REACT_APP_AUTH_API_BASE": "http://localhost:3001",
+					"PORT": "3000"
+				}
+			},
+			"isBackground": true,
+			"problemMatcher": []
 		},
 		{
 			"label": "Build frontend (npm run build)",
@@ -49,7 +85,7 @@
 				"build"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}\\frontend\\Popcorn"
+				"cwd": "${workspaceFolder}\\popcorn-frontend"
 			},
 			"isBackground": false
 		},

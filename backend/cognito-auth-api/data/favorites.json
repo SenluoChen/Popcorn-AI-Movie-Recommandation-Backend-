@@ -1,0 +1,24 @@
+{
+  "users": {
+    "ray191714@gmail.com": [
+      {
+        "tmdbId": 68,
+        "title": "Brazil",
+        "posterUrl": "https://image.tmdb.org/t/p/original/745fbQQG6MEr9n3Fovj7clf6AT4.jpg",
+        "addedAt": 1767100704951
+      },
+      {
+        "tmdbId": 400617,
+        "title": "Phantom Thread",
+        "posterUrl": "https://image.tmdb.org/t/p/original/hgoWjp9Sh0MI97eAMZCnIoVfgvq.jpg",
+        "addedAt": 1767097865291
+      },
+      {
+        "tmdbId": 965150,
+        "title": "Aftersun",
+        "posterUrl": "https://image.tmdb.org/t/p/original/8EO0wPt7dliKw1o0ebmu27MDKZv.jpg",
+        "addedAt": 1767097864683
+      }
+    ]
+  }
+}

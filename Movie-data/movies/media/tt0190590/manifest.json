@@ -1,0 +1,48 @@
+{
+  "imdbId": "tt0190590",
+  "title": "O Brother, Where Art Thou?",
+  "year": "2000",
+  "tmdbId": 134,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0190590\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/s9foMAcLg8GEzzQzer04qOGdD1k.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0190590\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/rbsm633lnt3hKHEpk7FOt3dy82a.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0190590\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/ozB3bwAUqb7YDzHYOlZjvw7Bmxu.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0190590\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/c30bThmhiCtT7diNpXq64kfd2S3.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "pi-KDvtUaGQ",
+      "url": "https://youtu.be/pi-KDvtUaGQ",
+      "official": false,
+      "size": 2160
+    },
+    {
+      "name": "Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "JvJ_5a6GHnE",
+      "url": "https://youtu.be/JvJ_5a6GHnE",
+      "official": false,
+      "size": 360
+    }
+  ]
+}

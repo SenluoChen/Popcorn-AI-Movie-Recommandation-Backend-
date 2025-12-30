@@ -1,0 +1,57 @@
+{
+  "imdbId": "tt5776858",
+  "title": "Phantom Thread",
+  "year": "2017",
+  "tmdbId": 400617,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt5776858\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/hgoWjp9Sh0MI97eAMZCnIoVfgvq.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt5776858\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/vpRMzPqHC03I7hPPET4Av2OT8dI.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt5776858\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/iiZY7k4oDn5u2kS06165DZ6Th6j.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt5776858\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/u59nwsGaLBv25qts7MgjBLPjE9r.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Official Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "xNsiQMeSvMk",
+      "url": "https://youtu.be/xNsiQMeSvMk",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Own it now on 4K, Blu-ray, DVD & Digital",
+      "site": "YouTube",
+      "type": "Teaser",
+      "key": "CBm_UN_-WG8",
+      "url": "https://youtu.be/CBm_UN_-WG8",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "Sneak Preview Announcement",
+      "site": "YouTube",
+      "type": "Teaser",
+      "key": "30KpHxWwZaU",
+      "url": "https://youtu.be/30KpHxWwZaU",
+      "official": true,
+      "size": 1080
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "imdbId": "tt0057427",
+  "title": "The Trial",
+  "year": "1962",
+  "tmdbId": 3009,
+  "images": [
+    {
+      "type": "poster",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0057427\\poster.jpg",
+      "url": "https://image.tmdb.org/t/p/original/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0057427\\backdrop_1.jpg",
+      "url": "https://image.tmdb.org/t/p/original/yhfHeIsR5Ki02b5SqBuLqAsLDCk.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0057427\\backdrop_2.jpg",
+      "url": "https://image.tmdb.org/t/p/original/ukKMz7upARQV4TVngDdiDrYxEX2.jpg"
+    },
+    {
+      "type": "backdrop",
+      "path": "C:\\Users\\Louis\\Visual Studio\\Popcorn\\Movie-data\\movies\\media\\tt0057427\\backdrop_3.jpg",
+      "url": "https://image.tmdb.org/t/p/original/u3wJfbyrAjaaatEBBAkv3KILNb0.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Official Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "ae3-01zSQOs",
+      "url": "https://youtu.be/ae3-01zSQOs",
+      "official": true,
+      "size": 1080
+    },
+    {
+      "name": "The Trial (1962) Trailer",
+      "site": "YouTube",
+      "type": "Trailer",
+      "key": "R_7weUR0oMY",
+      "url": "https://youtu.be/R_7weUR0oMY",
+      "official": false,
+      "size": 480
+    },
+    {
+      "name": "Joe Dante on The Trial",
+      "site": "YouTube",
+      "type": "Featurette",
+      "key": "Di6DgnqqQmw",
+      "url": "https://youtu.be/Di6DgnqqQmw",
+      "official": false,
+      "size": 1080
+    }
+  ]
+}

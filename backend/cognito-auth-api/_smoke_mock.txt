@@ -1,0 +1,3 @@
+HEALTH={"ok":true}
+SIGNUP={"error":"Expected property name or '}' in JSON at position 1"}
+DONE
