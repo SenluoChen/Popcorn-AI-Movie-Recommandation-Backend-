@@ -1,4 +1,7 @@
-# Popcorn - AI Movie Recommender (Backend & Infrastructure)
+# Popcorn - AI Movie Recommender 
+
+https://github.com/user-attachments/assets/978cf6f2-d854-4cf7-8d83-95857d8add4b
+
 
 - Popcorn is a  movie recommendation system that turns natural-language queries (for example, “crazy funny”, “90s romantic comedies”, or “dark sci-fi with strong atmosphere”) into relevant movie suggestions.  
 - The goal is to reduce decision fatigue by matching user intent semantically rather than relying on exact keywords.  
